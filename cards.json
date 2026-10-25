@@ -3,601 +3,1201 @@
     "id": 1,
     "cat": 0,
     "en": "When do you feel most emotionally connected to me?",
-    "de": "Wann fühlst du dich mir emotional am nächsten?"
+    "de": "Wann fühlst du dich mir emotional am nächsten?",
+    "es": "¿Cuándo te sientes más conectado emocionalmente conmigo?",
+    "fr": "Quand te sens-tu le plus proche de moi émotionnellement ?",
+    "zh": "你什么时候觉得我们在情感上最亲近？",
+    "ur": "آپ کب خود کو جذباتی طور پر میرے سب سے زیادہ قریب محسوس کرتے ہیں؟",
+    "hi": "तुम भावनात्मक रूप से मेरे सबसे करीब कब महसूस करते हो?",
+    "ar": "متى تشعر بأنك الأقرب إليّ عاطفيًا؟"
   },
   {
     "id": 2,
     "cat": 0,
     "en": "What is something you've always wished someone would understand about you?",
-    "de": "Was hast du dir schon immer gewünscht, dass jemand an dir versteht?"
+    "de": "Was hast du dir schon immer gewünscht, dass jemand an dir versteht?",
+    "es": "¿Qué es algo que siempre has deseado que alguien comprendiera de ti?",
+    "fr": "Quelle est la chose que tu as toujours souhaité que quelqu’un comprenne chez toi ?",
+    "zh": "你一直希望别人理解你的哪一件事？",
+    "ur": "آپ کی وہ کون سی بات ہے جسے آپ ہمیشہ چاہتے تھے کہ کوئی سمجھے؟",
+    "hi": "तुम्हारे बारे में ऐसी कौन-सी बात है जिसे तुम हमेशा चाहते थे कि कोई समझे?",
+    "ar": "ما الشيء الذي تمنّيت دائمًا أن يفهمه أحد عنك؟"
   },
   {
     "id": 3,
     "cat": 0,
     "en": "When was the last time you felt truly seen and understood?",
-    "de": "Wann hast du dich zuletzt wirklich gesehen und verstanden gefühlt?"
+    "de": "Wann hast du dich zuletzt wirklich gesehen und verstanden gefühlt?",
+    "es": "¿Cuándo fue la última vez que te sentiste realmente visto y comprendido?",
+    "fr": "Quand t’es-tu senti vraiment vu et compris pour la dernière fois ?",
+    "zh": "你上一次真正感到被看见、被理解是什么时候？",
+    "ur": "آخری بار آپ نے کب محسوس کیا کہ کسی نے واقعی آپ کو دیکھا اور سمجھا؟",
+    "hi": "आखिरी बार तुम्हें कब लगा कि किसी ने तुम्हें सचमुच देखा और समझा?",
+    "ar": "متى كانت آخر مرة شعرت فيها بأن أحدًا يراك ويفهمك حقًا؟"
   },
   {
     "id": 4,
     "cat": 0,
     "en": "What makes you feel safe enough to open your heart?",
-    "de": "Was gibt dir die Sicherheit, dein Herz zu öffnen?"
+    "de": "Was gibt dir die Sicherheit, dein Herz zu öffnen?",
+    "es": "¿Qué te hace sentir la seguridad suficiente para abrir tu corazón?",
+    "fr": "Qu’est-ce qui te donne assez confiance pour ouvrir ton cœur ?",
+    "zh": "什么能让你安心地敞开心扉？",
+    "ur": "کون سی بات آپ کو اتنا محفوظ محسوس کراتی ہے کہ آپ اپنا دل کھول سکیں؟",
+    "hi": "किस बात से तुम्हें इतना सुरक्षित महसूस होता है कि तुम अपना दिल खोल सको?",
+    "ar": "ما الذي يجعلك تشعر بالأمان الكافي لتفتح قلبك؟"
   },
   {
     "id": 5,
     "cat": 0,
     "en": "Which small gesture makes you feel deeply loved?",
-    "de": "Welche kleine Geste gibt dir das Gefühl, von Herzen geliebt zu werden?"
+    "de": "Welche kleine Geste gibt dir das Gefühl, von Herzen geliebt zu werden?",
+    "es": "¿Qué pequeño gesto te hace sentir profundamente amado?",
+    "fr": "Quel petit geste te fait te sentir profondément aimé ?",
+    "zh": "哪个小小的举动会让你深深感受到爱？",
+    "ur": "کون سا چھوٹا سا عمل آپ کو دل سے محبت کیے جانے کا احساس دلاتا ہے؟",
+    "hi": "कौन-सा छोटा-सा व्यवहार तुम्हें दिल से प्यार किए जाने का एहसास कराता है?",
+    "ar": "ما اللفتة الصغيرة التي تجعلك تشعر بأنك محبوب من أعماق القلب؟"
   },
   {
     "id": 6,
     "cat": 0,
     "en": "What part of yourself do you rarely show to others?",
-    "de": "Welche Seite von dir zeigst du anderen nur selten?"
+    "de": "Welche Seite von dir zeigst du anderen nur selten?",
+    "es": "¿Qué parte de ti muestras rara vez a los demás?",
+    "fr": "Quelle facette de toi montres-tu rarement aux autres ?",
+    "zh": "你很少向别人展现自己的哪一面？",
+    "ur": "آپ اپنی شخصیت کا کون سا پہلو دوسروں کو بہت کم دکھاتے ہیں؟",
+    "hi": "तुम अपना कौन-सा पहलू दूसरों को बहुत कम दिखाते हो?",
+    "ar": "ما الجانب من شخصيتك الذي نادرًا ما تُظهره للآخرين؟"
   },
   {
     "id": 7,
     "cat": 0,
     "en": "What does emotional intimacy mean to you?",
-    "de": "Was bedeutet emotionale Nähe für dich?"
+    "de": "Was bedeutet emotionale Nähe für dich?",
+    "es": "¿Qué significa para ti la intimidad emocional?",
+    "fr": "Que signifie pour toi l’intimité émotionnelle ?",
+    "zh": "情感上的亲密对你意味着什么？",
+    "ur": "آپ کے لیے جذباتی قربت کا کیا مطلب ہے؟",
+    "hi": "तुम्हारे लिए भावनात्मक नज़दीकी का क्या मतलब है?",
+    "ar": "ماذا يعني لك القرب العاطفي؟"
   },
   {
     "id": 8,
     "cat": 0,
     "en": "When do you feel loved without a single word being spoken?",
-    "de": "Wann fühlst du dich geliebt, ohne dass ein einziges Wort gesprochen wird?"
+    "de": "Wann fühlst du dich geliebt, ohne dass ein einziges Wort gesprochen wird?",
+    "es": "¿Cuándo te sientes amado sin que se diga una sola palabra?",
+    "fr": "Quand te sens-tu aimé sans qu’un seul mot soit prononcé ?",
+    "zh": "什么时候，即使一句话也不说，你仍能感受到爱？",
+    "ur": "آپ کب بغیر ایک لفظ کہے محبت محسوس کرتے ہیں؟",
+    "hi": "तुम्हें कब बिना एक भी शब्द कहे प्यार महसूस होता है?",
+    "ar": "متى تشعر بأنك محبوب من دون أن تُقال كلمة واحدة؟"
   },
   {
     "id": 9,
     "cat": 0,
     "en": "Which memory of us makes you smile when you're alone?",
-    "de": "Welche Erinnerung an uns bringt dich zum Lächeln, wenn du allein bist?"
+    "de": "Welche Erinnerung an uns bringt dich zum Lächeln, wenn du allein bist?",
+    "es": "¿Qué recuerdo nuestro te hace sonreír cuando estás a solas?",
+    "fr": "Quel souvenir de nous te fait sourire quand tu es seul ?",
+    "zh": "独处时，我们的哪段回忆会让你微笑？",
+    "ur": "ہماری کون سی یاد آپ کو تنہائی میں مسکرانے پر مجبور کرتی ہے؟",
+    "hi": "हमारी कौन-सी याद तुम्हें अकेले में मुस्कुराने पर मजबूर कर देती है?",
+    "ar": "أي ذكرى تجمعنا تجعلك تبتسم حين تكون وحدك؟"
   },
   {
     "id": 10,
     "cat": 0,
     "en": "What question do you wish someone would ask you?",
-    "de": "Welche Frage würdest du dir wünschen, dass dir jemand stellt?"
+    "de": "Welche Frage würdest du dir wünschen, dass dir jemand stellt?",
+    "es": "¿Qué pregunta te gustaría que alguien te hiciera?",
+    "fr": "Quelle question aimerais-tu que quelqu’un te pose ?",
+    "zh": "你希望有人问你什么问题？",
+    "ur": "آپ چاہتے ہیں کہ کوئی آپ سے کون سا سوال پوچھے؟",
+    "hi": "तुम चाहते हो कि कोई तुमसे कौन-सा सवाल पूछे?",
+    "ar": "ما السؤال الذي تتمنى أن يطرحه عليك أحد؟"
   },
   {
     "id": 11,
     "cat": 0,
     "en": "What helps you feel understood during difficult moments?",
-    "de": "Was hilft dir, dich in schwierigen Momenten verstanden zu fühlen?"
+    "de": "Was hilft dir, dich in schwierigen Momenten verstanden zu fühlen?",
+    "es": "¿Qué te ayuda a sentirte comprendido en los momentos difíciles?",
+    "fr": "Qu’est-ce qui t’aide à te sentir compris dans les moments difficiles ?",
+    "zh": "在艰难时刻，什么能让你感到被理解？",
+    "ur": "مشکل وقت میں کون سی چیز آپ کو یہ احساس دلاتی ہے کہ آپ کو سمجھا جا رہا ہے؟",
+    "hi": "मुश्किल समय में किस बात से तुम्हें लगता है कि कोई तुम्हें समझ रहा है?",
+    "ar": "ما الذي يساعدك على الشعور بأنك مفهوم في الأوقات الصعبة؟"
   },
   {
     "id": 12,
     "cat": 0,
     "en": "Which fear would you most like to leave behind?",
-    "de": "Welche Angst würdest du am liebsten hinter dir lassen?"
+    "de": "Welche Angst würdest du am liebsten hinter dir lassen?",
+    "es": "¿Qué miedo te gustaría dejar atrás?",
+    "fr": "Quelle peur aimerais-tu le plus laisser derrière toi ?",
+    "zh": "你最想摆脱哪一种恐惧？",
+    "ur": "آپ کس خوف کو سب سے زیادہ پیچھے چھوڑنا چاہیں گے؟",
+    "hi": "तुम किस डर को सबसे ज़्यादा पीछे छोड़ना चाहते हो?",
+    "ar": "ما الخوف الذي تتمنى أن تتجاوزه أكثر من غيره؟"
   },
   {
     "id": 13,
     "cat": 0,
     "en": "What have you learned about yourself through love?",
-    "de": "Was hast du durch die Liebe über dich selbst gelernt?"
+    "de": "Was hast du durch die Liebe über dich selbst gelernt?",
+    "es": "¿Qué has aprendido sobre ti a través del amor?",
+    "fr": "Qu’as-tu appris sur toi-même grâce à l’amour ?",
+    "zh": "爱情让你对自己有了哪些认识？",
+    "ur": "محبت کے ذریعے آپ نے اپنے بارے میں کیا سیکھا ہے؟",
+    "hi": "प्यार के ज़रिए तुमने अपने बारे में क्या सीखा है?",
+    "ar": "ماذا تعلمت عن نفسك من خلال الحب؟"
   },
   {
     "id": 14,
     "cat": 0,
     "en": "What makes a conversation unforgettable to you?",
-    "de": "Was macht ein Gespräch für dich unvergesslich?"
+    "de": "Was macht ein Gespräch für dich unvergesslich?",
+    "es": "¿Qué hace que una conversación sea inolvidable para ti?",
+    "fr": "Qu’est-ce qui rend une conversation inoubliable à tes yeux ?",
+    "zh": "对你来说，什么样的对话令人难忘？",
+    "ur": "آپ کے لیے کسی گفتگو کو ناقابلِ فراموش کیا بناتا ہے؟",
+    "hi": "तुम्हारे लिए कोई बातचीत यादगार कैसे बनती है?",
+    "ar": "ما الذي يجعل محادثةً ما لا تُنسى بالنسبة إليك؟"
   },
   {
     "id": 15,
     "cat": 0,
     "en": "What beautiful quality in yourself do you sometimes struggle to recognize?",
-    "de": "Welche schöne Eigenschaft an dir selbst fällt es dir manchmal schwer zu erkennen?"
+    "de": "Welche schöne Eigenschaft an dir selbst fällt es dir manchmal schwer zu erkennen?",
+    "es": "¿Qué cualidad hermosa de ti a veces te cuesta reconocer?",
+    "fr": "Quelle belle qualité chez toi as-tu parfois du mal à reconnaître ?",
+    "zh": "你身上有什么美好的品质，有时连自己都难以察觉？",
+    "ur": "آپ کی کون سی خوبصورت خوبی ہے جسے تسلیم کرنا کبھی کبھی آپ کے لیے مشکل ہوتا ہے؟",
+    "hi": "तुम्हारी कौन-सी खूबसूरत खूबी है जिसे पहचानना कभी-कभी तुम्हारे लिए मुश्किल होता है?",
+    "ar": "ما الصفة الجميلة في نفسك التي تجد أحيانًا صعوبة في الاعتراف بها؟"
   },
   {
     "id": 16,
     "cat": 0,
     "en": "When do you feel completely free to be yourself?",
-    "de": "Wann fühlst du dich vollkommen frei, du selbst zu sein?"
+    "de": "Wann fühlst du dich vollkommen frei, du selbst zu sein?",
+    "es": "¿Cuándo te sientes completamente libre de ser tú mismo?",
+    "fr": "Quand te sens-tu totalement libre d’être toi-même ?",
+    "zh": "什么时候你觉得可以完全自在地做自己？",
+    "ur": "آپ کب خود کو پوری آزادی کے ساتھ اپنی اصل شخصیت میں محسوس کرتے ہیں؟",
+    "hi": "तुम कब पूरी तरह आज़ाद महसूस करते हो कि जैसे हो वैसे रह सको?",
+    "ar": "متى تشعر بأنك حر تمامًا في أن تكون على طبيعتك؟"
   },
   {
     "id": 17,
     "cat": 0,
     "en": "Which childhood experience still influences the way you love?",
-    "de": "Welche Erfahrung aus deiner Kindheit beeinflusst noch heute, wie du liebst?"
+    "de": "Welche Erfahrung aus deiner Kindheit beeinflusst noch heute, wie du liebst?",
+    "es": "¿Qué experiencia de tu infancia sigue influyendo en tu manera de amar?",
+    "fr": "Quelle expérience de ton enfance influence encore ta façon d’aimer ?",
+    "zh": "童年的哪段经历至今仍影响着你爱人的方式？",
+    "ur": "بچپن کا کون سا تجربہ آج بھی آپ کے محبت کرنے کے انداز پر اثر انداز ہوتا ہے؟",
+    "hi": "बचपन का कौन-सा अनुभव आज भी तुम्हारे प्यार करने के तरीके को प्रभावित करता है?",
+    "ar": "ما التجربة من طفولتك التي ما زالت تؤثر في طريقتك في الحب؟"
   },
   {
     "id": 18,
     "cat": 0,
     "en": "What do you need emotionally but rarely ask for?",
-    "de": "Was brauchst du emotional, worum du aber nur selten bittest?"
+    "de": "Was brauchst du emotional, worum du aber nur selten bittest?",
+    "es": "¿Qué necesitas emocionalmente, pero casi nunca pides?",
+    "fr": "De quoi as-tu besoin sur le plan émotionnel, mais que tu demandes rarement ?",
+    "zh": "你在情感上需要什么，却很少开口请求？",
+    "ur": "جذباتی طور پر آپ کو کس چیز کی ضرورت ہوتی ہے مگر آپ شاذ و نادر ہی مانگتے ہیں؟",
+    "hi": "भावनात्मक रूप से तुम्हें किस चीज़ की ज़रूरत होती है, लेकिन तुम शायद ही कभी माँगते हो?",
+    "ar": "ما الذي تحتاج إليه عاطفيًا، لكنك نادرًا ما تطلبه؟"
   },
   {
     "id": 19,
     "cat": 0,
     "en": "If your heart could speak without fear, what would it say?",
-    "de": "Wenn dein Herz ohne Angst sprechen könnte, was würde es sagen?"
+    "de": "Wenn dein Herz ohne Angst sprechen könnte, was würde es sagen?",
+    "es": "Si tu corazón pudiera hablar sin miedo, ¿qué diría?",
+    "fr": "Si ton cœur pouvait parler sans peur, que dirait-il ?",
+    "zh": "如果你的心能毫无畏惧地说话，它会说什么？",
+    "ur": "اگر آپ کا دل بغیر خوف کے بول سکتا تو کیا کہتا؟",
+    "hi": "अगर तुम्हारा दिल बिना डरे बोल सकता, तो वह क्या कहता?",
+    "ar": "لو استطاع قلبك أن يتحدث بلا خوف، فماذا سيقول؟"
   },
   {
     "id": 20,
     "cat": 0,
     "en": "What do you hope we will always protect in our connection?",
-    "de": "Was sollten wir deiner Meinung nach in unserer Verbindung immer bewahren?"
+    "de": "Was sollten wir deiner Meinung nach in unserer Verbindung immer bewahren?",
+    "es": "¿Qué esperas que siempre protejamos en nuestra conexión?",
+    "fr": "Qu’espères-tu que nous préserverons toujours dans notre relation ?",
+    "zh": "你希望我们永远守护彼此关系中的什么？",
+    "ur": "آپ کو امید ہے کہ ہم اپنے تعلق میں کس چیز کی ہمیشہ حفاظت کریں گے؟",
+    "hi": "तुम क्या चाहते हो कि हम अपने रिश्ते में हमेशा सँभालकर रखें?",
+    "ar": "ما الشيء الذي تتمنى أن نحافظ عليه دائمًا في علاقتنا؟"
   },
   {
     "id": 21,
     "cat": 1,
     "en": "What was the first thing about me that caught your attention?",
-    "de": "Was ist dir als Erstes an mir aufgefallen?"
+    "de": "Was ist dir als Erstes an mir aufgefallen?",
+    "es": "¿Qué fue lo primero de mí que llamó tu atención?",
+    "fr": "Quelle est la première chose chez moi qui a attiré ton attention ?",
+    "zh": "我身上最先吸引你注意的是什么？",
+    "ar": "ما أول شيء فيّ لفت انتباهك؟",
+    "hi": "मेरे बारे में सबसे पहले किस बात ने तुम्हारा ध्यान खींचा था?",
+    "ur": "میرے بارے میں سب سے پہلے کس بات نے آپ کی توجہ کھینچی تھی؟"
   },
   {
     "id": 22,
     "cat": 1,
     "en": "When did you first realize there might be something special between us?",
-    "de": "Wann hast du zum ersten Mal gespürt, dass zwischen uns etwas Besonderes sein könnte?"
+    "de": "Wann hast du zum ersten Mal gespürt, dass zwischen uns etwas Besonderes sein könnte?",
+    "es": "¿Cuándo te diste cuenta por primera vez de que podía haber algo especial entre nosotros?",
+    "fr": "Quand as-tu compris pour la première fois qu'il pouvait y avoir quelque chose de spécial entre nous ?",
+    "zh": "你第一次什么时候意识到我们之间可能有特别的感情？",
+    "ar": "متى أدركت لأول مرة أن بيننا شيئًا مميزًا؟",
+    "hi": "तुम्हें पहली बार कब लगा कि हमारे बीच कुछ खास हो सकता है?",
+    "ur": "آپ کو پہلی بار کب محسوس ہوا کہ ہمارے درمیان کچھ خاص ہو سکتا ہے؟"
   },
   {
     "id": 23,
     "cat": 1,
     "en": "What does being truly in love feel like to you?",
-    "de": "Wie fühlt es sich für dich an, wirklich verliebt zu sein?"
+    "de": "Wie fühlt es sich für dich an, wirklich verliebt zu sein?",
+    "es": "¿Qué se siente, para ti, al estar verdaderamente enamorado?",
+    "fr": "Qu'est-ce que ça fait, pour toi, d'être vraiment amoureux ?",
+    "zh": "对你来说，真正爱上一个人是什么感觉？",
+    "ar": "كيف يبدو شعور الوقوع في الحب الحقيقي بالنسبة إليك؟",
+    "hi": "तुम्हारे लिए सच्चे प्यार में होने का एहसास कैसा होता है?",
+    "ur": "آپ کے لیے سچی محبت میں مبتلا ہونے کا احساس کیسا ہوتا ہے؟"
   },
   {
     "id": 24,
     "cat": 1,
     "en": "What is your favorite memory of us so far?",
-    "de": "Was ist bisher deine schönste Erinnerung an uns?"
+    "de": "Was ist bisher deine schönste Erinnerung an uns?",
+    "es": "¿Cuál es tu recuerdo favorito de nosotros hasta ahora?",
+    "fr": "Quel est ton plus beau souvenir de nous jusqu'à présent ?",
+    "zh": "到目前为止，我们最让你珍惜的回忆是什么？",
+    "ar": "ما أجمل ذكرى تجمعنا حتى الآن؟",
+    "hi": "अब तक हमारी कौन-सी याद तुम्हें सबसे प्यारी है?",
+    "ur": "اب تک ہماری کون سی یاد آپ کو سب سے زیادہ عزیز ہے؟"
   },
   {
     "id": 25,
     "cat": 1,
     "en": "What is something romantic you've always wanted to experience?",
-    "de": "Was ist etwas Romantisches, das du schon immer erleben wolltest?"
+    "de": "Was ist etwas Romantisches, das du schon immer erleben wolltest?",
+    "es": "¿Qué experiencia romántica siempre has querido vivir?",
+    "fr": "Quelle expérience romantique as-tu toujours rêvé de vivre ?",
+    "zh": "你一直想体验的浪漫事情是什么？",
+    "ar": "ما التجربة الرومانسية التي لطالما تمنيت أن تعيشها؟",
+    "hi": "तुम हमेशा से कौन-सा रोमांटिक अनुभव जीना चाहते थे?",
+    "ur": "آپ ہمیشہ سے کون سا رومانوی تجربہ کرنا چاہتے تھے؟"
   },
   {
     "id": 26,
     "cat": 1,
     "en": "Which little habit of mine makes you smile?",
-    "de": "Welche kleine Angewohnheit von mir bringt dich zum Lächeln?"
+    "de": "Welche kleine Angewohnheit von mir bringt dich zum Lächeln?",
+    "es": "¿Qué pequeña costumbre mía te hace sonreír?",
+    "fr": "Quelle petite habitude chez moi te fait sourire ?",
+    "zh": "我的哪个小习惯会让你微笑？",
+    "ar": "أي عادة صغيرة لديّ تجعلك تبتسم؟",
+    "hi": "मेरी कौन-सी छोटी-सी आदत तुम्हें मुस्कुराने पर मजबूर कर देती है?",
+    "ur": "میری کون سی چھوٹی سی عادت آپ کو مسکرا دیتی ہے؟"
   },
   {
     "id": 27,
     "cat": 1,
     "en": "If we could spend an entire day together without distractions, what would we do?",
-    "de": "Wenn wir einen ganzen Tag ungestört miteinander verbringen könnten, was würden wir unternehmen?"
+    "de": "Wenn wir einen ganzen Tag ungestört miteinander verbringen könnten, was würden wir unternehmen?",
+    "es": "Si pudiéramos pasar un día entero juntos sin distracciones, ¿qué haríamos?",
+    "fr": "Si nous pouvions passer une journée entière ensemble sans distractions, que ferions-nous ?",
+    "zh": "如果我们能不受打扰地共度一整天，你想做什么？",
+    "ar": "لو أمضينا يومًا كاملًا معًا بلا أي مشتتات، فماذا سنفعل؟",
+    "hi": "अगर हम बिना किसी रुकावट के पूरा दिन साथ बिताएँ, तो क्या करेंगे?",
+    "ur": "اگر ہم بغیر کسی خلل کے پورا دن ساتھ گزار سکیں تو کیا کریں گے؟"
   },
   {
     "id": 28,
     "cat": 1,
     "en": "What kind of kiss do you think is the most unforgettable?",
-    "de": "Welche Art von Kuss ist für dich am unvergesslichsten?"
+    "de": "Welche Art von Kuss ist für dich am unvergesslichsten?",
+    "es": "¿Qué tipo de beso te parece el más inolvidable?",
+    "fr": "Quel genre de baiser te semble le plus inoubliable ?",
+    "zh": "你觉得什么样的吻最令人难忘？",
+    "ar": "ما نوع القبلة الذي تراه الأكثر رسوخًا في الذاكرة؟",
+    "hi": "तुम्हारे हिसाब से किस तरह का चुंबन सबसे यादगार होता है?",
+    "ur": "آپ کے خیال میں کس طرح کا بوسہ سب سے زیادہ یادگار ہوتا ہے؟"
   },
   {
     "id": 29,
     "cat": 1,
     "en": "What is one thing about me that you find unexpectedly attractive?",
-    "de": "Was findest du an mir attraktiv, womit du selbst nicht gerechnet hättest?"
+    "de": "Was findest du an mir attraktiv, womit du selbst nicht gerechnet hättest?",
+    "es": "¿Qué hay en mí que te resulta inesperadamente atractivo?",
+    "fr": "Qu'est-ce qui te plaît chez moi de façon inattendue ?",
+    "zh": "我身上有什么出乎你意料地吸引你？",
+    "ar": "ما الشيء الذي تجده جذابًا فيّ على نحو لم تتوقعه؟",
+    "hi": "मेरी कौन-सी बात तुम्हें उम्मीद से बढ़कर आकर्षक लगती है?",
+    "ur": "میری کون سی بات آپ کو غیر متوقع طور پر دلکش لگتی ہے؟"
   },
   {
     "id": 30,
     "cat": 1,
     "en": "If you could whisper one thing in my ear right now, what would it be?",
-    "de": "Wenn du mir jetzt etwas ins Ohr flüstern könntest, was wäre es?"
+    "de": "Wenn du mir jetzt etwas ins Ohr flüstern könntest, was wäre es?",
+    "es": "Si pudieras susurrarme algo al oído ahora mismo, ¿qué sería?",
+    "fr": "Si tu pouvais me murmurer quelque chose à l'oreille maintenant, que dirais-tu ?",
+    "zh": "如果现在能在我耳边轻声说一句话，你会说什么？",
+    "ar": "لو استطعت أن تهمس بشيء في أذني الآن، فماذا ستقول؟",
+    "hi": "अगर अभी मेरे कान में कुछ फुसफुसा सको, तो क्या कहोगे?",
+    "ur": "اگر آپ ابھی میرے کان میں کچھ سرگوشی کر سکیں تو کیا کہیں گے؟"
   },
   {
     "id": 31,
     "cat": 1,
     "en": "What does your perfect romantic evening look like?",
-    "de": "Wie sieht dein perfekter romantischer Abend aus?"
+    "de": "Wie sieht dein perfekter romantischer Abend aus?",
+    "es": "¿Cómo sería tu velada romántica perfecta?",
+    "fr": "À quoi ressemble ta soirée romantique idéale ?",
+    "zh": "你心中完美的浪漫夜晚是什么样的？",
+    "ar": "كيف تتخيل أمسيتك الرومانسية المثالية؟",
+    "hi": "तुम्हारी आदर्श रोमांटिक शाम कैसी होगी?",
+    "ur": "آپ کی نظر میں بہترین رومانوی شام کیسی ہوگی؟"
   },
   {
     "id": 32,
     "cat": 1,
     "en": "When do you find it hardest to resist smiling at me?",
-    "de": "Wann fällt es dir am schwersten, mich nicht anzulächeln?"
+    "de": "Wann fällt es dir am schwersten, mich nicht anzulächeln?",
+    "es": "¿Cuándo te resulta más difícil evitar sonreírme?",
+    "fr": "Quand as-tu le plus de mal à t'empêcher de me sourire ?",
+    "zh": "什么时候你最忍不住对我微笑？",
+    "ar": "متى يصعب عليك أكثر أن تمنع نفسك من الابتسام لي؟",
+    "hi": "कब तुम्हारे लिए मुझे देखकर मुस्कुराने से खुद को रोकना सबसे मुश्किल होता है?",
+    "ur": "کس وقت آپ کے لیے مجھے دیکھ کر مسکراہٹ روکنا سب سے مشکل ہوتا ہے؟"
   },
   {
     "id": 33,
     "cat": 1,
     "en": "What is something you'd love us to try together for the first time?",
-    "de": "Was würdest du gerne zum ersten Mal gemeinsam mit mir ausprobieren?"
+    "de": "Was würdest du gerne zum ersten Mal gemeinsam mit mir ausprobieren?",
+    "es": "¿Qué te gustaría que probáramos juntos por primera vez?",
+    "fr": "Qu'aimerais-tu que nous essayions ensemble pour la première fois ?",
+    "zh": "你希望我们第一次一起尝试什么？",
+    "ar": "ما الشيء الذي تتمنى أن نجربه معًا للمرة الأولى؟",
+    "hi": "तुम पहली बार मेरे साथ क्या नया आज़माना चाहोगे?",
+    "ur": "آپ پہلی بار میرے ساتھ کون سی نئی چیز آزمانا چاہیں گے؟"
   },
   {
     "id": 34,
     "cat": 1,
     "en": "Do you prefer a slow, romantic dance or a spontaneous kiss in the rain?",
-    "de": "Magst du lieber einen langsamen romantischen Tanz oder einen spontanen Kuss im Regen?"
+    "de": "Magst du lieber einen langsamen romantischen Tanz oder einen spontanen Kuss im Regen?",
+    "es": "¿Prefieres un baile lento y romántico o un beso espontáneo bajo la lluvia?",
+    "fr": "Préfères-tu une danse lente et romantique ou un baiser spontané sous la pluie ?",
+    "zh": "你更喜欢缓慢浪漫的舞蹈，还是雨中突如其来的亲吻？",
+    "ar": "هل تفضل رقصة رومانسية هادئة أم قبلة عفوية تحت المطر؟",
+    "hi": "तुम्हें धीमा रोमांटिक नृत्य पसंद है या बारिश में अचानक मिला चुंबन?",
+    "ur": "آپ کو آہستہ رومانوی رقص پسند ہے یا بارش میں اچانک بوسہ؟"
   },
   {
     "id": 35,
     "cat": 1,
     "en": "What makes flirting exciting for you, even in a long-term relationship?",
-    "de": "Was macht Flirten für dich aufregend, auch in einer langjährigen Beziehung?"
+    "de": "Was macht Flirten für dich aufregend, auch in einer langjährigen Beziehung?",
+    "es": "¿Qué hace que coquetear siga siendo emocionante, incluso en una relación larga?",
+    "fr": "Qu'est-ce qui rend le flirt excitant pour toi, même dans une relation de longue durée ?",
+    "zh": "即使在长期关系中，什么会让调情依然令你心动？",
+    "ar": "ما الذي يجعل المغازلة ممتعة لك حتى في علاقة طويلة الأمد؟",
+    "hi": "लंबे रिश्ते में भी छेड़छाड़ और प्यार भरी बातें तुम्हारे लिए रोमांचक कैसे बनी रहती हैं?",
+    "ur": "طویل رشتے میں بھی محبت بھری چھیڑ چھاڑ آپ کے لیے دلچسپ کیسے رہتی ہے؟"
   },
   {
     "id": 36,
     "cat": 1,
     "en": "If our love story were a movie, what would its title be?",
-    "de": "Wenn unsere Liebesgeschichte ein Film wäre, welchen Titel hätte er?"
+    "de": "Wenn unsere Liebesgeschichte ein Film wäre, welchen Titel hätte er?",
+    "es": "Si nuestra historia de amor fuera una película, ¿cómo se titularía?",
+    "fr": "Si notre histoire d'amour était un film, quel serait son titre ?",
+    "zh": "如果我们的爱情故事是一部电影，你会给它起什么名字？",
+    "ar": "لو كانت قصة حبنا فيلمًا، فما عنوانه؟",
+    "hi": "अगर हमारी प्रेम कहानी फिल्म होती, तो उसका नाम क्या होता?",
+    "ur": "اگر ہماری محبت کی کہانی فلم ہوتی تو اس کا نام کیا ہوتا؟"
   },
   {
     "id": 37,
     "cat": 1,
     "en": "What is one compliment from me you would never get tired of hearing?",
-    "de": "Welches Kompliment von mir könntest du immer wieder hören?"
+    "de": "Welches Kompliment von mir könntest du immer wieder hören?",
+    "es": "¿Qué cumplido mío nunca te cansarías de escuchar?",
+    "fr": "Quel compliment de ma part ne te lasserais-tu jamais d'entendre ?",
+    "zh": "我说过的哪句赞美，你永远听不腻？",
+    "ar": "ما الإطراء الذي تسمعه مني ولا تمل منه أبدًا؟",
+    "hi": "मेरी कौन-सी तारीफ़ सुनकर तुम कभी नहीं ऊबोगे?",
+    "ur": "میری کون سی تعریف آپ بار بار سن کر بھی نہیں اکتائیں گے؟"
   },
   {
     "id": 38,
     "cat": 1,
     "en": "What makes someone irresistible beyond physical appearance?",
-    "de": "Was macht einen Menschen über sein Aussehen hinaus unwiderstehlich?"
+    "de": "Was macht einen Menschen über sein Aussehen hinaus unwiderstehlich?",
+    "es": "¿Qué hace irresistible a alguien más allá de su apariencia física?",
+    "fr": "Qu'est-ce qui rend quelqu'un irrésistible au-delà de son apparence physique ?",
+    "zh": "除了外表，什么会让一个人无法抗拒？",
+    "ar": "ما الذي يجعل شخصًا لا يقاوم بعيدًا عن المظهر الخارجي؟",
+    "hi": "बाहरी सुंदरता के अलावा कौन-सी बात किसी को बेहद आकर्षक बनाती है?",
+    "ur": "ظاہری شکل کے علاوہ کون سی خوبی کسی شخص کو بے حد پرکشش بناتی ہے؟"
   },
   {
     "id": 39,
     "cat": 1,
     "en": "What is your favorite way to show affection?",
-    "de": "Wie zeigst du am liebsten deine Zuneigung?"
+    "de": "Wie zeigst du am liebsten deine Zuneigung?",
+    "es": "¿Cuál es tu forma favorita de demostrar cariño?",
+    "fr": "Quelle est ta façon préférée de montrer ton affection ?",
+    "zh": "你最喜欢怎样表达爱意？",
+    "ar": "ما طريقتك المفضلة للتعبير عن المودة؟",
+    "hi": "प्यार जताने का तुम्हारा पसंदीदा तरीका क्या है?",
+    "ur": "محبت اور اپنائیت ظاہر کرنے کا آپ کا پسندیدہ طریقہ کیا ہے؟"
   },
   {
     "id": 40,
     "cat": 1,
     "en": "What is one romantic promise you would love us to make to each other?",
-    "de": "Welches romantische Versprechen würdest du gerne mit mir teilen?"
+    "de": "Welches romantische Versprechen würdest du gerne mit mir teilen?",
+    "es": "¿Qué promesa romántica te gustaría que nos hiciéramos?",
+    "fr": "Quelle promesse romantique aimerais-tu que nous nous fassions ?",
+    "zh": "你希望我们向彼此许下什么浪漫的承诺？",
+    "ar": "ما الوعد الرومانسي الذي تتمنى أن نقطعه لبعضنا؟",
+    "hi": "तुम चाहोगे कि हम एक-दूसरे से कौन-सा रोमांटिक वादा करें?",
+    "ur": "آپ چاہیں گے کہ ہم ایک دوسرے سے کون سا رومانوی وعدہ کریں؟"
   },
   {
     "id": 41,
     "cat": 2,
     "en": "What does trust mean to you when no one is watching?",
-    "de": "Was bedeutet Vertrauen für dich, wenn niemand zusieht?"
+    "de": "Was bedeutet Vertrauen für dich, wenn niemand zusieht?",
+    "es": "¿Qué significa para ti la confianza cuando nadie nos ve?",
+    "fr": "Que signifie la confiance pour toi quand personne ne regarde ?",
+    "zh": "在没有人看见的时候，信任对你意味着什么？",
+    "ar": "ماذا تعني لك الثقة حين لا يراقبنا أحد؟",
+    "hi": "जब कोई देख नहीं रहा हो, तब भरोसे का तुम्हारे लिए क्या मतलब है?",
+    "ur": "جب کوئی دیکھ نہ رہا ہو تو اعتماد آپ کے لیے کیا معنی رکھتا ہے؟"
   },
   {
     "id": 42,
     "cat": 2,
     "en": "What makes it difficult for you to let someone get close?",
-    "de": "Was macht es dir schwer, jemanden wirklich an dich heranzulassen?"
+    "de": "Was macht es dir schwer, jemanden wirklich an dich heranzulassen?",
+    "es": "¿Qué te dificulta dejar que alguien se acerque a ti?",
+    "fr": "Qu'est-ce qui t'empêche de laisser quelqu'un s'approcher de toi ?",
+    "zh": "是什么让你难以允许别人走近你的内心？",
+    "ar": "ما الذي يجعل السماح لشخص بالاقتراب منك أمرًا صعبًا؟",
+    "hi": "किसी को अपने करीब आने देना तुम्हारे लिए मुश्किल क्यों होता है?",
+    "ur": "کسی کو اپنے قریب آنے دینا آپ کے لیے مشکل کیوں ہوتا ہے؟"
   },
   {
     "id": 43,
     "cat": 2,
     "en": "Have you ever been afraid of loving someone too much?",
-    "de": "Hattest du schon einmal Angst, jemanden zu sehr zu lieben?"
+    "de": "Hattest du schon einmal Angst, jemanden zu sehr zu lieben?",
+    "es": "¿Alguna vez has tenido miedo de amar demasiado a alguien?",
+    "fr": "As-tu déjà eu peur d'aimer quelqu'un trop fort ?",
+    "zh": "你有没有害怕过自己太爱一个人？",
+    "ar": "هل خفت يومًا من أن تحب شخصًا أكثر مما ينبغي؟",
+    "hi": "क्या तुम्हें कभी किसी से बहुत ज़्यादा प्यार करने का डर लगा है?",
+    "ur": "کیا آپ کو کبھی کسی سے بہت زیادہ محبت کرنے کا خوف ہوا ہے؟"
   },
   {
     "id": 44,
     "cat": 2,
     "en": "What is something about your past that helped shape the person you are today?",
-    "de": "Welche Erfahrung aus deiner Vergangenheit hat dich zu dem Menschen gemacht, der du heute bist?"
+    "de": "Welche Erfahrung aus deiner Vergangenheit hat dich zu dem Menschen gemacht, der du heute bist?",
+    "es": "¿Qué experiencia de tu pasado ayudó a convertirte en quien eres hoy?",
+    "fr": "Quelle expérience de ton passé a contribué à faire de toi la personne que tu es aujourd'hui ?",
+    "zh": "过去的哪段经历塑造了今天的你？",
+    "ar": "ما التجربة من ماضيك التي ساعدت في تشكيل شخصيتك اليوم؟",
+    "hi": "अतीत की किस घटना ने तुम्हें आज का इंसान बनाने में मदद की?",
+    "ur": "ماضی کے کس تجربے نے آپ کی آج کی شخصیت بنانے میں مدد دی؟"
   },
   {
     "id": 45,
     "cat": 2,
     "en": "How do you want to be comforted when you are feeling overwhelmed?",
-    "de": "Wie möchtest du getröstet werden, wenn dir alles zu viel wird?"
+    "de": "Wie möchtest du getröstet werden, wenn dir alles zu viel wird?",
+    "es": "¿Cómo te gustaría que te consolaran cuando te sientes abrumado?",
+    "fr": "Comment aimerais-tu être réconforté quand tu te sens dépassé ?",
+    "zh": "当你不堪重负时，希望别人怎样安慰你？",
+    "ar": "كيف تحب أن يواسيك الآخرون عندما تشعر بالإرهاق النفسي؟",
+    "hi": "जब तुम बहुत परेशान हो, तो तुम कैसे दिलासा पाना चाहते हो?",
+    "ur": "جب آپ بہت پریشان ہوں تو آپ کس طرح تسلی پانا پسند کرتے ہیں؟"
   },
   {
     "id": 46,
     "cat": 2,
     "en": "What is a boundary you need your partner to respect?",
-    "de": "Welche persönliche Grenze sollte dein Partner unbedingt respektieren?"
+    "de": "Welche persönliche Grenze sollte dein Partner unbedingt respektieren?",
+    "es": "¿Qué límite necesitas que tu pareja respete?",
+    "fr": "Quelle limite as-tu besoin que ton partenaire respecte ?",
+    "zh": "你希望伴侣尊重你的哪条界限？",
+    "ar": "ما الحد الذي تحتاج إلى أن يحترمه شريكك؟",
+    "hi": "तुम्हारी कौन-सी सीमा है जिसका तुम्हारे साथी को सम्मान करना चाहिए?",
+    "ur": "آپ کی کون سی حد ہے جس کا آپ کے ساتھی کو احترام کرنا چاہیے؟"
   },
   {
     "id": 47,
     "cat": 2,
     "en": "What does emotional honesty look like in a relationship?",
-    "de": "Wie sieht emotionale Ehrlichkeit in einer Beziehung für dich aus?"
+    "de": "Wie sieht emotionale Ehrlichkeit in einer Beziehung für dich aus?",
+    "es": "¿Cómo es la sinceridad emocional en una relación?",
+    "fr": "À quoi ressemble l'honnêteté émotionnelle dans une relation ?",
+    "zh": "一段关系中的情感坦诚应该是什么样的？",
+    "ar": "كيف يبدو الصدق العاطفي في العلاقة بالنسبة إليك؟",
+    "hi": "रिश्ते में भावनाओं के प्रति ईमानदारी कैसी दिखती है?",
+    "ur": "رشتے میں جذباتی سچائی آپ کے نزدیک کیسی ہوتی ہے؟"
   },
   {
     "id": 48,
     "cat": 2,
     "en": "What is something you find hard to forgive?",
-    "de": "Was fällt dir besonders schwer zu verzeihen?"
+    "de": "Was fällt dir besonders schwer zu verzeihen?",
+    "es": "¿Qué te resulta difícil perdonar?",
+    "fr": "Qu'as-tu du mal à pardonner ?",
+    "zh": "什么事情让你很难原谅？",
+    "ar": "ما الشيء الذي يصعب عليك مسامحته؟",
+    "hi": "तुम्हारे लिए किस बात को माफ़ करना मुश्किल है?",
+    "ur": "آپ کے لیے کس بات کو معاف کرنا مشکل ہوتا ہے؟"
   },
   {
     "id": 49,
     "cat": 2,
     "en": "When have you felt brave enough to be vulnerable?",
-    "de": "Wann hattest du den Mut, dich verletzlich zu zeigen?"
+    "de": "Wann hattest du den Mut, dich verletzlich zu zeigen?",
+    "es": "¿Cuándo te has sentido lo bastante valiente para mostrar tu vulnerabilidad?",
+    "fr": "Quand t'es-tu senti assez courageux pour montrer ta vulnérabilité ?",
+    "zh": "你什么时候曾勇敢地展现过脆弱的一面？",
+    "ar": "متى شعرت بالشجاعة الكافية لإظهار ضعفك؟",
+    "hi": "तुमने कब इतनी हिम्मत महसूस की कि अपनी कमज़ोरी दिखा सको?",
+    "ur": "آپ نے کب اتنی ہمت محسوس کی کہ اپنی کمزوری ظاہر کر سکیں؟"
   },
   {
     "id": 50,
     "cat": 2,
     "en": "What do you need from someone after an argument?",
-    "de": "Was brauchst du von einem Menschen nach einem Streit?"
+    "de": "Was brauchst du von einem Menschen nach einem Streit?",
+    "es": "¿Qué necesitas de alguien después de una discusión?",
+    "fr": "De quoi as-tu besoin de la part de l'autre après une dispute ?",
+    "zh": "争吵之后，你需要对方给予什么？",
+    "ar": "ماذا تحتاج من الطرف الآخر بعد الخلاف؟",
+    "hi": "झगड़े के बाद तुम्हें दूसरे व्यक्ति से क्या चाहिए होता है?",
+    "ur": "بحث کے بعد آپ کو دوسرے شخص سے کس چیز کی ضرورت ہوتی ہے؟"
   },
   {
     "id": 51,
     "cat": 2,
     "en": "What is one insecurity you wish you could talk about more openly?",
-    "de": "Über welche Unsicherheit würdest du gerne offener sprechen können?"
+    "de": "Über welche Unsicherheit würdest du gerne offener sprechen können?",
+    "es": "¿Qué inseguridad te gustaría poder expresar con más libertad?",
+    "fr": "De quelle insécurité aimerais-tu pouvoir parler plus ouvertement ?",
+    "zh": "你希望能更坦然地谈论自己的哪种不安全感？",
+    "ar": "ما الشعور بعدم الأمان الذي تتمنى التحدث عنه بصراحة أكبر؟",
+    "hi": "अपनी किस असुरक्षा के बारे में तुम खुलकर बात करना चाहते हो?",
+    "ur": "آپ اپنی کس عدم تحفظ کے احساس پر زیادہ کھل کر بات کرنا چاہیں گے؟"
   },
   {
     "id": 52,
     "cat": 2,
     "en": "How can we disagree without making each other feel unloved?",
-    "de": "Wie können wir unterschiedlicher Meinung sein, ohne dass sich einer von uns ungeliebt fühlt?"
+    "de": "Wie können wir unterschiedlicher Meinung sein, ohne dass sich einer von uns ungeliebt fühlt?",
+    "es": "¿Cómo podemos estar en desacuerdo sin hacernos sentir que no nos queremos?",
+    "fr": "Comment pouvons-nous être en désaccord sans nous faire sentir moins aimés ?",
+    "zh": "我们怎样才能意见不同，却不让彼此觉得不被爱？",
+    "ar": "كيف نختلف في الرأي دون أن يشعر أحدنا بأنه غير محبوب؟",
+    "hi": "हम असहमत होकर भी एक-दूसरे को प्यार की कमी महसूस होने से कैसे बचा सकते हैं?",
+    "ur": "ہم اختلاف کیسے کریں کہ ایک دوسرے کو محبت کی کمی محسوس نہ ہو؟"
   },
   {
     "id": 53,
     "cat": 2,
     "en": "What does loyalty mean to you beyond simply being faithful?",
-    "de": "Was bedeutet Loyalität für dich, abgesehen von Treue?"
+    "de": "Was bedeutet Loyalität für dich, abgesehen von Treue?",
+    "es": "¿Qué significa para ti la lealtad, más allá de la fidelidad?",
+    "fr": "Que signifie la loyauté pour toi, au-delà de la fidélité ?",
+    "zh": "除了忠贞，忠诚对你还意味着什么？",
+    "ar": "ماذا يعني لك الإخلاص إلى جانب الوفاء في العلاقة؟",
+    "hi": "सिर्फ़ वफ़ादार रहने से आगे, निष्ठा का तुम्हारे लिए क्या मतलब है?",
+    "ur": "صرف وفادار رہنے کے علاوہ وفا آپ کے لیے کیا معنی رکھتی ہے؟"
   },
   {
     "id": 54,
     "cat": 2,
     "en": "What is something you would never want to pretend about in a relationship?",
-    "de": "Bei welchem Thema würdest du in einer Beziehung niemals etwas vorspielen wollen?"
+    "de": "Bei welchem Thema würdest du in einer Beziehung niemals etwas vorspielen wollen?",
+    "es": "¿Qué es algo que nunca querrías fingir en una relación?",
+    "fr": "Sur quoi ne voudrais-tu jamais faire semblant dans une relation ?",
+    "zh": "在感情中，有什么是你绝不愿假装的？",
+    "ar": "ما الشيء الذي لا تريد التظاهر به أبدًا في علاقة؟",
+    "hi": "रिश्ते में तुम किस बात का कभी दिखावा नहीं करना चाहोगे?",
+    "ur": "رشتے میں آپ کس بات کا کبھی دکھاوا نہیں کرنا چاہیں گے؟"
   },
   {
     "id": 55,
     "cat": 2,
     "en": "When do you need space, and when do you need closeness?",
-    "de": "Wann brauchst du Freiraum und wann brauchst du Nähe?"
+    "de": "Wann brauchst du Freiraum und wann brauchst du Nähe?",
+    "es": "¿Cuándo necesitas espacio y cuándo necesitas cercanía?",
+    "fr": "Quand as-tu besoin d'espace et quand as-tu besoin de proximité ?",
+    "zh": "你什么时候需要独处，什么时候需要亲近？",
+    "ar": "متى تحتاج إلى مساحة خاصة، ومتى تحتاج إلى القرب؟",
+    "hi": "तुम्हें कब अकेले रहने की जगह चाहिए और कब नज़दीकी?",
+    "ur": "آپ کو کب تنہائی کی ضرورت ہوتی ہے اور کب قربت کی؟"
   },
   {
     "id": 56,
     "cat": 2,
     "en": "What is a difficult truth that taught you something important about love?",
-    "de": "Welche schwierige Wahrheit hat dir etwas Wichtiges über die Liebe beigebracht?"
+    "de": "Welche schwierige Wahrheit hat dir etwas Wichtiges über die Liebe beigebracht?",
+    "es": "¿Qué verdad difícil te enseñó algo importante sobre el amor?",
+    "fr": "Quelle vérité difficile t'a appris quelque chose d'important sur l'amour ?",
+    "zh": "哪一个难以接受的真相教会了你关于爱的道理？",
+    "ar": "ما الحقيقة المؤلمة التي علمتك درسًا مهمًا عن الحب؟",
+    "hi": "किस कठिन सच ने तुम्हें प्यार के बारे में अहम सीख दी?",
+    "ur": "کس مشکل سچ نے آپ کو محبت کے بارے میں اہم سبق سکھایا؟"
   },
   {
     "id": 57,
     "cat": 2,
     "en": "How do you recognize when someone genuinely cares about you?",
-    "de": "Woran erkennst du, dass sich jemand aufrichtig um dich sorgt?"
+    "de": "Woran erkennst du, dass sich jemand aufrichtig um dich sorgt?",
+    "es": "¿Cómo reconoces que alguien se preocupa de verdad por ti?",
+    "fr": "Comment reconnais-tu que quelqu'un tient sincèrement à toi ?",
+    "zh": "你如何判断一个人是真正在乎你？",
+    "ar": "كيف تعرف أن شخصًا يهتم بك بصدق؟",
+    "hi": "तुम कैसे पहचानते हो कि कोई सच में तुम्हारी परवाह करता है?",
+    "ur": "آپ کیسے پہچانتے ہیں کہ کوئی واقعی آپ کی پروا کرتا ہے؟"
   },
   {
     "id": 58,
     "cat": 2,
     "en": "What could I do to make you feel safer sharing your feelings?",
-    "de": "Was könnte ich tun, damit du dich sicherer fühlst, deine Gefühle mit mir zu teilen?"
+    "de": "Was könnte ich tun, damit du dich sicherer fühlst, deine Gefühle mit mir zu teilen?",
+    "es": "¿Qué podría hacer yo para que te sintieras más seguro al compartir tus sentimientos?",
+    "fr": "Que pourrais-je faire pour que tu te sentes plus en sécurité en partageant tes sentiments ?",
+    "zh": "我怎样做才能让你更安心地分享感受？",
+    "ar": "ماذا يمكنني أن أفعل لتشعر بأمان أكبر عند مشاركة مشاعرك؟",
+    "hi": "मैं ऐसा क्या करूँ कि तुम अपनी भावनाएँ साझा करते समय ज़्यादा सुरक्षित महसूस करो?",
+    "ur": "میں کیا کروں کہ آپ اپنے جذبات بانٹتے ہوئے زیادہ محفوظ محسوس کریں؟"
   },
   {
     "id": 59,
     "cat": 2,
     "en": "What does a sincere apology mean to you?",
-    "de": "Was macht eine Entschuldigung für dich aufrichtig?"
+    "de": "Was macht eine Entschuldigung für dich aufrichtig?",
+    "es": "¿Qué significa para ti una disculpa sincera?",
+    "fr": "Que signifie pour toi une excuse sincère ?",
+    "zh": "真诚的道歉对你意味着什么？",
+    "ar": "ماذا يعني لك الاعتذار الصادق؟",
+    "hi": "तुम्हारे लिए दिल से माफ़ी माँगने का क्या मतलब है?",
+    "ur": "آپ کے لیے دل سے معافی مانگنے کا کیا مطلب ہے؟"
   },
   {
     "id": 60,
     "cat": 2,
     "en": "What is one thing you hope we can always talk about honestly?",
-    "de": "Über welches Thema sollten wir deiner Meinung nach immer ehrlich sprechen können?"
+    "de": "Über welches Thema sollten wir deiner Meinung nach immer ehrlich sprechen können?",
+    "es": "¿De qué te gustaría que siempre pudiéramos hablar con sinceridad?",
+    "fr": "De quoi espères-tu que nous pourrons toujours parler honnêtement ?",
+    "zh": "你希望我们永远能坦诚谈论什么？",
+    "ar": "ما الشيء الذي تتمنى أن نستطيع دائمًا الحديث عنه بصراحة؟",
+    "hi": "तुम किस बात पर चाहते हो कि हम हमेशा ईमानदारी से बात कर सकें?",
+    "ur": "آپ کس بات پر چاہتے ہیں کہ ہم ہمیشہ کھل کر اور سچائی سے گفتگو کر سکیں؟"
   },
   {
     "id": 61,
     "cat": 3,
     "en": "If money and fear were no obstacles, what life would you create?",
-    "de": "Wenn Geld und Angst keine Hindernisse wären, welches Leben würdest du dir erschaffen?"
+    "de": "Wenn Geld und Angst keine Hindernisse wären, welches Leben würdest du dir erschaffen?",
+    "es": "Si el dinero y el miedo no fueran obstáculos, ¿qué vida crearías?",
+    "fr": "Si l'argent et la peur n'étaient pas des obstacles, quelle vie construirais-tu ?",
+    "zh": "如果金钱和恐惧都不是障碍，你会创造怎样的生活？",
+    "ar": "لو لم يكن المال والخوف عائقين، فأي حياة ستبني؟",
+    "hi": "अगर पैसे और डर की कोई बाधा न हो, तो तुम कैसी ज़िंदगी बनाओगे?",
+    "ur": "اگر پیسہ اور خوف رکاوٹ نہ ہوں تو آپ کیسی زندگی بنائیں گے؟"
   },
   {
     "id": 62,
     "cat": 3,
     "en": "Where do you imagine yourself five years from now?",
-    "de": "Wo siehst du dich in fünf Jahren?"
+    "de": "Wo siehst du dich in fünf Jahren?",
+    "es": "¿Dónde te imaginas dentro de cinco años?",
+    "fr": "Où t'imagines-tu dans cinq ans ?",
+    "zh": "你想象五年后的自己在哪里？",
+    "ar": "أين تتخيل نفسك بعد خمس سنوات؟",
+    "hi": "तुम खुद को पाँच साल बाद कहाँ देखते हो?",
+    "ur": "آپ پانچ سال بعد خود کو کہاں دیکھتے ہیں؟"
   },
   {
     "id": 63,
     "cat": 3,
     "en": "What is one dream you’ve never told anyone about?",
-    "de": "Welchen Traum hast du bisher noch niemandem erzählt?"
+    "de": "Welchen Traum hast du bisher noch niemandem erzählt?",
+    "es": "¿Qué sueño nunca le has contado a nadie?",
+    "fr": "Quel rêve n'as-tu jamais confié à personne ?",
+    "zh": "你有什么从未告诉过任何人的梦想？",
+    "ar": "ما الحلم الذي لم تخبر به أحدًا من قبل؟",
+    "hi": "तुम्हारा कौन-सा सपना है जो तुमने किसी को नहीं बताया?",
+    "ur": "آپ کا کون سا خواب ہے جو آپ نے کبھی کسی کو نہیں بتایا؟"
   },
   {
     "id": 64,
     "cat": 3,
     "en": "What kind of home would make you feel truly happy?",
-    "de": "In welchem Zuhause würdest du dich wirklich glücklich fühlen?"
+    "de": "In welchem Zuhause würdest du dich wirklich glücklich fühlen?",
+    "es": "¿Qué tipo de hogar te haría verdaderamente feliz?",
+    "fr": "Quel genre de foyer te rendrait vraiment heureux ?",
+    "zh": "什么样的家会让你真正幸福？",
+    "ar": "ما نوع البيت الذي سيجعلك سعيدًا حقًا؟",
+    "hi": "कैसा घर तुम्हें सचमुच खुश करेगा?",
+    "ur": "کس طرح کا گھر آپ کو حقیقی خوشی دے گا؟"
   },
   {
     "id": 65,
     "cat": 3,
     "en": "If we could wake up anywhere in the world tomorrow, where would you choose?",
-    "de": "Wenn wir morgen irgendwo auf der Welt aufwachen könnten, welchen Ort würdest du wählen?"
+    "de": "Wenn wir morgen irgendwo auf der Welt aufwachen könnten, welchen Ort würdest du wählen?",
+    "es": "Si mañana pudiéramos despertar en cualquier lugar del mundo, ¿cuál elegirías?",
+    "fr": "Si nous pouvions nous réveiller n'importe où dans le monde demain, où choisirais-tu d'être ?",
+    "zh": "如果明天能在世界任何地方醒来，你会选哪里？",
+    "ar": "لو استطعنا الاستيقاظ غدًا في أي مكان في العالم، فأين تختار؟",
+    "hi": "अगर कल हम दुनिया में कहीं भी जाग सकें, तो तुम कौन-सी जगह चुनोगे?",
+    "ur": "اگر ہم کل دنیا میں کہیں بھی جاگ سکیں تو آپ کون سی جگہ چنیں گے؟"
   },
   {
     "id": 66,
     "cat": 3,
     "en": "What adventure would you love to experience together?",
-    "de": "Welches Abenteuer würdest du gerne gemeinsam mit mir erleben?"
+    "de": "Welches Abenteuer würdest du gerne gemeinsam mit mir erleben?",
+    "es": "¿Qué aventura te encantaría vivir juntos?",
+    "fr": "Quelle aventure aimerais-tu vivre ensemble ?",
+    "zh": "你想和我一起经历什么冒险？",
+    "ar": "ما المغامرة التي تتمنى أن نخوضها معًا؟",
+    "hi": "तुम मेरे साथ कौन-सा रोमांचक अनुभव करना चाहोगे?",
+    "ur": "آپ میرے ساتھ کون سا مہم جوئی بھرا تجربہ کرنا چاہیں گے؟"
   },
   {
     "id": 67,
     "cat": 3,
     "en": "What would an ordinary but perfect Sunday look like to you?",
-    "de": "Wie würde für dich ein ganz gewöhnlicher, aber perfekter Sonntag aussehen?"
+    "de": "Wie würde für dich ein ganz gewöhnlicher, aber perfekter Sonntag aussehen?",
+    "es": "¿Cómo sería para ti un domingo corriente pero perfecto?",
+    "fr": "À quoi ressemblerait pour toi un dimanche ordinaire mais parfait ?",
+    "zh": "对你来说，平凡却完美的星期天是什么样的？",
+    "ar": "كيف يبدو يوم أحد عادي لكنه مثالي بالنسبة إليك؟",
+    "hi": "तुम्हारे लिए एक साधारण लेकिन बेहतरीन रविवार कैसा होगा?",
+    "ur": "آپ کے لیے ایک عام مگر بہترین اتوار کیسا ہوگا؟"
   },
   {
     "id": 68,
     "cat": 3,
     "en": "What is something new you’d love to learn with me?",
-    "de": "Was würdest du gerne gemeinsam mit mir lernen?"
+    "de": "Was würdest du gerne gemeinsam mit mir lernen?",
+    "es": "¿Qué cosa nueva te gustaría aprender conmigo?",
+    "fr": "Quelle nouvelle chose aimerais-tu apprendre avec moi ?",
+    "zh": "你想和我一起学习什么新东西？",
+    "ar": "ما الشيء الجديد الذي تود تعلمه معي؟",
+    "hi": "तुम मेरे साथ कौन-सी नई चीज़ सीखना चाहोगे?",
+    "ur": "آپ میرے ساتھ کون سی نئی چیز سیکھنا چاہیں گے؟"
   },
   {
     "id": 69,
     "cat": 3,
     "en": "How important is independence to you in a shared future?",
-    "de": "Wie wichtig ist dir Selbstständigkeit in einer gemeinsamen Zukunft?"
+    "de": "Wie wichtig ist dir Selbstständigkeit in einer gemeinsamen Zukunft?",
+    "es": "¿Qué importancia tiene para ti la independencia en un futuro compartido?",
+    "fr": "Quelle importance accordes-tu à l'indépendance dans un avenir commun ?",
+    "zh": "在共同的未来里，独立对你有多重要？",
+    "ar": "ما مدى أهمية الاستقلالية لك في مستقبل مشترك؟",
+    "hi": "साझा भविष्य में अपनी स्वतंत्रता तुम्हारे लिए कितनी ज़रूरी है?",
+    "ur": "مشترکہ مستقبل میں آپ کے لیے خودمختاری کتنی اہم ہے؟"
   },
   {
     "id": 70,
     "cat": 3,
     "en": "What traditions would you love to create as a couple?",
-    "de": "Welche gemeinsamen Rituale würdest du gerne als Paar entwickeln?"
+    "de": "Welche gemeinsamen Rituale würdest du gerne als Paar entwickeln?",
+    "es": "¿Qué tradiciones te gustaría crear como pareja?",
+    "fr": "Quelles traditions aimerais-tu créer en couple ?",
+    "zh": "你希望我们作为情侣创造什么传统？",
+    "ar": "ما التقاليد التي تود أن نبتكرها كثنائي؟",
+    "hi": "एक जोड़े के रूप में तुम कौन-सी नई परंपराएँ बनाना चाहोगे?",
+    "ur": "آپ ایک جوڑے کے طور پر کون سی نئی روایات بنانا چاہیں گے؟"
   },
   {
     "id": 71,
     "cat": 3,
     "en": "What does growing old together mean to you?",
-    "de": "Was bedeutet es für dich, gemeinsam alt zu werden?"
+    "de": "Was bedeutet es für dich, gemeinsam alt zu werden?",
+    "es": "¿Qué significa para ti envejecer juntos?",
+    "fr": "Que signifie pour toi vieillir ensemble ?",
+    "zh": "一起慢慢变老对你意味着什么？",
+    "ar": "ماذا يعني لك أن نكبر في العمر معًا؟",
+    "hi": "तुम्हारे लिए साथ बूढ़े होने का क्या मतलब है?",
+    "ur": "آپ کے لیے ایک ساتھ بوڑھے ہونے کا کیا مطلب ہے؟"
   },
   {
     "id": 72,
     "cat": 3,
     "en": "What kind of memories do you hope we’ll create?",
-    "de": "Welche Erinnerungen möchtest du gerne mit mir schaffen?"
+    "de": "Welche Erinnerungen möchtest du gerne mit mir schaffen?",
+    "es": "¿Qué recuerdos esperas que construyamos?",
+    "fr": "Quels souvenirs espères-tu que nous créerons ?",
+    "zh": "你希望我们共同创造怎样的回忆？",
+    "ar": "ما الذكريات التي تأمل أن نصنعها معًا؟",
+    "hi": "तुम उम्मीद करते हो कि हम कैसी यादें बनाएँगे?",
+    "ur": "آپ کو امید ہے کہ ہم کیسی یادیں بنائیں گے؟"
   },
   {
     "id": 73,
     "cat": 3,
     "en": "What is one thing you want to accomplish before your next big birthday?",
-    "de": "Was möchtest du vor deinem nächsten runden Geburtstag unbedingt erreichen?"
+    "de": "Was möchtest du vor deinem nächsten runden Geburtstag unbedingt erreichen?",
+    "es": "¿Qué te gustaría lograr antes de tu próximo cumpleaños importante?",
+    "fr": "Qu'aimerais-tu accomplir avant ton prochain anniversaire marquant ?",
+    "zh": "下一个重要生日之前，你想完成什么？",
+    "ar": "ما الشيء الذي تريد تحقيقه قبل عيد ميلادك الكبير القادم؟",
+    "hi": "अपने अगले बड़े जन्मदिन से पहले तुम क्या हासिल करना चाहते हो?",
+    "ur": "اپنی اگلی اہم سالگرہ سے پہلے آپ کیا حاصل کرنا چاہتے ہیں؟"
   },
   {
     "id": 74,
     "cat": 3,
     "en": "If we could plan a surprise weekend for each other, what would yours include?",
-    "de": "Wenn wir uns gegenseitig ein Überraschungswochenende planen würden, was würde deines beinhalten?"
+    "de": "Wenn wir uns gegenseitig ein Überraschungswochenende planen würden, was würde deines beinhalten?",
+    "es": "Si pudiéramos organizarnos un fin de semana sorpresa, ¿qué incluiría el tuyo?",
+    "fr": "Si nous pouvions nous organiser un week-end surprise, que prévoirais-tu ?",
+    "zh": "如果我们为彼此安排一个惊喜周末，你会安排什么？",
+    "ar": "لو خطط كل منا لعطلة نهاية أسبوع مفاجئة للآخر، فماذا ستتضمن خطتك؟",
+    "hi": "अगर हम एक-दूसरे के लिए सरप्राइज़ वीकेंड बनाएँ, तो तुम्हारी योजना में क्या होगा?",
+    "ur": "اگر ہم ایک دوسرے کے لیے حیرت انگیز ویک اینڈ کا منصوبہ بنائیں تو آپ کے منصوبے میں کیا ہوگا؟"
   },
   {
     "id": 75,
     "cat": 3,
     "en": "What does financial security mean to you in a relationship?",
-    "de": "Was bedeutet finanzielle Sicherheit für dich in einer Beziehung?"
+    "de": "Was bedeutet finanzielle Sicherheit für dich in einer Beziehung?",
+    "es": "¿Qué significa para ti la seguridad económica en una relación?",
+    "fr": "Que signifie pour toi la sécurité financière dans une relation ?",
+    "zh": "感情中的经济安全感对你意味着什么？",
+    "ar": "ماذا يعني لك الأمان المالي في العلاقة؟",
+    "hi": "रिश्ते में आर्थिक सुरक्षा का तुम्हारे लिए क्या मतलब है?",
+    "ur": "رشتے میں مالی تحفظ آپ کے لیے کیا معنی رکھتا ہے؟"
   },
   {
     "id": 76,
     "cat": 3,
     "en": "What kind of person do you hope to become over the next ten years?",
-    "de": "Zu welchem Menschen möchtest du dich in den nächsten zehn Jahren entwickeln?"
+    "de": "Zu welchem Menschen möchtest du dich in den nächsten zehn Jahren entwickeln?",
+    "es": "¿En qué tipo de persona esperas convertirte en los próximos diez años?",
+    "fr": "Quelle personne espères-tu devenir au cours des dix prochaines années ?",
+    "zh": "未来十年，你希望成为怎样的人？",
+    "ar": "أي نوع من الأشخاص تأمل أن تصبح خلال السنوات العشر القادمة؟",
+    "hi": "अगले दस सालों में तुम किस तरह का इंसान बनना चाहते हो?",
+    "ur": "اگلے دس برسوں میں آپ کس طرح کے انسان بننا چاہتے ہیں؟"
   },
   {
     "id": 77,
     "cat": 3,
     "en": "What dream would you love your partner to encourage you to pursue?",
-    "de": "Bei welchem Traum würdest du dir besonders die Unterstützung deines Partners wünschen?"
+    "de": "Bei welchem Traum würdest du dir besonders die Unterstützung deines Partners wünschen?",
+    "es": "¿Qué sueño te gustaría que tu pareja te animara a perseguir?",
+    "fr": "Quel rêve aimerais-tu que ton partenaire t'encourage à poursuivre ?",
+    "zh": "你希望伴侣支持你追求哪个梦想？",
+    "ar": "ما الحلم الذي تتمنى أن يشجعك شريكك على تحقيقه؟",
+    "hi": "तुम किस सपने को पूरा करने के लिए अपने साथी का हौसला चाहोगे?",
+    "ur": "آپ کس خواب کو پورا کرنے کے لیے اپنے ساتھی کی حوصلہ افزائی چاہیں گے؟"
   },
   {
     "id": 78,
     "cat": 3,
     "en": "How would you like us to keep romance alive as life changes?",
-    "de": "Wie könnten wir die Romantik bewahren, auch wenn sich unser Leben verändert?"
+    "de": "Wie könnten wir die Romantik bewahren, auch wenn sich unser Leben verändert?",
+    "es": "¿Cómo te gustaría que mantuviéramos vivo el romanticismo mientras cambia la vida?",
+    "fr": "Comment aimerais-tu que nous entretenions la romance au fil des changements de la vie ?",
+    "zh": "随着生活改变，你希望我们怎样保持浪漫？",
+    "ar": "كيف تحب أن نحافظ على الرومانسية مع تغير الحياة؟",
+    "hi": "ज़िंदगी बदलने के साथ हम अपने रिश्ते में रोमांस कैसे बनाए रखें?",
+    "ur": "زندگی بدلنے کے ساتھ ہم اپنے رشتے میں رومانس کیسے زندہ رکھیں؟"
   },
   {
     "id": 79,
     "cat": 3,
     "en": "What would make you look back on our life together with a smile?",
-    "de": "Was würde dich später mit einem Lächeln auf unser gemeinsames Leben zurückblicken lassen?"
+    "de": "Was würde dich später mit einem Lächeln auf unser gemeinsames Leben zurückblicken lassen?",
+    "es": "¿Qué te haría recordar nuestra vida juntos con una sonrisa?",
+    "fr": "Qu'est-ce qui te ferait repenser à notre vie commune avec le sourire ?",
+    "zh": "什么会让你回望我们共同的生活时露出微笑？",
+    "ar": "ما الذي سيجعلك تتذكر حياتنا معًا بابتسامة؟",
+    "hi": "किस बात से तुम हमारी साथ बिताई ज़िंदगी को याद करके मुस्कुराओगे?",
+    "ur": "کس بات کو یاد کر کے آپ ہماری مشترکہ زندگی پر مسکرائیں گے؟"
   },
   {
     "id": 80,
     "cat": 3,
     "en": "If we could write one sentence about our future together, what would it say?",
-    "de": "Wenn wir einen Satz über unsere gemeinsame Zukunft schreiben könnten, wie würde er lauten?"
+    "de": "Wenn wir einen Satz über unsere gemeinsame Zukunft schreiben könnten, wie würde er lauten?",
+    "es": "Si escribiéramos una frase sobre nuestro futuro juntos, ¿qué diría?",
+    "fr": "Si nous écrivions une phrase sur notre avenir ensemble, que dirait-elle ?",
+    "zh": "如果用一句话描述我们的未来，你会写什么？",
+    "ar": "لو كتبنا جملة واحدة عن مستقبلنا معًا، فماذا ستقول؟",
+    "hi": "अगर हम अपने साझा भविष्य के बारे में एक वाक्य लिखें, तो वह क्या होगा?",
+    "ur": "اگر ہم اپنے مشترکہ مستقبل کے بارے میں ایک جملہ لکھیں تو وہ کیا ہوگا؟"
   },
   {
     "id": 81,
     "cat": 4,
     "en": "What do you miss most about me when we're apart?",
-    "de": "Was vermisst du am meisten an mir, wenn wir getrennt sind?"
+    "de": "Was vermisst du am meisten an mir, wenn wir getrennt sind?",
+    "es": "¿Qué es lo que más echas de menos de mí cuando estamos separados?",
+    "fr": "Qu'est-ce qui te manque le plus chez moi quand nous sommes séparés ?",
+    "zh": "分开时，你最想念我的什么？",
+    "ar": "ما أكثر شيء تفتقده فيّ عندما نكون بعيدين؟",
+    "hi": "जब हम दूर होते हैं, तो तुम्हें मेरी कौन-सी बात सबसे ज़्यादा याद आती है?",
+    "ur": "جب ہم دور ہوتے ہیں تو آپ کو میری سب سے زیادہ کون سی بات یاد آتی ہے؟"
   },
   {
     "id": 82,
     "cat": 4,
     "en": "What is the first thing you'd want to do when we finally meet?",
-    "de": "Was würdest du als Erstes tun wollen, wenn wir uns endlich sehen?"
+    "de": "Was würdest du als Erstes tun wollen, wenn wir uns endlich sehen?",
+    "es": "¿Qué sería lo primero que querrías hacer cuando por fin nos encontremos?",
+    "fr": "Quelle serait la première chose que tu voudrais faire quand nous nous retrouverons enfin ?",
+    "zh": "终于见面时，你最想先做什么？",
+    "ar": "ما أول شيء تود فعله عندما نلتقي أخيرًا؟",
+    "hi": "आखिरकार मिलने पर तुम सबसे पहले क्या करना चाहोगे?",
+    "ur": "آخرکار ملنے پر آپ سب سے پہلے کیا کرنا چاہیں گے؟"
   },
   {
     "id": 83,
     "cat": 4,
     "en": "If I could appear beside you for just one hour, how would we spend it?",
-    "de": "Wenn ich für nur eine Stunde an deiner Seite sein könnte, wie würden wir sie verbringen?"
+    "de": "Wenn ich für nur eine Stunde an deiner Seite sein könnte, wie würden wir sie verbringen?",
+    "es": "Si pudiera aparecer a tu lado durante una hora, ¿cómo la pasaríamos?",
+    "fr": "Si je pouvais apparaître à tes côtés pendant une heure, comment la passerions-nous ?",
+    "zh": "如果我能突然出现在你身边一个小时，我们会怎么度过？",
+    "ar": "لو استطعت الظهور بجانبك لساعة واحدة فقط، فكيف سنقضيها؟",
+    "hi": "अगर मैं सिर्फ़ एक घंटे के लिए तुम्हारे पास आ सकूँ, तो हम उसे कैसे बिताएँगे?",
+    "ur": "اگر میں صرف ایک گھنٹے کے لیے آپ کے پاس آ سکوں تو ہم اسے کیسے گزاریں گے؟"
   },
   {
     "id": 84,
     "cat": 4,
     "en": "What makes you feel close to me despite the distance?",
-    "de": "Was gibt dir trotz der Entfernung das Gefühl, mir nahe zu sein?"
+    "de": "Was gibt dir trotz der Entfernung das Gefühl, mir nahe zu sein?",
+    "es": "¿Qué te hace sentir cerca de mí a pesar de la distancia?",
+    "fr": "Qu'est-ce qui te fait te sentir proche de moi malgré la distance ?",
+    "zh": "尽管相隔遥远，是什么让你觉得与我亲近？",
+    "ar": "ما الذي يجعلك تشعر بقربي رغم المسافة؟",
+    "hi": "दूरी के बावजूद तुम्हें मेरे करीब होने का एहसास किससे होता है?",
+    "ur": "فاصلے کے باوجود آپ کو میرے قریب ہونے کا احساس کس چیز سے ہوتا ہے؟"
   },
   {
     "id": 85,
     "cat": 4,
     "en": "Which message from me would instantly brighten your day?",
-    "de": "Welche Nachricht von mir würde deinen Tag sofort schöner machen?"
+    "de": "Welche Nachricht von mir würde deinen Tag sofort schöner machen?",
+    "es": "¿Qué mensaje mío te alegraría el día al instante?",
+    "fr": "Quel message de ma part illuminerait instantanément ta journée ?",
+    "zh": "我发来的哪条消息能立刻点亮你的一天？",
+    "ar": "أي رسالة مني يمكنها أن تضيء يومك فورًا؟",
+    "hi": "मेरा कौन-सा संदेश तुम्हारा दिन तुरंत खुशनुमा बना देगा?",
+    "ur": "میرا کون سا پیغام آپ کا دن فوراً خوشگوار بنا دے گا؟"
   },
   {
     "id": 86,
     "cat": 4,
     "en": "What is the hardest part of missing someone you care about?",
-    "de": "Was ist das Schwierigste daran, einen geliebten Menschen zu vermissen?"
+    "de": "Was ist das Schwierigste daran, einen geliebten Menschen zu vermissen?",
+    "es": "¿Qué es lo más difícil de extrañar a alguien que te importa?",
+    "fr": "Qu'est-ce qui est le plus difficile quand une personne chère te manque ?",
+    "zh": "想念一个在乎的人，最难的是什么？",
+    "ar": "ما أصعب شيء في الاشتياق إلى شخص تهتم لأمره؟",
+    "hi": "किसी अपने की याद आने में सबसे मुश्किल बात क्या होती है?",
+    "ur": "کسی عزیز کی یاد آنے میں سب سے مشکل بات کیا ہوتی ہے؟"
   },
   {
     "id": 87,
     "cat": 4,
     "en": "If we were looking at the same moon tonight, what would you wish for?",
-    "de": "Wenn wir heute Nacht denselben Mond betrachten würden, was würdest du dir wünschen?"
+    "de": "Wenn wir heute Nacht denselben Mond betrachten würden, was würdest du dir wünschen?",
+    "es": "Si esta noche miráramos la misma luna, ¿qué deseo pedirías?",
+    "fr": "Si nous regardions la même lune ce soir, quel vœu ferais-tu ?",
+    "zh": "如果今晚我们望着同一轮月亮，你会许什么愿？",
+    "ar": "لو نظرنا إلى القمر نفسه الليلة، فبماذا ستتمنى؟",
+    "hi": "अगर आज रात हम एक ही चाँद देख रहे हों, तो तुम क्या दुआ माँगोगे?",
+    "ur": "اگر آج رات ہم ایک ہی چاند دیکھ رہے ہوں تو آپ کیا دعا مانگیں گے؟"
   },
   {
     "id": 88,
     "cat": 4,
     "en": "What is one thing you'd love to show me about your everyday life?",
-    "de": "Was aus deinem Alltag würdest du mir besonders gerne zeigen?"
+    "de": "Was aus deinem Alltag würdest du mir besonders gerne zeigen?",
+    "es": "¿Qué aspecto de tu vida cotidiana te encantaría mostrarme?",
+    "fr": "Quelle chose de ton quotidien aimerais-tu me montrer ?",
+    "zh": "你最想让我了解你日常生活中的什么？",
+    "ar": "ما الشيء الذي تود أن تريني إياه من حياتك اليومية؟",
+    "hi": "तुम अपनी रोज़मर्रा की ज़िंदगी की कौन-सी बात मुझे दिखाना चाहोगे?",
+    "ur": "آپ اپنی روزمرہ زندگی کی کون سی بات مجھے دکھانا چاہیں گے؟"
   },
   {
     "id": 89,
     "cat": 4,
     "en": "If we could fall asleep next to each other tonight, what would you say before closing your eyes?",
-    "de": "Wenn wir heute Nacht nebeneinander einschlafen könnten, was würdest du mir vor dem Einschlafen sagen?"
+    "de": "Wenn wir heute Nacht nebeneinander einschlafen könnten, was würdest du mir vor dem Einschlafen sagen?",
+    "es": "Si esta noche pudiéramos dormir uno al lado del otro, ¿qué me dirías antes de cerrar los ojos?",
+    "fr": "Si nous pouvions nous endormir côte à côte ce soir, que me dirais-tu avant de fermer les yeux ?",
+    "zh": "如果今晚我们能相拥入睡，闭眼前你会对我说什么？",
+    "ar": "لو استطعنا النوم بجانب بعضنا الليلة، فماذا ستقول لي قبل أن تغمض عينيك؟",
+    "hi": "अगर आज रात हम साथ सो सकें, तो आँखें बंद करने से पहले तुम मुझसे क्या कहोगे?",
+    "ur": "اگر آج رات ہم ایک دوسرے کے پاس سو سکیں تو آنکھیں بند کرنے سے پہلے آپ مجھ سے کیا کہیں گے؟"
   },
   {
     "id": 90,
     "cat": 4,
     "en": "What kind of virtual date would make you smile the most?",
-    "de": "Welche Art von virtuellem Date würde dich am meisten zum Lächeln bringen?"
+    "de": "Welche Art von virtuellem Date würde dich am meisten zum Lächeln bringen?",
+    "es": "¿Qué tipo de cita virtual te haría sonreír más?",
+    "fr": "Quel genre de rendez-vous virtuel te ferait le plus sourire ?",
+    "zh": "什么样的线上约会最能让你开心？",
+    "ar": "أي نوع من المواعيد الافتراضية سيجعلك تبتسم أكثر؟",
+    "hi": "किस तरह की ऑनलाइन डेट तुम्हें सबसे ज़्यादा मुस्कुराने पर मजबूर करेगी?",
+    "ur": "کس طرح کی آن لائن ملاقات آپ کو سب سے زیادہ مسکرانے پر مجبور کرے گی؟"
   },
   {
     "id": 91,
     "cat": 4,
     "en": "What do you imagine our first long hug would feel like?",
-    "de": "Wie stellst du dir unsere erste lange Umarmung vor?"
+    "de": "Wie stellst du dir unsere erste lange Umarmung vor?",
+    "es": "¿Cómo imaginas que se sentiría nuestro primer abrazo largo?",
+    "fr": "Comment imagines-tu notre première longue étreinte ?",
+    "zh": "你想象中我们第一次长久拥抱会是什么感觉？",
+    "ar": "كيف تتخيل شعور عناقنا الطويل الأول؟",
+    "hi": "तुम्हें क्या लगता है, हमारा पहला लंबा आलिंगन कैसा महसूस होगा?",
+    "ur": "آپ کے خیال میں ہماری پہلی طویل گلے ملنے کی کیفیت کیسی ہوگی؟"
   },
   {
     "id": 92,
     "cat": 4,
     "en": "If I surprised you at your door, what would your reaction be?",
-    "de": "Wenn ich dich überraschend vor deiner Haustür besuchen würde, wie würdest du reagieren?"
+    "de": "Wenn ich dich überraschend vor deiner Haustür besuchen würde, wie würdest du reagieren?",
+    "es": "Si te sorprendiera en tu puerta, ¿cómo reaccionarías?",
+    "fr": "Si je te faisais la surprise d'être devant ta porte, comment réagirais-tu ?",
+    "zh": "如果我突然出现在你家门口，你会有什么反应？",
+    "ar": "لو فاجأتك بوقوفي أمام بابك، فكيف ستكون ردة فعلك؟",
+    "hi": "अगर मैं अचानक तुम्हारे दरवाज़े पर आ जाऊँ, तो तुम कैसी प्रतिक्रिया दोगे?",
+    "ur": "اگر میں اچانک آپ کے دروازے پر آ جاؤں تو آپ کا ردعمل کیا ہوگا؟"
   },
   {
     "id": 93,
     "cat": 4,
     "en": "What is one small thing we could do to feel closer every day?",
-    "de": "Welche Kleinigkeit könnten wir jeden Tag tun, um uns näherzufühlen?"
+    "de": "Welche Kleinigkeit könnten wir jeden Tag tun, um uns näherzufühlen?",
+    "es": "¿Qué pequeña cosa podríamos hacer cada día para sentirnos más cerca?",
+    "fr": "Quelle petite chose pourrions-nous faire chaque jour pour nous sentir plus proches ?",
+    "zh": "我们每天可以做哪件小事，让彼此感觉更亲近？",
+    "ar": "ما الشيء الصغير الذي يمكننا فعله يوميًا لنشعر بقرب أكبر؟",
+    "hi": "हम हर दिन कौन-सी छोटी बात करें जिससे हम ज़्यादा करीब महसूस करें?",
+    "ur": "ہم روزانہ کون سا چھوٹا سا کام کریں جس سے زیادہ قربت محسوس ہو؟"
   },
   {
     "id": 94,
     "cat": 4,
     "en": "What have you learned about patience through loving someone from afar?",
-    "de": "Was hast du durch die Liebe auf Distanz über Geduld gelernt?"
+    "de": "Was hast du durch die Liebe auf Distanz über Geduld gelernt?",
+    "es": "¿Qué has aprendido sobre la paciencia al amar a alguien desde lejos?",
+    "fr": "Qu'as-tu appris sur la patience en aimant quelqu'un à distance ?",
+    "zh": "远距离爱一个人，让你学会了哪些耐心？",
+    "ar": "ماذا تعلمت عن الصبر من حب شخص بعيد عنك؟",
+    "hi": "दूर रहकर किसी से प्यार करने ने तुम्हें सब्र के बारे में क्या सिखाया?",
+    "ur": "دور رہ کر کسی سے محبت کرنے نے آپ کو صبر کے بارے میں کیا سکھایا؟"
   },
   {
     "id": 95,
     "cat": 4,
     "en": "What would you cook for me on our first evening together?",
-    "de": "Was würdest du an unserem ersten gemeinsamen Abend für mich kochen?"
+    "de": "Was würdest du an unserem ersten gemeinsamen Abend für mich kochen?",
+    "es": "¿Qué me cocinarías nuestra primera noche juntos?",
+    "fr": "Que me cuisinerais-tu pour notre première soirée ensemble ?",
+    "zh": "我们第一次共度夜晚时，你会为我做什么菜？",
+    "ar": "ماذا ستطبخ لي في أول أمسية نقضيها معًا؟",
+    "hi": "हमारी पहली शाम साथ होने पर तुम मेरे लिए क्या पकाओगे?",
+    "ur": "ہماری پہلی شام ساتھ ہونے پر آپ میرے لیے کیا پکائیں گے؟"
   },
   {
     "id": 96,
     "cat": 4,
     "en": "Which part of our first kiss have you imagined the most?",
-    "de": "Welchen Moment unseres ersten Kusses hast du dir am häufigsten vorgestellt?"
+    "de": "Welchen Moment unseres ersten Kusses hast du dir am häufigsten vorgestellt?",
+    "es": "¿Qué parte de nuestro primer beso has imaginado más?",
+    "fr": "Quelle partie de notre premier baiser as-tu le plus imaginée ?",
+    "zh": "关于我们的初吻，你最常想象哪个瞬间？",
+    "ar": "أي لحظة من قبلتنا الأولى تخيلتها أكثر من غيرها؟",
+    "hi": "हमारे पहले चुंबन के किस पल की तुमने सबसे ज़्यादा कल्पना की है?",
+    "ur": "ہمارے پہلے بوسے کے کس لمحے کا آپ نے سب سے زیادہ تصور کیا ہے؟"
   },
   {
     "id": 97,
     "cat": 4,
     "en": "How can we make each other feel secure when we can't be physically present?",
-    "de": "Wie können wir einander Sicherheit geben, wenn wir nicht körperlich beieinander sein können?"
+    "de": "Wie können wir einander Sicherheit geben, wenn wir nicht körperlich beieinander sein können?",
+    "es": "¿Cómo podemos darnos seguridad cuando no podemos estar físicamente presentes?",
+    "fr": "Comment pouvons-nous nous rassurer quand nous ne pouvons pas être physiquement présents ?",
+    "zh": "无法陪在彼此身边时，我们怎样让对方安心？",
+    "ar": "كيف يمكننا طمأنة بعضنا عندما لا نستطيع التواجد جسديًا معًا؟",
+    "hi": "जब हम शारीरिक रूप से साथ नहीं हो सकते, तो एक-दूसरे को भरोसा कैसे दिलाएँ?",
+    "ur": "جب ہم جسمانی طور پر ساتھ نہ ہوں تو ایک دوسرے کو اطمینان کیسے دلائیں؟"
   },
   {
     "id": 98,
     "cat": 4,
     "en": "What is something playful or flirty you'd love us to do during a video call?",
-    "de": "Was würdest du bei einem Videoanruf gerne Verspieltes oder Flirtendes mit mir machen?"
+    "de": "Was würdest du bei einem Videoanruf gerne Verspieltes oder Flirtendes mit mir machen?",
+    "es": "¿Qué cosa divertida o coqueta te gustaría hacer durante una videollamada?",
+    "fr": "Quelle chose amusante ou séduisante aimerais-tu faire pendant un appel vidéo ?",
+    "zh": "视频通话时，你想和我做什么俏皮或暧昧的事？",
+    "ar": "ما الشيء المرح أو الغزلي الذي تود أن نفعله أثناء مكالمة فيديو؟",
+    "hi": "वीडियो कॉल पर तुम कौन-सी मज़ेदार या प्यार भरी शरारत करना चाहोगे?",
+    "ur": "ویڈیو کال پر آپ کون سی شرارتی یا محبت بھری بات کرنا چاہیں گے؟"
   },
   {
     "id": 99,
     "cat": 4,
     "en": "What everyday moment are you most excited to share when distance is no longer between us?",
-    "de": "Auf welchen ganz alltäglichen Moment freust du dich am meisten, wenn keine Entfernung mehr zwischen uns liegt?"
+    "de": "Auf welchen ganz alltäglichen Moment freust du dich am meisten, wenn keine Entfernung mehr zwischen uns liegt?",
+    "es": "¿Qué momento cotidiano tienes más ganas de compartir cuando ya no nos separe la distancia?",
+    "fr": "Quel moment du quotidien as-tu le plus hâte de partager quand la distance ne nous séparera plus ?",
+    "zh": "当距离不再阻隔我们时，你最期待分享哪个日常瞬间？",
+    "ar": "ما اللحظة اليومية التي تتطلع أكثر لمشاركتها حين لا تعود المسافة تفصلنا؟",
+    "hi": "जब हमारे बीच दूरी नहीं रहेगी, तो रोज़मर्रा का कौन-सा पल साझा करने का तुम्हें सबसे ज़्यादा इंतज़ार है?",
+    "ur": "جب ہمارے درمیان فاصلہ نہیں رہے گا تو روزمرہ کا کون سا لمحہ ساتھ گزارنے کا آپ کو سب سے زیادہ انتظار ہے؟"
   },
   {
     "id": 100,
     "cat": 4,
     "en": "When the distance finally ends, what do you hope we'll remember about this chapter of our story?",
-    "de": "Wenn die Entfernung endlich hinter uns liegt, woran sollten wir uns aus dieser Zeit besonders erinnern?"
+    "de": "Wenn die Entfernung endlich hinter uns liegt, woran sollten wir uns aus dieser Zeit besonders erinnern?",
+    "es": "Cuando por fin termine la distancia, ¿qué esperas que recordemos de esta etapa de nuestra historia?",
+    "fr": "Quand la distance aura enfin disparu, que souhaites-tu que nous retenions de ce chapitre de notre histoire ?",
+    "zh": "当距离终于消失，你希望我们记住这段故事中的什么？",
+    "ar": "عندما تنتهي المسافة أخيرًا، ما الذي تأمل أن نتذكره من هذا الفصل من قصتنا؟",
+    "hi": "जब यह दूरी आखिर खत्म होगी, तो तुम चाहोगे कि हम अपनी कहानी के इस दौर की क्या याद रखें?",
+    "ur": "جب یہ فاصلہ آخر ختم ہوگا تو آپ چاہیں گے کہ ہم اپنی کہانی کے اس دور کی کیا بات یاد رکھیں؟"
   },
   {
     "id": 101,
@@ -605,7 +1205,13 @@
     "en": "Look into each other's eyes for 30 seconds. What did you feel?",
     "de": "Schaut euch 30 Sekunden in die Augen. Was habt ihr dabei gefühlt?",
     "titleEn": "The Eye Contact Challenge",
-    "titleDe": "Der Blickkontakt"
+    "titleDe": "Der Blickkontakt",
+    "es": "Mírense a los ojos durante 30 segundos. ¿Qué sintieron?",
+    "fr": "Regardez-vous dans les yeux pendant 30 secondes. Qu'avez-vous ressenti ?",
+    "zh": "凝视彼此的眼睛30秒。你感受到了什么？",
+    "ar": "انظرا في عيني بعضكما لمدة 30 ثانية. ماذا شعرتما؟",
+    "hi": "30 सेकंड तक एक-दूसरे की आँखों में देखो। तुम्हें क्या महसूस हुआ?",
+    "ur": "30 سیکنڈ تک ایک دوسرے کی آنکھوں میں دیکھیں۔ آپ نے کیا محسوس کیا؟"
   },
   {
     "id": 102,
@@ -613,7 +1219,13 @@
     "en": "Tell each other three things you genuinely admire about one another.",
     "de": "Nennt euch gegenseitig drei Dinge, die ihr aufrichtig am anderen bewundert.",
     "titleEn": "The Compliment Challenge",
-    "titleDe": "Das Kompliment"
+    "titleDe": "Das Kompliment",
+    "es": "Díganse tres cosas que admiran sinceramente el uno del otro.",
+    "fr": "Dites-vous trois choses que vous admirez sincèrement l'un chez l'autre.",
+    "zh": "互相说出你真心欣赏对方的三件事。",
+    "ar": "أخبرا بعضكما بثلاثة أشياء تعجبكما بصدق في الآخر.",
+    "hi": "एक-दूसरे को तीन बातें बताओ जिनकी तुम दिल से प्रशंसा करते हो।",
+    "ur": "ایک دوسرے کو تین باتیں بتائیں جن کی آپ دل سے قدر کرتے ہیں۔"
   },
   {
     "id": 103,
@@ -621,7 +1233,13 @@
     "en": "Whisper something sweet or playfully daring into your partner's ear.",
     "de": "Flüstere deinem Partner etwas Süßes oder ein bisschen Freches ins Ohr.",
     "titleEn": "The Flirty Whisper",
-    "titleDe": "Das freche Flüstern"
+    "titleDe": "Das freche Flüstern",
+    "es": "Susurra algo dulce o atrevido en tono juguetón al oído de tu pareja.",
+    "fr": "Murmure quelque chose de doux ou d'audacieusement taquin à l'oreille de ton partenaire.",
+    "zh": "在伴侣耳边轻声说一句甜蜜或俏皮大胆的话。",
+    "ar": "اهمس بشيء لطيف أو جريء على سبيل المزاح في أذن شريكك.",
+    "hi": "अपने साथी के कान में कोई प्यारी या शरारत भरी साहसी बात फुसफुसाओ।",
+    "ur": "اپنے ساتھی کے کان میں کوئی میٹھی یا شوخ جرات مندانہ بات سرگوشی سے کہیں۔"
   },
   {
     "id": 104,
@@ -629,7 +1247,13 @@
     "en": "Describe a moment together that you wish you could relive.",
     "de": "Beschreibe einen gemeinsamen Moment, den du gerne noch einmal erleben würdest.",
     "titleEn": "The Memory Challenge",
-    "titleDe": "Der Erinnerungsmoment"
+    "titleDe": "Der Erinnerungsmoment",
+    "es": "Describe un momento juntos que te gustaría volver a vivir.",
+    "fr": "Décris un moment passé ensemble que tu aimerais revivre.",
+    "zh": "描述一个你希望能再次经历的共同瞬间。",
+    "ar": "صف لحظة عشتماها معًا وتتمنى أن تعيشها مجددًا.",
+    "hi": "साथ बिताए किसी ऐसे पल का वर्णन करो जिसे तुम दोबारा जीना चाहते हो।",
+    "ur": "ساتھ گزارے کسی ایسے لمحے کا ذکر کریں جسے آپ دوبارہ جینا چاہیں گے۔"
   },
   {
     "id": 105,
@@ -637,7 +1261,13 @@
     "en": "Plan your dream first date, or imagine having your first date all over again.",
     "de": "Plant euer Traumdate oder stellt euch vor, ihr hättet noch einmal euer allererstes Date.",
     "titleEn": "The First Date Challenge",
-    "titleDe": "Das erste Date"
+    "titleDe": "Das erste Date",
+    "es": "Planeen su primera cita soñada o imaginen repetir su primera cita.",
+    "fr": "Imaginez votre premier rendez-vous idéal, ou revivez en pensée votre tout premier rendez-vous.",
+    "zh": "策划梦想中的第一次约会，或想象重新经历你们的初次约会。",
+    "ar": "خططا لموعدكما الأول المثالي، أو تخيلا أنكما تعيشان موعدكما الأول من جديد.",
+    "hi": "अपनी सपनों की पहली डेट की योजना बनाओ या अपनी पहली डेट फिर से जीने की कल्पना करो।",
+    "ur": "اپنی خوابوں کی پہلی ملاقات کا منصوبہ بنائیں یا پہلی ملاقات دوبارہ ہونے کا تصور کریں۔"
   },
   {
     "id": 106,
@@ -645,7 +1275,13 @@
     "en": "Tell your partner something about them that secretly makes you smile.",
     "de": "Verrate deinem Partner etwas an ihm, das dich heimlich zum Lächeln bringt.",
     "titleEn": "The Secret Smile",
-    "titleDe": "Das geheime Lächeln"
+    "titleDe": "Das geheime Lächeln",
+    "es": "Dile a tu pareja algo suyo que en secreto te hace sonreír.",
+    "fr": "Dis à ton partenaire quelque chose chez lui ou elle qui te fait sourire en secret.",
+    "zh": "告诉伴侣，对方有什么地方会让你偷偷微笑。",
+    "ar": "أخبر شريكك بشيء فيه يجعلك تبتسم سرًا.",
+    "hi": "अपने साथी को उसकी कोई ऐसी बात बताओ जो तुम्हें चुपके से मुस्कुराने पर मजबूर करती है।",
+    "ur": "اپنے ساتھی کو اس کی کوئی ایسی بات بتائیں جو آپ کو چپکے سے مسکرا دیتی ہے۔"
   },
   {
     "id": 107,
@@ -653,7 +1289,13 @@
     "en": "Describe a place where you'd love to wake up together someday.",
     "de": "Beschreibe einen Ort, an dem ihr eines Tages gerne gemeinsam aufwachen würdet.",
     "titleEn": "The Dream Together",
-    "titleDe": "Unser gemeinsamer Traum"
+    "titleDe": "Unser gemeinsamer Traum",
+    "es": "Describe un lugar donde te encantaría despertar juntos algún día.",
+    "fr": "Décris un endroit où tu aimerais vous réveiller ensemble un jour.",
+    "zh": "描述一个你希望有一天能一起醒来的地方。",
+    "ar": "صف مكانًا تتمنى أن تستيقظا فيه معًا يومًا ما.",
+    "hi": "ऐसी जगह का वर्णन करो जहाँ तुम किसी दिन साथ जागना चाहोगे।",
+    "ur": "ایسی جگہ بیان کریں جہاں آپ کسی دن ایک ساتھ جاگنا چاہیں گے۔"
   },
   {
     "id": 108,
@@ -661,7 +1303,13 @@
     "en": "Let your partner choose: a romantic compliment, a funny confession, or a flirty question.",
     "de": "Lass deinen Partner wählen: ein romantisches Kompliment, ein lustiges Geständnis oder eine flirtende Frage.",
     "titleEn": "The Playful Dare",
-    "titleDe": "Die verspielte Mutprobe"
+    "titleDe": "Die verspielte Mutprobe",
+    "es": "Deja que tu pareja elija: un cumplido romántico, una confesión divertida o una pregunta coqueta.",
+    "fr": "Laisse ton partenaire choisir : un compliment romantique, un aveu drôle ou une question séduisante.",
+    "zh": "让伴侣选择：浪漫的赞美、有趣的坦白，或暧昧的问题。",
+    "ar": "دع شريكك يختار: إطراء رومانسي، أو اعتراف مضحك، أو سؤال غزلي.",
+    "hi": "अपने साथी को चुनने दो: रोमांटिक तारीफ़, मज़ेदार कबूलनामा या छेड़छाड़ भरा सवाल।",
+    "ur": "اپنے ساتھی کو انتخاب کرنے دیں: رومانوی تعریف، مزاحیہ اعتراف یا شوخ سوال۔"
   },
   {
     "id": 109,
@@ -669,7 +1317,13 @@
     "en": "Finish this sentence: 'One thing I never want you to forget is…'",
     "de": "Vervollständige diesen Satz: „Eine Sache, die du niemals vergessen sollst, ist …“",
     "titleEn": "The Appreciation Moment",
-    "titleDe": "Ein Moment der Wertschätzung"
+    "titleDe": "Ein Moment der Wertschätzung",
+    "es": "Completa esta frase: «Algo que nunca quiero que olvides es…»",
+    "fr": "Termine cette phrase : « Une chose que je ne veux jamais que tu oublies, c'est… »",
+    "zh": "补完这句话：“我永远不希望你忘记的一件事是……”",
+    "ar": "أكمل الجملة: «شيء واحد لا أريدك أن تنساه أبدًا هو…»",
+    "hi": "यह वाक्य पूरा करो: 'एक बात जो मैं नहीं चाहता कि तुम कभी भूलो, वह है…'",
+    "ur": "یہ جملہ مکمل کریں: 'ایک بات جو میں کبھی نہیں چاہتا کہ آپ بھولیں، وہ یہ ہے…'"
   },
   {
     "id": 110,
@@ -677,6 +1331,12 @@
     "en": "Share one small thing you promise to do to keep your connection strong.",
     "de": "Versprecht euch gegenseitig eine kleine Sache, mit der ihr eure Verbindung stärken möchtet.",
     "titleEn": "The Heart Promise",
-    "titleDe": "Das Herzensversprechen"
+    "titleDe": "Das Herzensversprechen",
+    "es": "Comparte una pequeña cosa que prometes hacer para mantener fuerte su conexión.",
+    "fr": "Partage une petite chose que tu promets de faire pour préserver votre complicité.",
+    "zh": "分享一件你承诺会做的小事，让你们的感情保持牢固。",
+    "ar": "شارك شيئًا صغيرًا تعد بفعله للحفاظ على قوة الرابط بينكما.",
+    "hi": "एक छोटी-सी बात बताओ जिसे करने का तुम वादा करते हो ताकि हमारा रिश्ता मज़बूत बना रहे।",
+    "ur": "ایک چھوٹا سا کام بتائیں جسے کرنے کا آپ وعدہ کرتے ہیں تاکہ آپ کا رشتہ مضبوط رہے۔"
   }
 ]
