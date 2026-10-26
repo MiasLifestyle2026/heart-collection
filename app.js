@@ -1,4 +1,3 @@
-
 (() => {
   "use strict";
 
@@ -42,7 +41,7 @@
         leave: "Raum verlassen",
         connected: "Gemeinsamer Spielraum",
         missing: "Übersetzung nicht verfügbar:",
-        setup: "Firebase muss für den Paar-Modus eingerichtet werden.",
+        setup: "Firebase muss eingerichtet werden.",
         offline: "Verbindung fehlgeschlagen.",
         invalid: "Ungültiger Einladungslink.",
         front: "Tiefgründige Fragen",
@@ -79,7 +78,7 @@
         leave: "Leave room",
         connected: "Shared game room",
         missing: "Translation unavailable:",
-        setup: "Firebase must be configured for couple mode.",
+        setup: "Firebase must be configured.",
         offline: "Connection failed.",
         invalid: "Invalid invitation link.",
         front: "Deep Questions",
@@ -108,13 +107,19 @@
     let position = 0;
     let flipped = false;
     let mode = "solo";
+
     let roomId = null;
     let db = null;
+    let firebaseTools = null;
     let unsubscribe = null;
-    let updateRoom = null;
+    let roomReady = false;
     let remoteApply = false;
+    let roomGeneration = 0;
+    let connectionState = "connecting";
+    let pendingWrites = Promise.resolve();
 
     let favorites;
+
     try {
       favorites = new Set(
         JSON.parse(
@@ -145,9 +150,66 @@
       element.classList.add("show");
 
       clearTimeout(window._toastTimer);
+
       window._toastTimer = setTimeout(() => {
         element.classList.remove("show");
       }, 2600);
+    }
+
+    function connectionText(state) {
+      const messages = {
+        de: {
+          connecting: "Verbindung wird hergestellt …",
+          connected: "Gemeinsamer Spielraum · verbunden",
+          offline: "Verbindung unterbrochen"
+        },
+        en: {
+          connecting: "Connecting …",
+          connected: "Shared game room · connected",
+          offline: "Connection interrupted"
+        },
+        es: {
+          connecting: "Conectando …",
+          connected: "Sala compartida · conectado",
+          offline: "Conexión interrumpida"
+        },
+        fr: {
+          connecting: "Connexion en cours …",
+          connected: "Salon partagé · connecté",
+          offline: "Connexion interrompue"
+        },
+        zh: {
+          connecting: "正在连接…",
+          connected: "共享房间 · 已连接",
+          offline: "连接已中断"
+        },
+        ur: {
+          connecting: "رابطہ قائم ہو رہا ہے…",
+          connected: "مشترکہ کمرہ · منسلک",
+          offline: "رابطہ منقطع ہوگیا"
+        },
+        hi: {
+          connecting: "कनेक्ट हो रहा है…",
+          connected: "साझा कमरा · कनेक्टेड",
+          offline: "कनेक्शन टूट गया"
+        },
+        ar: {
+          connecting: "جارٍ الاتصال…",
+          connected: "غرفة مشتركة · متصل",
+          offline: "انقطع الاتصال"
+        }
+      };
+
+      return (messages[lang] || messages.en)[state];
+    }
+
+    function setConnection(state) {
+      connectionState = state;
+
+      if ($("roomStatus")) {
+        $("roomStatus").textContent =
+          connectionText(state);
+      }
     }
 
     function translated(card) {
@@ -173,28 +235,18 @@
     }
 
     function updateFront() {
-      const x = t();
-
-      const selectors = [
-        ".playing-card .front .big",
-        ".card-front .big",
-        ".front .big"
-      ];
-
-      let front = null;
-
-      for (const selector of selectors) {
-        front = document.querySelector(selector);
-        if (front) break;
-      }
+      const front = document.querySelector(
+        ".playing-card .front .big, " +
+        ".card-front .big, .front .big"
+      );
 
       if (!front) return;
 
-      const title = x.front || x.heading;
-      const subtitle = x.front2 || x.heading2;
+      const x = t();
 
       const desired =
-        `100<br><em>${title}</em><br>${subtitle}`;
+        `100<br><em>${x.front || x.heading}</em>` +
+        `<br>${x.front2 || x.heading2}`;
 
       if (front.innerHTML !== desired) {
         front.innerHTML = desired;
@@ -327,8 +379,10 @@
 
       x.categories.forEach((name, i) => {
         const option = document.createElement("option");
+
         option.value =
           i === 0 ? "all" : String(i - 1);
+
         option.textContent = name;
         categorySelect.appendChild(option);
       });
@@ -350,41 +404,12 @@
         $("joinInput").placeholder = placeholders[lang];
       }
 
-      if (roomId && $("roomStatus")) {
-        $("roomStatus").textContent = x.connected;
+      if (roomId) {
+        setConnection(connectionState);
       }
 
       updateFront();
       render();
-    }
-
-    function syncCard() {
-      if (
-        mode === "couple" &&
-        roomId &&
-        updateRoom &&
-        !remoteApply &&
-        current()
-      ) {
-        updateRoom({
-          cardId: current().id,
-          category,
-          random,
-          sequence: sequence.map(i => cards[i].id)
-        }).catch(() => toast(t().offline));
-      }
-    }
-
-    function step(direction) {
-      if (!sequence.length) return;
-
-      position =
-        (position + direction + sequence.length) %
-        sequence.length;
-
-      flipped = true;
-      render();
-      syncCard();
     }
 
     function setMode(next) {
@@ -398,6 +423,448 @@
       $("coupleMode").classList.toggle(
         "selected",
         next === "couple"
+      );
+
+      $("couplePanel").hidden = next !== "couple";
+
+      $("roomActive").hidden =
+        !(next === "couple" && roomId);
+
+      $("roomSetup").hidden = !!roomId;
+    }
+
+    function randomId() {
+      const bytes = new Uint8Array(20);
+      crypto.getRandomValues(bytes);
+
+      return Array.from(
+        bytes,
+        value => value.toString(16).padStart(2, "0")
+      ).join("");
+    }
+
+    function roomUrl(id) {
+      const url = new URL(location.href);
+      url.searchParams.delete("card");
+      url.searchParams.set("room", id);
+      return url.toString();
+    }
+
+    function validRoom(id) {
+      return /^[a-f0-9]{40}$/.test(id || "");
+    }
+
+    function roomState() {
+      return {
+        cardId: Number(current().id),
+        category,
+        random,
+        flipped,
+        sequence: sequence.map(i =>
+          Number(cards[i].id)
+        ),
+        updatedAt: Date.now()
+      };
+    }
+
+    function canPlay() {
+      if (mode !== "couple") return true;
+
+      if (!roomId) {
+        return false;
+      }
+
+      if (!roomReady) {
+        toast(connectionText(connectionState));
+        return false;
+      }
+
+      return true;
+    }
+
+    function syncCard() {
+      if (
+        mode !== "couple" ||
+        !roomId ||
+        !roomReady ||
+        remoteApply ||
+        !current() ||
+        !firebaseTools
+      ) {
+        return;
+      }
+
+      const id = roomId;
+      const state = roomState();
+
+      const ref = firebaseTools.doc(
+        db,
+        "rooms",
+        id
+      );
+
+      pendingWrites = pendingWrites
+        .catch(() => {})
+        .then(async () => {
+          if (roomId !== id) return;
+
+          await firebaseTools.updateDoc(
+            ref,
+            state
+          );
+        })
+        .catch(error => {
+          console.error(
+            "Card synchronization failed:",
+            error
+          );
+
+          toast(t().offline);
+        });
+    }
+
+    function step(direction) {
+      if (!sequence.length || !canPlay()) return;
+
+      position =
+        (position + direction + sequence.length) %
+        sequence.length;
+
+      flipped = true;
+      render();
+      syncCard();
+    }
+
+    async function firebaseReady() {
+      if (db && firebaseTools) return true;
+
+      const config = window.HEART_FIREBASE_CONFIG;
+
+      if (
+        !config ||
+        !config.apiKey ||
+        config.apiKey === "REPLACE_ME"
+      ) {
+        toast(t().setup);
+        return false;
+      }
+
+      try {
+        const [
+          appSdk,
+          authSdk,
+          storeSdk
+        ] = await Promise.all([
+          import(
+            "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js"
+          ),
+          import(
+            "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js"
+          ),
+          import(
+            "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js"
+          )
+        ]);
+
+        const app = appSdk.getApps().length
+          ? appSdk.getApp()
+          : appSdk.initializeApp(config);
+
+        const auth = authSdk.getAuth(app);
+
+        if (!auth.currentUser) {
+          await authSdk.signInAnonymously(auth);
+        }
+
+        db = storeSdk.getFirestore(app);
+
+        firebaseTools = {
+          doc: storeSdk.doc,
+          getDoc: storeSdk.getDoc,
+          setDoc: storeSdk.setDoc,
+          onSnapshot: storeSdk.onSnapshot,
+          updateDoc: storeSdk.updateDoc
+        };
+
+        return true;
+      } catch (error) {
+        console.error(
+          "Firebase initialization failed:",
+          error
+        );
+
+        toast(t().offline);
+        return false;
+      }
+    }
+
+    function applyRoomData(data) {
+      remoteApply = true;
+
+      try {
+        category =
+          typeof data.category === "string"
+            ? data.category
+            : "all";
+
+        if (
+          category !== "all" &&
+          !/^[0-5]$/.test(category)
+        ) {
+          category = "all";
+        }
+
+        random = !!data.random;
+
+        $("category").value = category;
+        $("random").checked = random;
+
+        const ids = Array.isArray(data.sequence)
+          ? data.sequence
+          : [];
+
+        const restored = ids
+          .map(id =>
+            cards.findIndex(card =>
+              Number(card.id) === Number(id)
+            )
+          )
+          .filter(i => i >= 0);
+
+        if (restored.length) {
+          sequence = restored;
+        } else {
+          buildSequence(data.cardId);
+        }
+
+        position = Math.max(
+          0,
+          sequence.findIndex(i =>
+            Number(cards[i].id) === Number(data.cardId)
+          )
+        );
+
+        flipped =
+          typeof data.flipped === "boolean"
+            ? data.flipped
+            : true;
+
+        render();
+      } finally {
+        remoteApply = false;
+      }
+    }
+
+    function stopListening() {
+      if (unsubscribe) {
+        unsubscribe();
+        unsubscribe = null;
+      }
+    }
+
+    async function enterRoom(id, create) {
+      if (!validRoom(id)) {
+        toast(t().invalid);
+        return;
+      }
+
+      const generation = ++roomGeneration;
+
+      stopListening();
+
+      roomId = id;
+      roomReady = false;
+
+      setMode("couple");
+      setConnection("connecting");
+
+      $("roomLink").value = roomUrl(id);
+
+      try {
+        if (!await firebaseReady()) {
+          throw new Error("Firebase unavailable");
+        }
+
+        if (generation !== roomGeneration) return;
+
+        const ref = firebaseTools.doc(
+          db,
+          "rooms",
+          id
+        );
+
+        if (create) {
+          category = "all";
+          random = false;
+
+          $("category").value = "all";
+          $("random").checked = false;
+
+          buildSequence();
+
+          flipped = false;
+          render();
+
+          await firebaseTools.setDoc(
+            ref,
+            roomState()
+          );
+        } else {
+          const snapshot =
+            await firebaseTools.getDoc(ref);
+
+          if (!snapshot.exists()) {
+            throw new Error("Room does not exist");
+          }
+
+          if (generation !== roomGeneration) return;
+
+          applyRoomData(snapshot.data());
+        }
+
+        if (generation !== roomGeneration) return;
+
+        const url = new URL(location.href);
+
+        url.searchParams.set("room", id);
+        url.searchParams.delete("card");
+
+        history.replaceState({}, "", url);
+
+        unsubscribe = firebaseTools.onSnapshot(
+          ref,
+          { includeMetadataChanges: true },
+          snapshot => {
+            if (
+              generation !== roomGeneration ||
+              roomId !== id
+            ) {
+              return;
+            }
+
+            if (!snapshot.exists()) {
+              if (!snapshot.metadata.fromCache) {
+                toast(t().invalid);
+                leaveRoom();
+              } else {
+                roomReady = false;
+                setConnection("offline");
+              }
+
+              return;
+            }
+
+            applyRoomData(snapshot.data());
+
+            roomReady = !snapshot.metadata.fromCache;
+
+            setConnection(
+              roomReady ? "connected" : "offline"
+            );
+          },
+          error => {
+            if (generation !== roomGeneration) return;
+
+            console.error(
+              "Room listener error:",
+              error
+            );
+
+            roomReady = false;
+            setConnection("offline");
+            toast(t().offline);
+          }
+        );
+      } catch (error) {
+        console.error(
+          "Could not enter room:",
+          error
+        );
+
+        if (generation !== roomGeneration) return;
+
+        roomReady = false;
+        setConnection("offline");
+        toast(t().offline);
+
+        if (create) {
+          roomId = null;
+          setMode("couple");
+        } else {
+          const url = new URL(location.href);
+
+          url.searchParams.set("room", id);
+          url.searchParams.delete("card");
+
+          history.replaceState({}, "", url);
+        }
+      }
+    }
+
+    function leaveRoom() {
+      ++roomGeneration;
+
+      stopListening();
+
+      roomId = null;
+      roomReady = false;
+      remoteApply = false;
+
+      const url = new URL(location.href);
+
+      url.searchParams.delete("room");
+
+      history.replaceState({}, "", url);
+
+      setMode("solo");
+    }
+
+    $("card").addEventListener("click", () => {
+      if (!canPlay()) return;
+
+      flipped = !flipped;
+
+      render();
+      syncCard();
+    });
+
+    $("next").addEventListener(
+      "click",
+      () => step(1)
+    );
+
+    $("prev").addEventListener(
+      "click",
+      () => step(-1)
+    );
+
+    $("category").addEventListener(
+      "change",
+      event => {
+        if (!canPlay()) {
+          event.target.value = category;
+          return;
+        }
+
+        category = event.target.value;
+
+        buildSequence();
+        syncCard();
+      }
+    );
+
+    $("random").addEventListener(
+      "change",
+      event => {
+        if (!canPlay()) {
+          event.target.checked = random;
+          return;
+        }
+
+        random = event.target.checked;
+
+        buildSequence();
+        syncCard();"
       );
 
       $("couplePanel").hidden = next !== "couple";
