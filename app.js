@@ -36,8 +36,4 @@ $('share').addEventListener('click',async()=>{const c=current(),u=new URL(locati
 window.addEventListener('keydown',e=>{if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);if(e.key===' '&&!['BUTTON','INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)){e.preventDefault();flipped=!flipped;render()}});
 if(cards.length){buildSequence(Number.isInteger(shared)&&shared>=1&&shared<=110?shared:undefined);if(Number.isInteger(shared)&&shared>=1&&shared<=110)flipped=true;document.documentElement.lang=lang;labels();if(roomFromUrl){setMode('couple');enterRoom(roomFromUrl,false).catch(()=>toast(t().offline))}}else toast('cards.js missing');
 if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
-})();ia’s Lifestyle',text:message,url:url.toString()});else{await navigator.clipboard.writeText(url.toString());toast(t().copy)}}catch(e){if(e.name!=='AbortError')toast(t().offline)}});
-window.addEventListener('keydown',e=>{if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);if(e.key===' '&&e.target.tagName!=='BUTTON'&&e.target.tagName!=='INPUT'&&e.target.tagName!=='SELECT'){e.preventDefault();flipped=!flipped;render()}});
-if(cards.length){buildSequence(Number.isInteger(shared)&&shared>=1&&shared<=110?shared:undefined);if(Number.isInteger(shared)&&shared>=1&&shared<=110)flipped=true;labels();if(roomFromUrl){setMode('couple');enterRoom(roomFromUrl,false).catch(()=>toast(t().offline))}}else toast('cards.js missing');
-if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
 })();
