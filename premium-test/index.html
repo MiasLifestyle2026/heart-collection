@@ -8,7 +8,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <title>The Heart Collection | Mia’s Lifestyle</title>
-<link rel="stylesheet" href="style.css?v=premium-test-2">
+<link rel="stylesheet" href="style.css?v=premium-test-3">
 <style>#startGame[hidden]{display:none!important}.start-wrap{text-align:center;margin:20px 0}</style>
 </head>
 <body><main class="app">
@@ -19,6 +19,7 @@
 <section class="controls"><label for="category" id="categoryLabel">Choose a category</label><select id="category"></select><div class="switchrow"><label class="toggle"><input id="random" type="checkbox"><span id="shuffleLabel">Shuffle cards</span></label><span id="counter">1 / 110</span></div></section>
 <section class="card-area"><button class="playing-card" id="card" aria-label="Reveal card"><div class="card-inner"><div class="face front"><span class="corner">✧</span><span class="crest">♥</span><p class="small">THE HEART COLLECTION</p><div class="big">100<br><em>Deep Questions</em><br>for Couples</div><p class="tap" id="tap">Tap to reveal</p><span class="signature">MIA’S LIFESTYLE</span></div><div class="face back"><span class="corner">✧</span><div class="number" id="number">01</div><p class="category-name" id="categoryName"></p><div class="question-wrap"><p class="bonus-title" id="bonusTitle"></p><p class="question" id="question"></p></div><div class="tiny-heart">♥</div><span class="signature">MIA’S LIFESTYLE</span></div></div></button></section>
 <div class="start-wrap"><button id="startGame" class="primary" type="button">❤️ Spiel starten</button></div>
+<div id="upgradePremium" class="premium-cta" hidden><button type="button">💎 Premium freischalten</button></div>
 <div class="actions"><button id="prev" class="outline">← <span id="prevText">Previous</span></button><button id="next" class="primary"><span id="nextText">Next card</span> →</button></div>
 <div class="extras"><button id="favorite" class="soft">♡ <span id="favoriteText">Save favorite</span></button><button id="share" class="soft">↗ <span id="shareText">Share this card</span></button></div>
 <div class="footer"><p id="footerText">A little closer, one question at a time.</p><small>© Mia’s Lifestyle · 110 cards</small></div><div id="toast" role="status" aria-live="polite"></div>
@@ -26,5 +27,6 @@
 <script src="cards.js?v=premium-test-2"></script>
 <script src="interface.js?v=premium-test-2"></script>
 <script src="firebase-config.js?v=premium-test-2"></script>
-<script src="app.js?v=premium-test-2"></script>
+<script src="app.js?v=premium-test-3"></script>
+<div id="premiumDialog" class="premium-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="premiumHeading"><div class="premium-sheet"><button id="premiumClose" class="premium-close" type="button" aria-label="Close">Schließen</button><div class="premium-gem">♥</div><h2 id="premiumHeading">Heart Collection Premium</h2><p id="premiumSubtitle">Mehr Nähe. Mehr Fragen. Mehr gemeinsame Momente.</p><div class="premium-plans"><article class="premium-plan"><h3 id="monthlyName">Monatlich</h3><div class="premium-price">3,95 € <small id="monthlyPeriod">/ Monat</small></div><button type="button" class="premium-choose" data-premium-plan="monthly">Auswählen</button></article><article class="premium-plan premium-featured"><span id="quarterSave" class="premium-save">28 % sparen</span><h3 id="quarterName">Alle 3 Monate</h3><div class="premium-price">8,50 € <small id="quarterPeriod">/ 3 Monate</small></div><button type="button" class="premium-choose" data-premium-plan="quarterly">Auswählen</button></article></div><p id="premiumBenefits" class="premium-benefits">92 Premium-Karten · 8 Sprachen · neue Karten jeden Monat · gemeinsamer Paarmodus</p><p id="premiumNotice" class="premium-disclaimer">Vorschau: Noch keine Zahlung möglich. Die Google-Play-Abrechnung folgt später.</p></div></div>
 </body></html>
