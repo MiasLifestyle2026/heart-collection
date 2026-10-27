@@ -12,7 +12,7 @@
 <style>#startGame[hidden]{display:none!important}.start-wrap{text-align:center;margin:20px 0}</style>
 </head>
 <body><main class="app">
-<header><div class="brand"><span class="heart">♥</span> MIA’S LIFESTYLE</div><select id="lang" class="lang" aria-label="Choose language"></select></header>
+<header><div class="brand"><span class="heart">♥</span> MIA’S LIFESTYLE</div><div class="header-actions"><button id="openSubscription" class="subscription-link" type="button">💎 Abo</button><select id="lang" class="lang" aria-label="Choose language"></select></div></header>
 <section class="intro"><p class="eyebrow" id="eyebrow">THE HEART COLLECTION</p><h1 id="heading">100 Deep Questions<br><em>for Couples</em></h1><p class="subtitle" id="subtitle">Conversations that bring two hearts closer.</p></section>
 <section class="mode-controls"><button id="soloMode" class="mode-button selected"><span id="soloText">Einzel-Modus</span></button><button id="coupleMode" class="mode-button"><span id="coupleText">Paar-Modus</span></button></section>
 <section id="couplePanel" class="couple-panel" hidden><div id="roomSetup"><button id="createRoom" class="primary">Spielraum erstellen</button><div class="joinrow"><input id="joinInput" placeholder="Einladungslink oder Raumcode" aria-label="Invitation link"><button id="joinRoom" class="outline">Beitreten</button></div></div><div id="roomActive" hidden><p id="roomStatus"></p><label id="roomLabel" for="roomLink">Einladungslink</label><input id="roomLink" readonly><div class="joinrow"><button id="copyRoom" class="primary">Link kopieren</button><button id="leaveRoom" class="outline">Raum verlassen</button></div></div></section>
