@@ -109,6 +109,7 @@
   labels();
   $('startGame').addEventListener('click',startGame);
   $('upgradePremium')?.addEventListener('click',openPremium);
+  $('openSubscription')?.addEventListener('click',openPremium);
   $('premiumClose')?.addEventListener('click',closePremium);
   $('premiumDialog')?.addEventListener('click',e=>{if(e.target.id==='premiumDialog')closePremium();});
   document.querySelectorAll('[data-premium-plan]').forEach(btn=>btn.addEventListener('click',()=>toast((payLabels[lang]||payLabels.en).selected)));
