@@ -21,7 +21,7 @@
   const incomingRoom=urlParams.get('room');
   const t=()=>({...fallback,...(translations[lang]||translations.en||{}),...extra.en,...(extra[lang]||{})});
   // Premium preview only: entitlement and payment verification must be implemented server-side.
-  const freeIds=new Set([1,2,21,22,41,42,61,62,81,82,101,102]);
+  const freeIds=new Set([1,2,3,21,22,23,41,42,43,61,62,63,81,82,83,101,102,103]);
   const isFree=c=>!!c&&freeIds.has(Number(c.id));
   const premiumText=()=>({de:'🔒 Premium-Karte\nMit Heart Collection Premium für 4,95 € im Monat freischalten. Ein Abo reicht für beide Partner im gemeinsamen Spielraum.',en:'🔒 Premium card\nUnlock with Heart Collection Premium for €4.95/month. One subscription covers both partners in a shared room.',es:'🔒 Tarjeta Premium\nDisponible con la suscripción Premium.',fr:'🔒 Carte Premium\nDisponible avec l’abonnement Premium.',zh:'🔒 高级卡片\n订阅后解锁。',ur:'🔒 پریمیم کارڈ\nسبسکرپشن کے ساتھ دستیاب۔',hi:'🔒 प्रीमियम कार्ड\nसदस्यता से अनलॉक करें।',ar:'🔒 بطاقة مميزة\nمتاحة بالاشتراك.'}[lang]||'🔒 Premium card');
   const current=()=>cards[sequence[position]];
