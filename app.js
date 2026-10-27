@@ -20,20 +20,26 @@
   const shared=Number(urlParams.get('card'));
   const incomingRoom=urlParams.get('room');
   const t=()=>({...fallback,...(translations[lang]||translations.en||{}),...extra.en,...(extra[lang]||{})});
+  // Premium preview only: entitlement and payment verification must be implemented server-side.
+  const freeIds=new Set([1,2,21,22,41,42,61,62,81,82,101,102]);
+  const isFree=c=>!!c&&freeIds.has(Number(c.id));
+  const premiumText=()=>({de:'🔒 Premium-Karte\nMit Heart Collection Premium für 4,95 € im Monat freischalten. Ein Abo reicht für beide Partner im gemeinsamen Spielraum.',en:'🔒 Premium card\nUnlock with Heart Collection Premium for €4.95/month. One subscription covers both partners in a shared room.',es:'🔒 Tarjeta Premium\nDisponible con la suscripción Premium.',fr:'🔒 Carte Premium\nDisponible avec l’abonnement Premium.',zh:'🔒 高级卡片\n订阅后解锁。',ur:'🔒 پریمیم کارڈ\nسبسکرپشن کے ساتھ دستیاب۔',hi:'🔒 प्रीमियम कार्ड\nसदस्यता से अनलॉक करें।',ar:'🔒 بطاقة مميزة\nمتاحة بالاشتراك.'}[lang]||'🔒 Premium card');
   const current=()=>cards[sequence[position]];
   const ids=()=>sequence.map(i=>Number(cards[i].id));
   function toast(message){const el=$('toast');if(!el)return;el.textContent=message;el.classList.add('show');clearTimeout(window._heartToast);window._heartToast=setTimeout(()=>el.classList.remove('show'),3200);}
   function translated(c){return typeof c[lang]==='string'&&c[lang].trim()?c[lang]:`${t().missing}\n\n${c.en||c.de||''}`;}
   function cardTitle(c){const key='title'+lang[0].toUpperCase()+lang.slice(1);return c[key]||c.titleEn||'';}
   function setText(id,value){const el=$(id);if(el)el.textContent=value;}
-  function render(){const c=current();if(!c)return;const x=t();const q=translated(c);
+  function render(){const c=current();if(!c)return;const x=t();const locked=!isFree(c);const q=locked?premiumText():translated(c);
     $('card').classList.toggle('flipped',flipped);
     setText('counter',`${position+1} / ${sequence.length}`);
     setText('number',String(c.id).padStart(2,'0'));
     setText('categoryName',(x.categories[Number(c.cat)+1]||'').toUpperCase());
     setText('question',q);$('question').classList.toggle('long',q.length>112);
-    setText('bonusTitle',Number(c.cat)===5?cardTitle(c):'');
-    setText('favoriteText',favorites.has(c.id)?x.saved:x.favorite);
+    setText('bonusTitle',!locked&&Number(c.cat)===5?cardTitle(c):'');
+    setText('favoriteText',locked?'🔒 Premium':favorites.has(c.id)?x.saved:x.favorite);
+    $('favorite').disabled=locked;
+    $('share').disabled=locked;
     $('favorite').firstChild.textContent=favorites.has(c.id)?'♥ ':'♡ ';
     $('question').dir=['ar','ur'].includes(lang)?'rtl':'auto';
     $('card').setAttribute('aria-label',flipped?'Flip card':'Reveal question');
@@ -103,8 +109,8 @@
   $('joinRoom').addEventListener('click',()=>{const raw=$('joinInput').value.trim();let id=raw;try{id=new URL(raw).searchParams.get('room')||raw;}catch{}enterRoom(id,false);});
   $('leaveRoom').addEventListener('click',leaveRoom);
   $('copyRoom').addEventListener('click',async()=>{const link=$('roomLink').value;try{await navigator.clipboard.writeText(link);toast(t().copySuccess);}catch{toast(link);}});
-  $('favorite').addEventListener('click',()=>{const id=current().id;if(favorites.has(id))favorites.delete(id);else favorites.add(id);localStorage.setItem('heart-favorites',JSON.stringify([...favorites]));render();});
-  $('share').addEventListener('click',async()=>{const c=current(),u=new URL(location.href);u.searchParams.delete('room');u.searchParams.set('card',c.id);try{if(navigator.share)await navigator.share({title:'Mia’s Lifestyle',text:translated(c),url:u.toString()});else{await navigator.clipboard.writeText(u.toString());toast(t().copySuccess);}}catch(e){if(e.name!=='AbortError')toast(t().offline);}});
+  $('favorite').addEventListener('click',()=>{if(!isFree(current()))return;const id=current().id;if(favorites.has(id))favorites.delete(id);else favorites.add(id);localStorage.setItem('heart-favorites',JSON.stringify([...favorites]));render();});
+  $('share').addEventListener('click',async()=>{const c=current();if(!isFree(c))return;const u=new URL(location.href);u.searchParams.delete('room');u.searchParams.set('card',c.id);try{if(navigator.share)await navigator.share({title:'Mia’s Lifestyle',text:translated(c),url:u.toString()});else{await navigator.clipboard.writeText(u.toString());toast(t().copySuccess);}}catch(e){if(e.name!=='AbortError')toast(t().offline);}});
   window.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);if(e.key===' '&&!['BUTTON'].includes(e.target.tagName)){e.preventDefault();flip();}});
   if(incomingRoom){setMode('couple');enterRoom(incomingRoom,false);}
   if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
