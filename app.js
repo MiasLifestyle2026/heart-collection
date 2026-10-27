@@ -24,6 +24,16 @@
   const freeIds=new Set([1,2,3,21,22,23,41,42,43,61,62,63,81,82,83,101,102,103]);
   const isFree=c=>!!c&&freeIds.has(Number(c.id));
   const premiumText=()=>({de:'🔒 Premium-Karte\nMit Heart Collection Premium freischalten: 3,95 € monatlich oder 8,50 € alle 3 Monate. Ein Abo reicht für beide Partner im gemeinsamen Spielraum.',en:'🔒 Premium card\nUnlock with Heart Collection Premium: €3.95/month or €8.50 every 3 months. One subscription covers both partners in a shared room.',es:'🔒 Tarjeta Premium\nDisponible con la suscripción Premium.',fr:'🔒 Carte Premium\nDisponible avec l’abonnement Premium.',zh:'🔒 高级卡片\n订阅后解锁。',ur:'🔒 پریمیم کارڈ\nسبسکرپشن کے ساتھ دستیاب۔',hi:'🔒 प्रीमियम कार्ड\nसदस्यता से अनलॉक करें।',ar:'🔒 بطاقة مميزة\nمتاحة بالاشتراك.'}[lang]||'🔒 Premium card');
+  const payLabels={
+    de:{title:'Heart Collection Premium',sub:'Mehr Nähe. Mehr Fragen. Mehr gemeinsame Momente.',monthly:'Monatlich',quarter:'Alle 3 Monate',monthSuffix:'/ Monat',quarterSuffix:'/ 3 Monate',save:'28 % sparen',benefits:'92 Premium-Karten · 8 Sprachen · neue Karten jeden Monat · gemeinsamer Paarmodus',choose:'Auswählen',notice:'Vorschau: Noch keine Zahlung möglich. Die Google-Play-Abrechnung folgt später.',close:'Schließen',selected:'Dies ist eine Vorschau. Es wird nichts abgebucht.'},
+    en:{title:'Heart Collection Premium',sub:'More connection. More questions. More moments together.',monthly:'Monthly',quarter:'Every 3 months',monthSuffix:'/ month',quarterSuffix:'/ 3 months',save:'Save 28%',benefits:'92 premium cards · 8 languages · new cards monthly · shared couple mode',choose:'Choose plan',notice:'Preview only: payments are not available yet. Google Play billing will be added later.',close:'Close',selected:'This is a preview. You will not be charged.'}
+  };
+  function openPremium(){const x=payLabels[lang]||payLabels.en;const dialog=$('premiumDialog');if(!dialog)return;
+    for(const [id,v] of Object.entries({premiumHeading:x.title,premiumSubtitle:x.sub,monthlyName:x.monthly,quarterName:x.quarter,monthlyPeriod:x.monthSuffix,quarterPeriod:x.quarterSuffix,quarterSave:x.save,premiumBenefits:x.benefits,premiumNotice:x.notice,premiumClose:x.close}))setText(id,v);
+    document.querySelectorAll('[data-premium-plan]').forEach(btn=>btn.textContent=x.choose);
+    dialog.hidden=false;document.body.classList.add('premium-open');$('premiumClose').focus();
+  }
+  function closePremium(){const dialog=$('premiumDialog');if(dialog)dialog.hidden=true;document.body.classList.remove('premium-open');}
   const current=()=>cards[sequence[position]];
   const ids=()=>sequence.map(i=>Number(cards[i].id));
   function toast(message){const el=$('toast');if(!el)return;el.textContent=message;el.classList.add('show');clearTimeout(window._heartToast);window._heartToast=setTimeout(()=>el.classList.remove('show'),3200);}
@@ -45,6 +55,7 @@
     $('card').setAttribute('aria-label',flipped?'Flip card':'Reveal question');
     $('startGame').hidden=started;
     $('startGame').disabled=busy;
+    const upgrade=$('upgradePremium');if(upgrade)upgrade.hidden=!locked;
   }
   function labels(){const x=t();document.documentElement.lang=lang;
     $('heading').innerHTML=`${x.heading}<br><em>${x.heading2}</em>`;
@@ -97,6 +108,11 @@
   if(Number.isInteger(shared)&&shared>=1&&shared<=110){started=true;flipped=true;}
   labels();
   $('startGame').addEventListener('click',startGame);
+  $('upgradePremium')?.addEventListener('click',openPremium);
+  $('premiumClose')?.addEventListener('click',closePremium);
+  $('premiumDialog')?.addEventListener('click',e=>{if(e.target.id==='premiumDialog')closePremium();});
+  document.querySelectorAll('[data-premium-plan]').forEach(btn=>btn.addEventListener('click',()=>toast((payLabels[lang]||payLabels.en).selected)));
+  window.addEventListener('keydown',e=>{if(e.key==='Escape')closePremium();});
   $('card').addEventListener('click',flip);
   $('next').addEventListener('click',()=>step(1));
   $('prev').addEventListener('click',()=>step(-1));
