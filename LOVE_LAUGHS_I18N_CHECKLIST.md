@@ -4,7 +4,7 @@ The complete German master deck is in `love-laughs-cards.js` (110 unique cards, 
 
 **Required languages:** `de`, `en`, `es`, `fr`, `zh`, `ur`, `hi`, `ar`.
 
-Do not add the deck to the shared game selector until every card has a reviewed, non-empty translation in all eight languages. Switching the language must switch the **question text**, not only the menu. The existing Deep Questions game and production deployment must remain untouched.
+All 110 cards now contain non-empty text in all eight languages. Automated structural checks passed; native-speaker linguistic review and in-app display testing remain before the deck is enabled in the shared game selector. Switching the language must switch the **question text**, not only the menu. The existing Deep Questions game and production deployment must remain untouched.
 
 ## Acceptance checks
 - 110 distinct IDs; category sizes 20/20/20/20/20/10.
@@ -15,4 +15,4 @@ Do not add the deck to the shared game selector until every card has a reviewed,
 - Android build bundles both decks locally and works without relying on the GitHub Pages test URL.
 - No real subscription checkout until Google Play Billing and server-side verification are implemented.
 
-**Current status:** German master imported; seven translations per card still pending. This is intentionally **not** exposed as a completed multilingual deck.
+**Current status:** 880/880 card-language fields populated and structural validation passed (110 unique IDs; 20/20/20/20/20/10). Integration, native-speaker review, RTL device testing, and pair-mode deck synchronization remain pending. The multilingual deck is not yet exposed in the installed Android app.
