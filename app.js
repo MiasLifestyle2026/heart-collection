@@ -80,7 +80,7 @@
   function setMode(next){mode=next;$('soloMode').classList.toggle('selected',next==='solo');$('coupleMode').classList.toggle('selected',next==='couple');$('couplePanel').hidden=next!=='couple';$('roomActive').hidden=!(next==='couple'&&roomId);$('roomSetup').hidden=!!roomId;}
   function validRoom(id){return /^[a-f0-9]{40}$/.test(id||'');}
   function randomId(){const a=new Uint8Array(20);crypto.getRandomValues(a);return Array.from(a,b=>b.toString(16).padStart(2,'0')).join('');}
-  function roomUrl(id){const isNative=location.hostname==='localhost'||location.hostname==='127.0.0.1'||location.protocol==='capacitor:';const u=new URL(isNative?'https://miaslifestyle2026.github.io/heart-collection/':location.href);u.searchParams.delete('card');u.searchParams.set('room',id);return u.toString();}
+  function roomUrl(id){const isNative=location.hostname==='localhost'||location.hostname==='127.0.0.1'||location.protocol==='capacitor:';const u=new URL(isNative?'https://miaslifestyle2026.github.io/heart-collection/couple-test/':location.href);u.searchParams.delete('card');u.searchParams.set('room',id);return u.toString();}
   function updateAddress(id){const u=new URL(location.href);u.searchParams.delete('room');u.searchParams.delete('card');if(id)u.searchParams.set('room',id);history.replaceState({},'',u);}
   function connectionError(e){
     const code=String(e?.code||'');
