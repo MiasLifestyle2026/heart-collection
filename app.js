@@ -72,6 +72,7 @@
     const language=$('lang');language.replaceChildren();for(const [code,name] of Object.entries(languageNames)){const o=document.createElement('option');o.value=code;o.textContent=name;language.appendChild(o);}language.value=lang;
     render();
   }
+  async function selectDeck(next){if(!decks[next]?.length||next===deck)return;deck=next;cards=decks[deck];category='all';random=false;$('random').checked=false;buildSequence();labels();await sync();}
   function buildSequence(target){sequence=cards.map((_,i)=>i).filter(i=>category==='all'||Number(cards[i].cat)===Number(category));if(random){for(let i=sequence.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[sequence[i],sequence[j]]=[sequence[j],sequence[i]];}}position=target===undefined?0:Math.max(0,sequence.findIndex(i=>Number(cards[i].id)===Number(target)));started=false;flipped=false;render();}
   function roomData(){return {deck,cardId:Number(current().id),category,random,flipped,started,sequence:ids(),updatedAt:Date.now()};}
   async function sync(){if(mode!=='couple'||!roomRef||applyingRemote||!current())return;try{await window._heartFirebase.updateDoc(roomRef,roomData());}catch(e){console.error(e);toast(t().offline);}}
@@ -125,6 +126,7 @@
   $('prev').addEventListener('click',()=>step(-1));
   $('category').addEventListener('change',async e=>{category=e.target.value;buildSequence();await sync();});
   $('random').addEventListener('change',async e=>{random=e.target.checked;buildSequence();await sync();});
+  $('deck').addEventListener('change',e=>selectDeck(e.target.value));
   $('lang').addEventListener('change',e=>{if(!languageNames[e.target.value])return;lang=e.target.value;localStorage.setItem('heart-lang',lang);labels();});
   $('soloMode').addEventListener('click',()=>{if(roomId)leaveRoom();else setMode('solo');});
   $('coupleMode').addEventListener('click',()=>setMode('couple'));
@@ -133,7 +135,7 @@
   $('leaveRoom').addEventListener('click',leaveRoom);
   $('copyRoom').addEventListener('click',async()=>{const link=$('roomLink').value;try{await navigator.clipboard.writeText(link);toast(t().copySuccess);}catch{toast(link);}});
   $('favorite').addEventListener('click',()=>{if(!isFree(current()))return;const id=favoriteKey(current());if(favorites.has(id))favorites.delete(id);else favorites.add(id);localStorage.setItem('heart-favorites',JSON.stringify([...favorites]));render();});
-  $('share').addEventListener('click',async()=>{const c=current();if(!isFree(c))return;const u=new URL(location.href);u.searchParams.delete('room');u.searchParams.set('card',c.id);try{if(navigator.share)await navigator.share({title:'Mia’s Lifestyle',text:translated(c),url:u.toString()});else{await navigator.clipboard.writeText(u.toString());toast(t().copySuccess);}}catch(e){if(e.name!=='AbortError')toast(t().offline);}});
+  $('share').addEventListener('click',async()=>{const c=current();if(!isFree(c))return;const u=new URL(location.href);u.searchParams.delete('room');u.searchParams.set('card',c.id);u.searchParams.set('deck',deck);try{if(navigator.share)await navigator.share({title:'Mia’s Lifestyle',text:translated(c),url:u.toString()});else{await navigator.clipboard.writeText(u.toString());toast(t().copySuccess);}}catch(e){if(e.name!=='AbortError')toast(t().offline);}});
   window.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);if(e.key===' '&&!['BUTTON'].includes(e.target.tagName)){e.preventDefault();flip();}});
   if(incomingRoom){setMode('couple');enterRoom(incomingRoom,false);}
   if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
