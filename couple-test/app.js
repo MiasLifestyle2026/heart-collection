@@ -1,0 +1,154 @@
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const decks={deep:Array.isArray(window.HEART_CARDS)?window.HEART_CARDS:[],fun:Array.isArray(window.HEART_FUN_CARDS)?window.HEART_FUN_CARDS:[]};
+  let deck='deep',cards=decks.deep;
+  const translations = window.HEART_UI || {};
+  const languageNames = {de:'🇩🇪 Deutsch',en:'🇬🇧 English',es:'🇪🇸 Español',zh:'🇨🇳 中文',fr:'🇫🇷 Français',ur:'🇵🇰 اردو',hi:'🇮🇳 हिन्दी',ar:'🌍 العربية'};
+  const extra = {
+    de:{start:'❤️ Spiel starten',copySuccess:'Link kopiert',offline:'Verbindung fehlgeschlagen. Bitte Internet prüfen.',invalid:'Ungültiger oder nicht vorhandener Spielraum.',setup:'Firebase ist nicht eingerichtet.',missing:'Übersetzung nicht verfügbar. Englische Frage:'},
+    en:{start:'❤️ Start game',copySuccess:'Link copied',offline:'Connection failed. Check your internet.',invalid:'Invalid or missing room.',setup:'Firebase is not configured.',missing:'Translation unavailable. English question:'},
+    es:{start:'❤️ Empezar juego',copySuccess:'Enlace copiado'},fr:{start:'❤️ Commencer',copySuccess:'Lien copié'},zh:{start:'❤️ 开始游戏',copySuccess:'链接已复制'},ur:{start:'❤️ کھیل شروع کریں',copySuccess:'لنک کاپی ہو گیا'},hi:{start:'❤️ खेल शुरू करें',copySuccess:'लिंक कॉपी हो गया'},ar:{start:'❤️ ابدأ اللعبة',copySuccess:'تم نسخ الرابط'}
+  };
+  const fallback = {heading:'100 Deep Questions',heading2:'for Couples',subtitle:'Conversations that bring two hearts closer.',category:'Choose a category',shuffle:'Shuffle cards',prev:'Previous',next:'Next card',share:'Share this card',tap:'Tap to reveal',footer:'A little closer, one question at a time.',favorite:'Save favorite',saved:'Saved',solo:'Solo mode',couple:'Couple mode',create:'Create room',join:'Join room',leave:'Leave room',copy:'Copy link',room:'Invitation link',front:'Deep Questions',front2:'for Couples',categories:['All cards','Emotional Connection','Love & Relationships','Trust & Vulnerability','Dreams & Future','Long-Distance Love','Love Challenges']};
+  let lang = localStorage.getItem('heart-lang') || 'de';
+  if (!languageNames[lang]) lang='de';
+  let category='all', random=false, sequence=[], position=0, flipped=false, started=false;
+  let mode='solo', roomId=null, db=null, unsubscribe=null, roomRef=null, applyingRemote=false, busy=false;
+  let favorites;
+  try { favorites=new Set(JSON.parse(localStorage.getItem('heart-favorites')||'[]')); } catch { favorites=new Set(); }
+  const urlParams=new URLSearchParams(location.search);
+  const shared=Number(urlParams.get('card'));
+  const incomingRoom=urlParams.get('room');
+  if(urlParams.get('deck')==='fun'&&decks.fun.length){deck='fun';cards=decks.fun;}
+  const t=()=>({...fallback,...(translations[lang]||translations.en||{}),...extra.en,...(extra[lang]||{})});
+  // Premium preview only: entitlement and payment verification must be implemented server-side.
+  const freeIds=new Set([1,2,3,21,22,23,41,42,43,61,62,63,81,82,83,101,102,103]);
+  const isFree=c=>!!c&&freeIds.has(Number(c.id));
+  const premiumText=()=>({de:'🔒 Premium-Karte\nMit Heart Collection Premium freischalten: 3,95 € monatlich oder 8,50 € alle 3 Monate. Ein Abo reicht für beide Partner im gemeinsamen Spielraum.',en:'🔒 Premium card\nUnlock with Heart Collection Premium: €3.95/month or €8.50 every 3 months. One subscription covers both partners in a shared room.',es:'🔒 Tarjeta Premium\nDisponible con la suscripción Premium.',fr:'🔒 Carte Premium\nDisponible avec l’abonnement Premium.',zh:'🔒 高级卡片\n订阅后解锁。',ur:'🔒 پریمیم کارڈ\nسبسکرپشن کے ساتھ دستیاب۔',hi:'🔒 प्रीमियम कार्ड\nसदस्यता से अनलॉक करें।',ar:'🔒 بطاقة مميزة\nمتاحة بالاشتراك.'}[lang]||'🔒 Premium card');
+  const payLabels={
+    de:{title:'Heart Collection Premium',sub:'Mehr Nähe. Mehr Fragen. Mehr gemeinsame Momente.',monthly:'Monatlich',quarter:'Alle 3 Monate',monthSuffix:'/ Monat',quarterSuffix:'/ 3 Monate',save:'28 % sparen',benefits:'92 Premium-Karten · 8 Sprachen · neue Karten jeden Monat · gemeinsamer Paarmodus',choose:'Auswählen',notice:'Vorschau: Noch keine Zahlung möglich. Die Google-Play-Abrechnung folgt später.',close:'Schließen',selected:'Dies ist eine Vorschau. Es wird nichts abgebucht.'},
+    en:{title:'Heart Collection Premium',sub:'More connection. More questions. More moments together.',monthly:'Monthly',quarter:'Every 3 months',monthSuffix:'/ month',quarterSuffix:'/ 3 months',save:'Save 28%',benefits:'92 premium cards · 8 languages · new cards monthly · shared couple mode',choose:'Choose plan',notice:'Preview only: payments are not available yet. Google Play billing will be added later.',close:'Close',selected:'This is a preview. You will not be charged.'}
+  };
+  function openPremium(){const x=payLabels[lang]||payLabels.en;const dialog=$('premiumDialog');if(!dialog)return;
+    for(const [id,v] of Object.entries({premiumHeading:x.title,premiumSubtitle:x.sub,monthlyName:x.monthly,quarterName:x.quarter,monthlyPeriod:x.monthSuffix,quarterPeriod:x.quarterSuffix,quarterSave:x.save,premiumBenefits:x.benefits,premiumNotice:x.notice,premiumClose:x.close}))setText(id,v);
+    document.querySelectorAll('[data-premium-plan]').forEach(btn=>btn.textContent=x.choose);
+    dialog.hidden=false;document.body.classList.add('premium-open');$('premiumClose').focus();
+  }
+  function closePremium(){const dialog=$('premiumDialog');if(dialog)dialog.hidden=true;document.body.classList.remove('premium-open');}
+  const current=()=>cards[sequence[position]];
+  const favoriteKey=c=>`${deck}:${c.id}`;
+  const deckCategories={de:['Alle Karten','Lach dich verliebt','Frech & verspielt','Trau dich, albern zu sein','Was wäre dir lieber?','Liebenswertes Chaos','Mission Liebe'],en:['All cards','Laugh Out Loud','Flirt Alert','Dare to Be Silly','Would You Rather','Couple Chaos','Love Challenges']};
+  const categoryNames=()=>deck==='fun'?(deckCategories[lang]||deckCategories.en):t().categories;
+  const ids=()=>sequence.map(i=>Number(cards[i].id));
+  function toast(message){const el=$('toast');if(!el)return;el.textContent=message;el.classList.add('show');clearTimeout(window._heartToast);window._heartToast=setTimeout(()=>el.classList.remove('show'),3200);}
+  function translated(c){return typeof c[lang]==='string'&&c[lang].trim()?c[lang]:`${t().missing}\n\n${c.en||c.de||''}`;}
+  function cardTitle(c){const key='title'+lang[0].toUpperCase()+lang.slice(1);return c[key]||c.titleEn||'';}
+  function setText(id,value){const el=$(id);if(el)el.textContent=value;}
+  function render(){const c=current();if(!c)return;const x=t();const locked=!isFree(c);const q=locked?premiumText():translated(c);
+    $('card').classList.toggle('flipped',flipped);
+    setText('counter',`${position+1} / ${sequence.length}`);
+    setText('number',String(c.id).padStart(2,'0'));
+    setText('categoryName',(categoryNames()[Number(c.cat)+1]||'').toUpperCase());
+    setText('question',q);$('question').classList.toggle('long',q.length>112);
+    setText('bonusTitle',!locked&&deck==='deep'&&Number(c.cat)===5?cardTitle(c):'');
+    setText('favoriteText',locked?'🔒 Premium':favorites.has(favoriteKey(c))?x.saved:x.favorite);
+    $('favorite').disabled=locked;
+    $('share').disabled=locked;
+    $('favorite').firstChild.textContent=favorites.has(favoriteKey(c))?'♥ ':'♡ ';
+    $('question').dir=['ar','ur'].includes(lang)?'rtl':'auto';
+    $('card').setAttribute('aria-label',flipped?'Flip card':'Reveal question');
+    $('startGame').hidden=started;
+    $('startGame').disabled=busy;
+    const upgrade=$('upgradePremium');if(upgrade)upgrade.hidden=!locked;
+  }
+  function labels(){const x=t();document.documentElement.lang=lang;
+    $('heading').innerHTML=deck==='fun'?'Love &amp; Laughs<br><em>Fun Edition</em>':`${x.heading}<br><em>${x.heading2}</em>`;
+    $('deck').value=deck;document.body.classList.toggle('fun-edition',deck==='fun');
+    const map={subtitle:x.subtitle,categoryLabel:x.category,shuffleLabel:x.shuffle,prevText:x.prev,nextText:x.next,shareText:x.share,tap:x.tap,footerText:x.footer,soloText:x.solo,coupleText:x.couple,createRoom:x.create,joinRoom:x.join,leaveRoom:x.leave,copyRoom:x.copy,roomLabel:x.room,startGame:x.start};
+    for(const [id,value] of Object.entries(map))setText(id,value);
+    const front=document.querySelector('.playing-card .front .big');
+    if(front){front.innerHTML=deck==='fun'?'110<br><em>Love &amp; Laughs</em><br>Fun Edition':`100<br><em>${x.front}</em><br>${x.front2}`;front.dir=['ar','ur'].includes(lang)?'rtl':'auto';}
+    const select=$('category');select.replaceChildren();categoryNames().forEach((name,i)=>{const o=document.createElement('option');o.value=i===0?'all':String(i-1);o.textContent=name;select.appendChild(o);});select.value=category;
+    const language=$('lang');language.replaceChildren();for(const [code,name] of Object.entries(languageNames)){const o=document.createElement('option');o.value=code;o.textContent=name;language.appendChild(o);}language.value=lang;
+    render();
+  }
+  async function selectDeck(next){if(!decks[next]?.length||next===deck)return;deck=next;cards=decks[deck];category='all';random=false;$('random').checked=false;buildSequence();labels();await sync();}
+  function buildSequence(target){sequence=cards.map((_,i)=>i).filter(i=>category==='all'||Number(cards[i].cat)===Number(category));if(random){for(let i=sequence.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[sequence[i],sequence[j]]=[sequence[j],sequence[i]];}}position=target===undefined?0:Math.max(0,sequence.findIndex(i=>Number(cards[i].id)===Number(target)));started=false;flipped=false;render();}
+  function roomData(){return {deck,cardId:Number(current().id),category,random,flipped,started,sequence:ids(),updatedAt:Date.now()};}
+  async function sync(){if(mode!=='couple'||!roomRef||applyingRemote||!current())return;try{await window._heartFirebase.updateDoc(roomRef,roomData());}catch(e){console.error(e);toast(t().offline);}}
+  function setMode(next){mode=next;$('soloMode').classList.toggle('selected',next==='solo');$('coupleMode').classList.toggle('selected',next==='couple');$('couplePanel').hidden=next!=='couple';$('roomActive').hidden=!(next==='couple'&&roomId);$('roomSetup').hidden=!!roomId;}
+  function validRoom(id){return /^[a-f0-9]{40}$/.test(id||'');}
+  function randomId(){const a=new Uint8Array(20);crypto.getRandomValues(a);return Array.from(a,b=>b.toString(16).padStart(2,'0')).join('');}
+  function roomUrl(id){const isNative=location.hostname==='localhost'||location.hostname==='127.0.0.1'||location.protocol==='capacitor:';const u=new URL(isNative?'https://miaslifestyle2026.github.io/heart-collection/':location.href);u.searchParams.delete('card');u.searchParams.set('room',id);return u.toString();}
+  function updateAddress(id){const u=new URL(location.href);u.searchParams.delete('room');u.searchParams.delete('card');if(id)u.searchParams.set('room',id);history.replaceState({},'',u);}
+  function connectionError(e){
+    const code=String(e?.code||'');
+    const message=String(e?.message||'');
+    console.error('Heart Collection Firebase:',code,message,e);
+    if(code==='auth/unauthorized-domain')return 'Firebase: App-Domain nicht freigegeben (auth/unauthorized-domain).';
+    if(code==='auth/operation-not-allowed')return 'Firebase: Anonyme Anmeldung ist deaktiviert.';
+    if(code==='permission-denied'||code==='firestore/permission-denied')return 'Firebase: Keine Berechtigung für Spielräume (permission-denied).';
+    if(code==='auth/network-request-failed'||code==='unavailable'||code==='firestore/unavailable')return 'Firebase: Netzwerkdienst nicht erreichbar ('+(code||'unavailable')+').';
+    if(message.includes('Failed to fetch dynamically imported module')||message.includes('Failed to load module script')||e instanceof TypeError&&message.includes('import'))return 'Firebase: Online-Bibliotheken konnten in Android nicht geladen werden.';
+    return 'Firebase-Fehler: '+(code||message.slice(0,110)||'unbekannt');
+  }
+  async function firebaseReady(){if(db)return true;const cfg=window.HEART_FIREBASE_CONFIG;if(!cfg||!cfg.apiKey||cfg.apiKey==='REPLACE_ME'){toast(t().setup);return false;}
+    try{const [{initializeApp,getApps,getApp},{getAuth,signInAnonymously},{getFirestore,doc,setDoc,getDoc,onSnapshot,updateDoc}]=await Promise.all([
+      import('https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js'),import('https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js'),import('https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js')]);
+      const app=getApps().length?getApp():initializeApp(cfg);await signInAnonymously(getAuth(app));db=getFirestore(app);window._heartFirebase={doc,setDoc,getDoc,onSnapshot,updateDoc};return true;
+    }catch(e){toast(connectionError(e));return false;}}
+  function applyRoom(data){applyingRemote=true;try{
+    const remoteDeck=data.deck==='fun'?'fun':'deep';if(remoteDeck!==deck){deck=remoteDeck;cards=decks[deck];}
+    category=typeof data.category==='string'?data.category:'all';random=!!data.random;
+    const incoming=Array.isArray(data.sequence)?data.sequence:[];
+    sequence=incoming.map(id=>cards.findIndex(c=>Number(c.id)===Number(id))).filter(i=>i>=0);
+    if(!sequence.length){category='all';sequence=cards.map((_,i)=>i);}
+    position=Math.max(0,sequence.findIndex(i=>Number(cards[i].id)===Number(data.cardId)));
+    started=typeof data.started==='boolean'?data.started:true;
+    flipped=typeof data.flipped==='boolean'?data.flipped:started;
+    labels();$('category').value=category;$('random').checked=random;render();
+  }finally{applyingRemote=false;}}
+  async function enterRoom(id,create){if(busy)return;if(!validRoom(id)){toast(t().invalid);return;}busy=true;render();
+    try{if(!await firebaseReady())return;
+      const api=window._heartFirebase;const ref=api.doc(db,'rooms',id);
+      if(create){category=$('category').value;random=$('random').checked;buildSequence();await api.setDoc(ref,roomData());}
+      else{const snap=await api.getDoc(ref);if(!snap.exists()){toast(t().invalid);return;}}
+      if(unsubscribe){unsubscribe();unsubscribe=null;}
+      roomId=id;roomRef=ref;setMode('couple');$('roomLink').value=roomUrl(id);setText('roomStatus',lang==='de'?'Gemeinsamer Spielraum':'Shared game room');updateAddress(id);
+      unsubscribe=api.onSnapshot(ref,snap=>{if(!snap.exists()){toast(t().invalid);leaveRoom();return;}applyRoom(snap.data());},e=>{toast(connectionError(e));});
+    }catch(e){toast(connectionError(e));}finally{busy=false;render();}}
+  function leaveRoom(){if(unsubscribe){unsubscribe();unsubscribe=null;}roomId=null;roomRef=null;updateAddress(null);setMode('solo');started=false;flipped=false;render();}
+  async function startGame(){if(busy||!current())return;started=true;position=0;flipped=true;render();await sync();}
+  async function step(delta){if(!sequence.length||busy)return;position=(position+delta+sequence.length)%sequence.length;started=true;flipped=true;render();await sync();}
+  async function flip(){if(!current()||busy)return;started=true;flipped=!flipped;render();await sync();}
+  if(!cards.length){toast('cards.js missing');return;}
+  buildSequence(Number.isInteger(shared)&&shared>=1&&shared<=110?shared:undefined);
+  if(Number.isInteger(shared)&&shared>=1&&shared<=110){started=true;flipped=true;}
+  labels();
+  $('startGame').addEventListener('click',startGame);
+  $('upgradePremium')?.addEventListener('click',openPremium);
+  $('openSubscription')?.addEventListener('click',openPremium);
+  $('premiumClose')?.addEventListener('click',closePremium);
+  $('premiumDialog')?.addEventListener('click',e=>{if(e.target.id==='premiumDialog')closePremium();});
+  document.querySelectorAll('[data-premium-plan]').forEach(btn=>btn.addEventListener('click',()=>toast((payLabels[lang]||payLabels.en).selected)));
+  window.addEventListener('keydown',e=>{if(e.key==='Escape')closePremium();});
+  $('card').addEventListener('click',flip);
+  $('next').addEventListener('click',()=>step(1));
+  $('prev').addEventListener('click',()=>step(-1));
+  $('category').addEventListener('change',async e=>{category=e.target.value;buildSequence();await sync();});
+  $('random').addEventListener('change',async e=>{random=e.target.checked;buildSequence();await sync();});
+  $('deck').addEventListener('change',e=>selectDeck(e.target.value));
+  $('lang').addEventListener('change',e=>{if(!languageNames[e.target.value])return;lang=e.target.value;localStorage.setItem('heart-lang',lang);labels();});
+  $('soloMode').addEventListener('click',()=>{if(roomId)leaveRoom();else setMode('solo');});
+  $('coupleMode').addEventListener('click',()=>setMode('couple'));
+  $('createRoom').addEventListener('click',()=>enterRoom(randomId(),true));
+  $('joinRoom').addEventListener('click',()=>{const raw=$('joinInput').value.trim();let id=raw;try{id=new URL(raw).searchParams.get('room')||raw;}catch{}enterRoom(id,false);});
+  $('leaveRoom').addEventListener('click',leaveRoom);
+  $('copyRoom').addEventListener('click',async()=>{const link=$('roomLink').value;try{await navigator.clipboard.writeText(link);toast(t().copySuccess);}catch{toast(link);}});
+  $('favorite').addEventListener('click',()=>{if(!isFree(current()))return;const id=favoriteKey(current());if(favorites.has(id))favorites.delete(id);else favorites.add(id);localStorage.setItem('heart-favorites',JSON.stringify([...favorites]));render();});
+  $('share').addEventListener('click',async()=>{const c=current();if(!isFree(c))return;const u=new URL(location.href);u.searchParams.delete('room');u.searchParams.set('card',c.id);u.searchParams.set('deck',deck);try{if(navigator.share)await navigator.share({title:'Mia’s Lifestyle',text:translated(c),url:u.toString()});else{await navigator.clipboard.writeText(u.toString());toast(t().copySuccess);}}catch(e){if(e.name!=='AbortError')toast(t().offline);}});
+  window.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);if(e.key===' '&&!['BUTTON'].includes(e.target.tagName)){e.preventDefault();flip();}});
+  if(incomingRoom){setMode('couple');enterRoom(incomingRoom,false);}
+  // No service worker in the isolated web test: avoid stale production caches.
+})();
