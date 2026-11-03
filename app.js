@@ -82,11 +82,22 @@
   function randomId(){const a=new Uint8Array(20);crypto.getRandomValues(a);return Array.from(a,b=>b.toString(16).padStart(2,'0')).join('');}
   function roomUrl(id){const isNative=location.hostname==='localhost'||location.hostname==='127.0.0.1'||location.protocol==='capacitor:';const u=new URL(isNative?'https://miaslifestyle2026.github.io/heart-collection/':location.href);u.searchParams.delete('card');u.searchParams.set('room',id);return u.toString();}
   function updateAddress(id){const u=new URL(location.href);u.searchParams.delete('room');u.searchParams.delete('card');if(id)u.searchParams.set('room',id);history.replaceState({},'',u);}
+  function connectionError(e){
+    const code=String(e?.code||'');
+    const message=String(e?.message||'');
+    console.error('Heart Collection Firebase:',code,message,e);
+    if(code==='auth/unauthorized-domain')return 'Firebase: App-Domain nicht freigegeben (auth/unauthorized-domain).';
+    if(code==='auth/operation-not-allowed')return 'Firebase: Anonyme Anmeldung ist deaktiviert.';
+    if(code==='permission-denied'||code==='firestore/permission-denied')return 'Firebase: Keine Berechtigung für Spielräume (permission-denied).';
+    if(code==='auth/network-request-failed'||code==='unavailable'||code==='firestore/unavailable')return 'Firebase: Netzwerkdienst nicht erreichbar ('+(code||'unavailable')+').';
+    if(message.includes('Failed to fetch dynamically imported module')||message.includes('Failed to load module script')||e instanceof TypeError&&message.includes('import'))return 'Firebase: Online-Bibliotheken konnten in Android nicht geladen werden.';
+    return 'Firebase-Fehler: '+(code||message.slice(0,110)||'unbekannt');
+  }
   async function firebaseReady(){if(db)return true;const cfg=window.HEART_FIREBASE_CONFIG;if(!cfg||!cfg.apiKey||cfg.apiKey==='REPLACE_ME'){toast(t().setup);return false;}
     try{const [{initializeApp,getApps,getApp},{getAuth,signInAnonymously},{getFirestore,doc,setDoc,getDoc,onSnapshot,updateDoc}]=await Promise.all([
       import('https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js'),import('https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js'),import('https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js')]);
       const app=getApps().length?getApp():initializeApp(cfg);await signInAnonymously(getAuth(app));db=getFirestore(app);window._heartFirebase={doc,setDoc,getDoc,onSnapshot,updateDoc};return true;
-    }catch(e){console.error(e);toast(t().offline);return false;}}
+    }catch(e){toast(connectionError(e));return false;}}
   function applyRoom(data){applyingRemote=true;try{
     const remoteDeck=data.deck==='fun'?'fun':'deep';if(remoteDeck!==deck){deck=remoteDeck;cards=decks[deck];}
     category=typeof data.category==='string'?data.category:'all';random=!!data.random;
@@ -105,8 +116,8 @@
       else{const snap=await api.getDoc(ref);if(!snap.exists()){toast(t().invalid);return;}}
       if(unsubscribe){unsubscribe();unsubscribe=null;}
       roomId=id;roomRef=ref;setMode('couple');$('roomLink').value=roomUrl(id);setText('roomStatus',lang==='de'?'Gemeinsamer Spielraum':'Shared game room');updateAddress(id);
-      unsubscribe=api.onSnapshot(ref,snap=>{if(!snap.exists()){toast(t().invalid);leaveRoom();return;}applyRoom(snap.data());},e=>{console.error(e);toast(t().offline);});
-    }catch(e){console.error(e);toast(t().offline);}finally{busy=false;render();}}
+      unsubscribe=api.onSnapshot(ref,snap=>{if(!snap.exists()){toast(t().invalid);leaveRoom();return;}applyRoom(snap.data());},e=>{toast(connectionError(e));});
+    }catch(e){toast(connectionError(e));}finally{busy=false;render();}}
   function leaveRoom(){if(unsubscribe){unsubscribe();unsubscribe=null;}roomId=null;roomRef=null;updateAddress(null);setMode('solo');started=false;flipped=false;render();}
   async function startGame(){if(busy||!current())return;started=true;position=0;flipped=true;render();await sync();}
   async function step(delta){if(!sequence.length||busy)return;position=(position+delta+sequence.length)%sequence.length;started=true;flipped=true;render();await sync();}
