@@ -51,7 +51,7 @@
     setText('number',String(c.id).padStart(2,'0'));
     setText('categoryName',(categoryNames()[Number(c.cat)+1]||'').toUpperCase());
     setText('question',q);$('question').classList.toggle('long',q.length>112);
-    setText('bonusTitle',!locked&&Number(c.cat)===5?cardTitle(c):'');
+    setText('bonusTitle',!locked&&deck==='deep'&&Number(c.cat)===5?cardTitle(c):'');
     setText('favoriteText',locked?'🔒 Premium':favorites.has(favoriteKey(c))?x.saved:x.favorite);
     $('favorite').disabled=locked;
     $('share').disabled=locked;
@@ -63,11 +63,12 @@
     const upgrade=$('upgradePremium');if(upgrade)upgrade.hidden=!locked;
   }
   function labels(){const x=t();document.documentElement.lang=lang;
-    $('heading').innerHTML=`${x.heading}<br><em>${x.heading2}</em>`;
+    $('heading').innerHTML=deck==='fun'?'Love &amp; Laughs<br><em>Fun Edition</em>':`${x.heading}<br><em>${x.heading2}</em>`;
+    $('deck').value=deck;document.body.classList.toggle('fun-edition',deck==='fun');
     const map={subtitle:x.subtitle,categoryLabel:x.category,shuffleLabel:x.shuffle,prevText:x.prev,nextText:x.next,shareText:x.share,tap:x.tap,footerText:x.footer,soloText:x.solo,coupleText:x.couple,createRoom:x.create,joinRoom:x.join,leaveRoom:x.leave,copyRoom:x.copy,roomLabel:x.room,startGame:x.start};
     for(const [id,value] of Object.entries(map))setText(id,value);
     const front=document.querySelector('.playing-card .front .big');
-    if(front){front.innerHTML=`100<br><em>${x.front}</em><br>${x.front2}`;front.dir=['ar','ur'].includes(lang)?'rtl':'auto';}
+    if(front){front.innerHTML=deck==='fun'?'110<br><em>Love &amp; Laughs</em><br>Fun Edition':`100<br><em>${x.front}</em><br>${x.front2}`;front.dir=['ar','ur'].includes(lang)?'rtl':'auto';}
     const select=$('category');select.replaceChildren();categoryNames().forEach((name,i)=>{const o=document.createElement('option');o.value=i===0?'all':String(i-1);o.textContent=name;select.appendChild(o);});select.value=category;
     const language=$('lang');language.replaceChildren();for(const [code,name] of Object.entries(languageNames)){const o=document.createElement('option');o.value=code;o.textContent=name;language.appendChild(o);}language.value=lang;
     render();
