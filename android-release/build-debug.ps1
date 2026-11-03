@@ -43,5 +43,5 @@ $target = Join-Path $PSScriptRoot 'The-Heart-Collection-BOTH-DECKS-debug.apk'
 Copy-Item -LiteralPath $apk -Destination $target -Force
 Write-Host ''
 Write-Host "BUILD OK: $apk"
-Write-Host "INSTALL THIS FILE: $target" -ForegroundColor Green -ForegroundColor Green
+Write-Host "INSTALL THIS FILE: $target" -ForegroundColor Green
 Write-Host 'This is a debug APK for device testing, not a signed Play Store AAB.'
