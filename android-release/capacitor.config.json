@@ -1,0 +1,8 @@
+{
+  "appId": "com.miaslifestyle.heartcollection",
+  "appName": "The Heart Collection",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
