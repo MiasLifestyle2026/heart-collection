@@ -49,13 +49,13 @@
     $('card').classList.toggle('flipped',flipped);
     setText('counter',`${position+1} / ${sequence.length}`);
     setText('number',String(c.id).padStart(2,'0'));
-    setText('categoryName',(x.categories[Number(c.cat)+1]||'').toUpperCase());
+    setText('categoryName',(categoryNames()[Number(c.cat)+1]||'').toUpperCase());
     setText('question',q);$('question').classList.toggle('long',q.length>112);
     setText('bonusTitle',!locked&&Number(c.cat)===5?cardTitle(c):'');
-    setText('favoriteText',locked?'🔒 Premium':favorites.has(c.id)?x.saved:x.favorite);
+    setText('favoriteText',locked?'🔒 Premium':favorites.has(favoriteKey(c))?x.saved:x.favorite);
     $('favorite').disabled=locked;
     $('share').disabled=locked;
-    $('favorite').firstChild.textContent=favorites.has(c.id)?'♥ ':'♡ ';
+    $('favorite').firstChild.textContent=favorites.has(favoriteKey(c))?'♥ ':'♡ ';
     $('question').dir=['ar','ur'].includes(lang)?'rtl':'auto';
     $('card').setAttribute('aria-label',flipped?'Flip card':'Reveal question');
     $('startGame').hidden=started;
@@ -68,12 +68,12 @@
     for(const [id,value] of Object.entries(map))setText(id,value);
     const front=document.querySelector('.playing-card .front .big');
     if(front){front.innerHTML=`100<br><em>${x.front}</em><br>${x.front2}`;front.dir=['ar','ur'].includes(lang)?'rtl':'auto';}
-    const select=$('category');select.replaceChildren();x.categories.forEach((name,i)=>{const o=document.createElement('option');o.value=i===0?'all':String(i-1);o.textContent=name;select.appendChild(o);});select.value=category;
+    const select=$('category');select.replaceChildren();categoryNames().forEach((name,i)=>{const o=document.createElement('option');o.value=i===0?'all':String(i-1);o.textContent=name;select.appendChild(o);});select.value=category;
     const language=$('lang');language.replaceChildren();for(const [code,name] of Object.entries(languageNames)){const o=document.createElement('option');o.value=code;o.textContent=name;language.appendChild(o);}language.value=lang;
     render();
   }
   function buildSequence(target){sequence=cards.map((_,i)=>i).filter(i=>category==='all'||Number(cards[i].cat)===Number(category));if(random){for(let i=sequence.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[sequence[i],sequence[j]]=[sequence[j],sequence[i]];}}position=target===undefined?0:Math.max(0,sequence.findIndex(i=>Number(cards[i].id)===Number(target)));started=false;flipped=false;render();}
-  function roomData(){return {cardId:Number(current().id),category,random,flipped,started,sequence:ids(),updatedAt:Date.now()};}
+  function roomData(){return {deck,cardId:Number(current().id),category,random,flipped,started,sequence:ids(),updatedAt:Date.now()};}
   async function sync(){if(mode!=='couple'||!roomRef||applyingRemote||!current())return;try{await window._heartFirebase.updateDoc(roomRef,roomData());}catch(e){console.error(e);toast(t().offline);}}
   function setMode(next){mode=next;$('soloMode').classList.toggle('selected',next==='solo');$('coupleMode').classList.toggle('selected',next==='couple');$('couplePanel').hidden=next!=='couple';$('roomActive').hidden=!(next==='couple'&&roomId);$('roomSetup').hidden=!!roomId;}
   function validRoom(id){return /^[a-f0-9]{40}$/.test(id||'');}
@@ -86,6 +86,7 @@
       const app=getApps().length?getApp():initializeApp(cfg);await signInAnonymously(getAuth(app));db=getFirestore(app);window._heartFirebase={doc,setDoc,getDoc,onSnapshot,updateDoc};return true;
     }catch(e){console.error(e);toast(t().offline);return false;}}
   function applyRoom(data){applyingRemote=true;try{
+    const remoteDeck=data.deck==='fun'?'fun':'deep';if(remoteDeck!==deck){deck=remoteDeck;cards=decks[deck];}
     category=typeof data.category==='string'?data.category:'all';random=!!data.random;
     const incoming=Array.isArray(data.sequence)?data.sequence:[];
     sequence=incoming.map(id=>cards.findIndex(c=>Number(c.id)===Number(id))).filter(i=>i>=0);
@@ -93,7 +94,7 @@
     position=Math.max(0,sequence.findIndex(i=>Number(cards[i].id)===Number(data.cardId)));
     started=typeof data.started==='boolean'?data.started:true;
     flipped=typeof data.flipped==='boolean'?data.flipped:started;
-    $('category').value=category;$('random').checked=random;render();
+    labels();$('category').value=category;$('random').checked=random;render();
   }finally{applyingRemote=false;}}
   async function enterRoom(id,create){if(busy)return;if(!validRoom(id)){toast(t().invalid);return;}busy=true;render();
     try{if(!await firebaseReady())return;
@@ -131,7 +132,7 @@
   $('joinRoom').addEventListener('click',()=>{const raw=$('joinInput').value.trim();let id=raw;try{id=new URL(raw).searchParams.get('room')||raw;}catch{}enterRoom(id,false);});
   $('leaveRoom').addEventListener('click',leaveRoom);
   $('copyRoom').addEventListener('click',async()=>{const link=$('roomLink').value;try{await navigator.clipboard.writeText(link);toast(t().copySuccess);}catch{toast(link);}});
-  $('favorite').addEventListener('click',()=>{if(!isFree(current()))return;const id=current().id;if(favorites.has(id))favorites.delete(id);else favorites.add(id);localStorage.setItem('heart-favorites',JSON.stringify([...favorites]));render();});
+  $('favorite').addEventListener('click',()=>{if(!isFree(current()))return;const id=favoriteKey(current());if(favorites.has(id))favorites.delete(id);else favorites.add(id);localStorage.setItem('heart-favorites',JSON.stringify([...favorites]));render();});
   $('share').addEventListener('click',async()=>{const c=current();if(!isFree(c))return;const u=new URL(location.href);u.searchParams.delete('room');u.searchParams.set('card',c.id);try{if(navigator.share)await navigator.share({title:'Mia’s Lifestyle',text:translated(c),url:u.toString()});else{await navigator.clipboard.writeText(u.toString());toast(t().copySuccess);}}catch(e){if(e.name!=='AbortError')toast(t().offline);}});
   window.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);if(e.key===' '&&!['BUTTON'].includes(e.target.tagName)){e.preventDefault();flip();}});
   if(incomingRoom){setMode('couple');enterRoom(incomingRoom,false);}
