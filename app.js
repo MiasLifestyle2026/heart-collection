@@ -1,7 +1,8 @@
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
-  const cards = Array.isArray(window.HEART_CARDS) ? window.HEART_CARDS : [];
+  const decks={deep:Array.isArray(window.HEART_CARDS)?window.HEART_CARDS:[],fun:Array.isArray(window.HEART_FUN_CARDS)?window.HEART_FUN_CARDS:[]};
+  let deck='deep',cards=decks.deep;
   const translations = window.HEART_UI || {};
   const languageNames = {de:'🇩🇪 Deutsch',en:'🇬🇧 English',es:'🇪🇸 Español',zh:'🇨🇳 中文',fr:'🇫🇷 Français',ur:'🇵🇰 اردو',hi:'🇮🇳 हिन्दी',ar:'🌍 العربية'};
   const extra = {
@@ -19,6 +20,7 @@
   const urlParams=new URLSearchParams(location.search);
   const shared=Number(urlParams.get('card'));
   const incomingRoom=urlParams.get('room');
+  if(urlParams.get('deck')==='fun'&&decks.fun.length){deck='fun';cards=decks.fun;}
   const t=()=>({...fallback,...(translations[lang]||translations.en||{}),...extra.en,...(extra[lang]||{})});
   // Premium preview only: entitlement and payment verification must be implemented server-side.
   const freeIds=new Set([1,2,3,21,22,23,41,42,43,61,62,63,81,82,83,101,102,103]);
@@ -35,6 +37,9 @@
   }
   function closePremium(){const dialog=$('premiumDialog');if(dialog)dialog.hidden=true;document.body.classList.remove('premium-open');}
   const current=()=>cards[sequence[position]];
+  const favoriteKey=c=>`${deck}:${c.id}`;
+  const deckCategories={de:['Alle Karten','Lach dich verliebt','Frech & verspielt','Trau dich, albern zu sein','Was wäre dir lieber?','Liebenswertes Chaos','Mission Liebe'],en:['All cards','Laugh Out Loud','Flirt Alert','Dare to Be Silly','Would You Rather','Couple Chaos','Love Challenges']};
+  const categoryNames=()=>deck==='fun'?(deckCategories[lang]||deckCategories.en):t().categories;
   const ids=()=>sequence.map(i=>Number(cards[i].id));
   function toast(message){const el=$('toast');if(!el)return;el.textContent=message;el.classList.add('show');clearTimeout(window._heartToast);window._heartToast=setTimeout(()=>el.classList.remove('show'),3200);}
   function translated(c){return typeof c[lang]==='string'&&c[lang].trim()?c[lang]:`${t().missing}\n\n${c.en||c.de||''}`;}
