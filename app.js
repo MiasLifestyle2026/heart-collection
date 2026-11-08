@@ -24,8 +24,8 @@
   const t=()=>({...fallback,...(translations[lang]||translations.en||{}),...extra.en,...(extra[lang]||{})});
   // Premium preview only: entitlement and payment verification must be implemented server-side.
   const freeIds=new Set([1,2,3,21,22,23,41,42,43,61,62,63,81,82,83,101,102,103]);
-  const isClosedTestBuild=window.HEART_CLOSED_TEST_BUILD===true;
-  const isFree=c=>!!c&&(isClosedTestBuild||freeIds.has(Number(c.id)));
+  // Test premium must be authorized by Firebase, never by a local build flag.
+  const isFree=c=>!!c&&freeIds.has(Number(c.id));
   const premiumText=()=>({de:'🔒 Premium-Karte\nMit Heart Collection Premium freischalten: 3,95 € monatlich oder 8,50 € alle 3 Monate. Ein Abo reicht für beide Partner im gemeinsamen Spielraum.',en:'🔒 Premium card\nUnlock with Heart Collection Premium: €3.95/month or €8.50 every 3 months. One subscription covers both partners in a shared room.',es:'🔒 Tarjeta Premium\nDisponible con la suscripción Premium.',fr:'🔒 Carte Premium\nDisponible avec l’abonnement Premium.',zh:'🔒 高级卡片\n订阅后解锁。',ur:'🔒 پریمیم کارڈ\nسبسکرپشن کے ساتھ دستیاب۔',hi:'🔒 प्रीमियम कार्ड\nसदस्यता से अनलॉक करें।',ar:'🔒 بطاقة مميزة\nمتاحة بالاشتراك.'}[lang]||'🔒 Premium card');
   const payLabels={
     de:{title:'Heart Collection Premium',sub:'Mehr Nähe. Mehr Fragen. Mehr gemeinsame Momente.',monthly:'Monatlich',quarter:'Alle 3 Monate',monthSuffix:'/ Monat',quarterSuffix:'/ 3 Monate',save:'28 % sparen',benefits:'92 Premium-Karten · 8 Sprachen · neue Karten jeden Monat · gemeinsamer Paarmodus',choose:'Auswählen',notice:'Vorschau: Noch keine Zahlung möglich. Die Google-Play-Abrechnung folgt später.',close:'Schließen',selected:'Dies ist eine Vorschau. Es wird nichts abgebucht.'},
