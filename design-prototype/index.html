@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#360017">
+<meta name="description" content="Interaktiver Design-Prototyp für The Heart Collection – Mia's Lifestyle. Die bestehende App bleibt unverändert.">
+<title>The Heart Collection · Design-Prototyp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./prototype.css?v=3">
+</head>
+<body>
+<div class="app-shell">
+  <div class="glow glow-a" aria-hidden="true"></div><div class="glow glow-b" aria-hidden="true"></div>
+  <span class="floating-heart floating-heart-a" aria-hidden="true">♥</span><span class="floating-heart floating-heart-b" aria-hidden="true">♥</span>
+  <header class="topbar">
+    <span class="prototype-pill"><span class="live-dot"></span> DESIGN-VORSCHAU</span>
+    <button id="languageQuick" class="language-quick" type="button" aria-label="Sprache einstellen">🌐 <span id="languageShort">DE</span></button>
+  </header>
+
+  <main id="mainArea">
+    <section class="view is-active" id="screen-home" aria-labelledby="homeTitle">
+      <div class="hero-brand">
+        <span class="logo-the">The</span>
+        <div class="logo-heart-wrap">
+          <svg class="logo-heart-outline" viewBox="0 0 240 190" aria-hidden="true"><defs><linearGradient id="goldStroke" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff1c6"/><stop offset=".4" stop-color="#e9a64d"/><stop offset=".72" stop-color="#ffe0a0"/><stop offset="1" stop-color="#bc6b2e"/></linearGradient></defs><path d="M120 177C83 143 22 104 22 59c0-55 75-65 98-14 23-51 98-41 98 14 0 45-61 84-98 118Z" fill="none" stroke="url(#goldStroke)" stroke-width="4.2" stroke-linejoin="round"/></svg>
+          <h1 id="homeTitle" class="logo-heart-text">Heart</h1>
+        </div>
+        <span class="logo-collection">COLLECTION</span>
+        <div class="logo-flourish"><span>✦</span> ♡ <span>✦</span></div>
+        <p class="hero-subtitle" data-i18n="tagline">220 Fragen für Liebe, Nähe und ganz besondere Momente.</p>
+      </div>
+
+      <div class="deck-grid" aria-label="Kartendecks auswählen">
+        <button type="button" class="deck-tile deck-deep is-selected" data-deck="deep" aria-pressed="true">
+          <span class="tile-glint" aria-hidden="true"></span>
+          <span class="tile-name">Deep<br>Questions</span>
+          <span class="tile-count">110 <span data-i18n="questions">Fragen</span></span>
+          <span class="tile-heart" aria-hidden="true">♡</span>
+        </button>
+        <button type="button" class="deck-tile deck-fun" data-deck="fun" aria-pressed="false">
+          <span class="tile-glint" aria-hidden="true"></span>
+          <span class="tile-name">Love &amp;<br>Laughs</span>
+          <span class="tile-edition">FUN EDITION</span>
+          <span class="tile-count">110 <span data-i18n="questions">Fragen</span></span>
+          <span class="tile-heart double" aria-hidden="true">♡</span>
+        </button>
+      </div>
+      <button type="button" id="playNow" class="cta-button" data-i18n="play">Jetzt spielen ♥</button>
+      <div class="feature-note"><span>✧</span> <span data-i18n="eightLanguages">8 Sprachen</span><span> · </span><span data-i18n="twoDecks">2 Kartendecks</span><span> ✧</span></div>
+      <div class="quick-actions" aria-label="Schnellzugriff">
+        <button type="button" data-screen="categories"><span class="quick-icon">▤</span><span data-i18n="categories">Kategorien</span></button>
+        <button type="button" data-screen="favorites"><span class="quick-icon">♡</span><span data-i18n="favorites">Favoriten</span></button>
+        <button type="button" data-screen="couple"><span class="quick-icon">♧</span><span data-i18n="couple">Paarmodus</span></button>
+        <button type="button" data-screen="settings"><span class="quick-icon">⚙</span><span data-i18n="settings">Einstellungen</span></button>
+      </div>
+    </section>
+
+    <section class="view" id="screen-game" hidden aria-labelledby="gameTitle">
+      <div class="section-head"><button class="back-button" type="button" data-screen="home" aria-label="Zurück zur Startseite">‹</button><div><span class="eyebrow" data-i18n="yourDeck">DEIN KARTENDECK</span><h2 id="gameTitle">Deep Questions</h2></div><span class="mini-heart">♡</span></div>
+      <div class="game-bar">
+        <label for="gameCategory" data-i18n="category">Kategorie</label><select id="gameCategory" aria-label="Kategorie"></select>
+      </div>
+      <div class="game-meta"><span id="cardCount">01 / 110</span><span id="cardLockLabel"></span></div>
+      <button id="flipCard" class="play-card" type="button" aria-label="Karte umdrehen">
+        <span class="play-card-outline"></span><span class="play-card-sparkle">✧</span>
+        <span class="play-card-number" id="cardNumber">01</span>
+        <span class="play-card-category" id="cardCategory"></span>
+        <span id="cardQuestion" class="play-card-question"></span>
+        <span class="play-card-heart">♥</span>
+        <span class="play-card-sign">MIA'S LIFESTYLE</span>
+      </button>
+      <div class="game-actions"><button type="button" id="prevCard">← <span data-i18n="previous">Zurück</span></button><button type="button" id="nextCard"><span data-i18n="next">Nächste Karte</span> →</button></div>
+      <div class="game-subactions"><button type="button" id="favCard">♡ <span data-i18n="save">Merken</span></button><button type="button" id="shuffleCard">⇄ <span data-i18n="shuffle">Mischen</span></button></div>
+      <p class="preview-disclaimer" data-i18n="previewNote">Design-Prototyp · Premium-Karten sind weiterhin geschützt.</p>
+    </section>
+
+    <section class="view" id="screen-categories" hidden aria-labelledby="categoriesTitle">
+      <div class="section-head"><span class="section-symbol">▤</span><div><span class="eyebrow">THE HEART COLLECTION</span><h2 id="categoriesTitle" data-i18n="categories">Kategorien</h2></div></div>
+      <p class="page-lead" data-i18n="categoryLead">Wähle eine Sammlung und entdecke passende Fragen.</p>
+      <div class="segmented" role="group" aria-label="Kartendeck"><button class="is-active" type="button" data-select-deck="deep">Deep Questions</button><button type="button" data-select-deck="fun">Love &amp; Laughs</button></div>
+      <div id="categoryList" class="category-list"></div>
+    </section>
+
+    <section class="view" id="screen-favorites" hidden aria-labelledby="favoritesTitle">
+      <div class="section-head"><span class="section-symbol">♡</span><div><span class="eyebrow">THE HEART COLLECTION</span><h2 id="favoritesTitle" data-i18n="favorites">Favoriten</h2></div></div>
+      <p class="page-lead" data-i18n="favoriteLead">Deine gemerkten Fragen bleiben auf diesem Gerät.</p>
+      <div id="favoritesList" class="favorite-list"></div>
+    </section>
+
+    <section class="view" id="screen-couple" hidden aria-labelledby="coupleTitle">
+      <div class="section-head"><span class="section-symbol">♧</span><div><span class="eyebrow">THE HEART COLLECTION</span><h2 id="coupleTitle" data-i18n="couple">Paarmodus</h2></div></div>
+      <div class="feature-card"><div class="feature-icon">♡ ♡</div><h3 data-i18n="together">Zusammen spielen, auch auf Distanz</h3><p data-i18n="coupleText">Der echte Paarmodus funktioniert bereits in der bestehenden Test-App. Dieser Prototyp zeigt zunächst nur das neue Design.</p>
+      <a class="cta-button link-cta" href="../couple-test/" target="_blank" rel="noopener" data-i18n="openReal">Funktionierenden Paarmodus öffnen ↗</a></div>
+      <p class="preview-disclaimer" data-i18n="noMock">Kein vorgetäuschter Spielraum: Für Live-Synchronisierung öffnet sich die bestehende Testversion.</p>
+    </section>
+
+    <section class="view" id="screen-settings" hidden aria-labelledby="settingsTitle">
+      <div class="section-head"><span class="section-symbol">⚙</span><div><span class="eyebrow">THE HEART COLLECTION</span><h2 id="settingsTitle" data-i18n="settings">Einstellungen</h2></div></div>
+      <div class="settings-card"><label for="languagePicker" data-i18n="language">Sprache der Fragen</label><select id="languagePicker">
+        <option value="de">🇩🇪 Deutsch</option><option value="en">🇬🇧 English</option><option value="es">🇪🇸 Español</option><option value="fr">🇫🇷 Français</option><option value="zh">🇨🇳 中文</option><option value="ur">🇵🇰 اردو</option><option value="hi">🇮🇳 हिन्दी</option><option value="ar">🌍 العربية</option>
+      </select><p data-i18n="langDesc">Die Kartentexte stammen aus der vorhandenen Sammlung mit acht Sprachen.</p></div>
+      <div class="settings-card"><h3 data-i18n="aboutTitle">Über diesen Prototyp</h3><p data-i18n="aboutText">Eine eigenständige Design-Vorschau. Sie ersetzt nicht die veröffentlichte App und nimmt keine Zahlungen entgegen.</p></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Hauptnavigation">
+    <button type="button" class="nav-item is-active" data-screen="home" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8v9a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg><span data-i18n="home">Home</span></button>
+    <button type="button" class="nav-item" data-screen="categories"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="12" height="16" rx="2"/><path d="M9 2h10a2 2 0 0 1 2 2v13"/></svg><span data-i18n="categories">Kategorien</span></button>
+    <button type="button" class="nav-item" data-screen="favorites"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.8a5.7 5.7 0 0 0-8.1 0L12 5.5l-.7-.7a5.7 5.7 0 1 0-8 8.1L12 21l8.7-8.1a5.7 5.7 0 0 0 .1-8.1z"/></svg><span data-i18n="favorites">Favoriten</span></button>
+    <button type="button" class="nav-item" data-screen="couple"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="3"/><circle cx="18" cy="8" r="2.5"/><path d="M2 21v-3c0-3 3-5 7-5s7 2 7 5v3zM16 14c4 0 6 2 6 5v2h-4"/></svg><span data-i18n="couple">Paarmodus</span></button>
+    <button type="button" class="nav-item" data-screen="settings"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M10 2h4l.5 2.1 1.8.8 1.9-1.1 2.8 2.8-1.1 1.9.8 1.8L23 11v3l-2.3.5-.8 1.8 1.1 1.9-2.8 2.8-1.9-1.1-1.8.8L14 23h-4l-.5-2.3-1.8-.8-1.9 1.1-2.8-2.8 1.1-1.9-.8-1.8L1 14v-3l2.3-.5.8-1.8L3 6.8 5.8 4l1.9 1.1 1.8-.8z"/></svg><span data-i18n="settings">Einstellungen</span></button>
+  </nav>
+  <div role="status" aria-live="polite" id="toast" class="toast" hidden></div>
+</div>
+<script src="../couple-test/cards.js"></script>
+<script src="../couple-test/love-laughs-cards.js"></script>
+<script src="./prototype.js?v=3"></script>
+</body>
+</html>
