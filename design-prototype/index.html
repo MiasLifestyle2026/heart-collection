@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./prototype.css?v=3">
+<link rel="stylesheet" href="./prototype.css?v=4">
 </head>
 <body>
 <div class="app-shell">
@@ -63,6 +63,7 @@
       <div class="game-bar">
         <label for="gameCategory" data-i18n="category">Kategorie</label><select id="gameCategory" aria-label="Kategorie"></select>
       </div>
+      <div id="gameRoomBar" class="game-room-bar" hidden><span class="room-live-dot"></span><span data-i18n="connected">Gemeinsamer Spielraum verbunden</span><button id="openRoomFromGame" type="button" data-i18n="shareLink">Einladungslink</button></div>
       <div class="game-meta"><span id="cardCount">01 / 110</span><span id="cardLockLabel"></span></div>
       <button id="flipCard" class="play-card" type="button" aria-label="Karte umdrehen">
         <span class="play-card-outline"></span><span class="play-card-sparkle">✧</span>
@@ -92,9 +93,30 @@
 
     <section class="view" id="screen-couple" hidden aria-labelledby="coupleTitle">
       <div class="section-head"><span class="section-symbol">♧</span><div><span class="eyebrow">THE HEART COLLECTION</span><h2 id="coupleTitle" data-i18n="couple">Paarmodus</h2></div></div>
-      <div class="feature-card"><div class="feature-icon">♡ ♡</div><h3 data-i18n="together">Zusammen spielen, auch auf Distanz</h3><p data-i18n="coupleText">Der echte Paarmodus funktioniert bereits in der bestehenden Test-App. Dieser Prototyp zeigt zunächst nur das neue Design.</p>
-      <a class="cta-button link-cta" href="../couple-test/" target="_blank" rel="noopener" data-i18n="openReal">Funktionierenden Paarmodus öffnen ↗</a></div>
-      <p class="preview-disclaimer" data-i18n="noMock">Kein vorgetäuschter Spielraum: Für Live-Synchronisierung öffnet sich die bestehende Testversion.</p>
+      <div class="feature-card couple-feature">
+        <div class="feature-icon" aria-hidden="true">♡ ♡</div>
+        <h3 data-i18n="together">Zusammen spielen, auch auf Distanz</h3>
+        <p data-i18n="coupleText">Erstellt einen gemeinsamen Spielraum und beantwortet dieselben Fragen – auch wenn ihr weit voneinander entfernt seid.</p>
+      </div>
+      <div id="roomSetup" class="room-panel">
+        <button id="createRoom" type="button" class="cta-button room-create" data-i18n="createRoom">♡ Spielraum erstellen</button>
+        <div class="join-label" data-i18n="orJoin">Oder einem Spielraum beitreten</div>
+        <label class="room-field-label" for="joinInput" data-i18n="invitation">Einladungslink oder Raumcode</label>
+        <div class="room-joinrow"><input id="joinInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Einladungslink oder Raumcode"><button id="joinRoom" type="button" data-i18n="join">Beitreten</button></div>
+      </div>
+      <div id="roomActive" class="room-panel room-active" hidden>
+        <div class="room-connected"><span class="room-live-dot"></span><span id="roomStatus" data-i18n="connected">Gemeinsamer Spielraum verbunden</span></div>
+        <label class="room-field-label" for="roomLink" data-i18n="shareLink">Einladungslink</label>
+        <input id="roomLink" type="text" readonly aria-label="Einladungslink">
+        <div class="room-buttons">
+          <button id="copyRoom" type="button" data-i18n="copyLink">Link kopieren</button>
+          <button id="shareRoom" type="button" data-i18n="shareRoom">Teilen</button>
+        </div>
+        <button id="roomPlay" type="button" class="cta-button room-create" data-i18n="playTogether">Gemeinsam spielen ♥</button>
+        <button id="leaveRoom" type="button" class="leave-room" data-i18n="leaveRoom">Raum verlassen</button>
+      </div>
+      <p id="roomError" class="room-error" role="alert" hidden></p>
+      <p class="preview-disclaimer" data-i18n="roomInfo">Die Karten werden live zwischen beiden Geräten synchronisiert. Premium-Karten bleiben gesperrt.</p>
     </section>
 
     <section class="view" id="screen-settings" hidden aria-labelledby="settingsTitle">
@@ -117,6 +139,7 @@
 </div>
 <script src="../couple-test/cards.js"></script>
 <script src="../couple-test/love-laughs-cards.js"></script>
-<script src="./prototype.js?v=3"></script>
+<script src="../couple-test/firebase-config.js"></script>
+<script src="./prototype.js?v=4"></script>
 </body>
 </html>
