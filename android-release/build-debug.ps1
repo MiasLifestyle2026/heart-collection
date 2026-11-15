@@ -25,12 +25,20 @@ if (!(Test-Path 'android\gradlew.bat')) {
 if ($LASTEXITCODE -ne 0) { throw 'Capacitor sync failed' }
 $web = Join-Path $PSScriptRoot 'www'
 $index = Get-Content (Join-Path $web 'index.html') -Raw -Encoding UTF8
-$appJs = Get-Content (Join-Path $web 'app.js') -Raw -Encoding UTF8
+$luxuryJs = Get-Content (Join-Path $web 'prototype.js') -Raw -Encoding UTF8
 $funJs = Get-Content (Join-Path $web 'love-laughs-cards.js') -Raw -Encoding UTF8
-if ($index -notmatch 'love-laughs-cards\.js' -or $index -notmatch 'id="deck"' -or $appJs -notmatch 'HEART_FUN_CARDS' -or $funJs -notmatch 'HEART_FUN_CARDS') {
-  throw 'Love & Laughs is missing from generated web assets; refusing to build an outdated APK.'
+if ($index -notmatch 'love-laughs-cards\.js' -or
+    $index -notmatch 'id="screen-home"' -or
+    $index -notmatch 'id="screen-couple"' -or
+    $index -notmatch 'id="createRoom"' -or
+    $index -notmatch 'prototype\.js' -or
+    $luxuryJs -notmatch 'HEART_FUN_CARDS' -or
+    $luxuryJs -notmatch 'firebaseApi\.onSnapshot' -or
+    $funJs -notmatch 'HEART_FUN_CARDS' -or
+    !(Test-Path (Join-Path $web 'prototype.css'))) {
+  throw 'The new luxury UI or its live couple mode is missing; refusing to build an outdated APK.'
 }
-Write-Host 'Verified: both decks and Love & Laughs card data are present.' -ForegroundColor Green
+Write-Host 'Verified: luxury home screen, both decks, 8-language interface and Firebase rooms.' -ForegroundColor Green
 Push-Location 'android'
 try {
   & .\gradlew.bat --no-daemon assembleDebug
@@ -38,10 +46,14 @@ try {
 } finally { Pop-Location }
 $apk = Join-Path $PSScriptRoot 'android\app\build\outputs\apk\debug\app-debug.apk'
 $assets = Join-Path $PSScriptRoot 'android\app\src\main\assets\public'
-if (!(Test-Path (Join-Path $assets 'love-laughs-cards.js'))) { throw 'Android assets do not include Love & Laughs; refusing to publish old APK.' }
-$target = Join-Path $PSScriptRoot 'The-Heart-Collection-BOTH-DECKS-debug.apk'
+foreach ($needed in @('prototype.js','prototype.css','index.html','love-laughs-cards.js','firebase-config.js','interface.js')) {
+  if (!(Test-Path (Join-Path $assets $needed))) {
+    throw "Android package is missing $needed; refusing to publish an outdated APK."
+  }
+}
+$target = Join-Path $PSScriptRoot 'The-Heart-Collection-NEW-DESIGN-debug.apk'
 Copy-Item -LiteralPath $apk -Destination $target -Force
 Write-Host ''
-Write-Host "BUILD OK: $apk"
+Write-Host 'BUILD OK: luxury Heart Collection Android UI' -ForegroundColor Green
 Write-Host "INSTALL THIS FILE: $target" -ForegroundColor Green
-Write-Host 'This is a debug APK for device testing, not a signed Play Store AAB.'
+Write-Host 'For testing only: Google Play requires a separate signed AAB.'
