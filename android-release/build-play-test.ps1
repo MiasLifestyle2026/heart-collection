@@ -41,7 +41,7 @@ if ($config.appId -ne 'com.miaslifestyle.heartcollection') {
 }
 
 Write-Host ''
-Write-Host 'THE HEART COLLECTION — INTERNAL GOOGLE PLAY TEST' -ForegroundColor Magenta
+Write-Host 'THE HEART COLLECTION - INTERNAL GOOGLE PLAY TEST' -ForegroundColor Magenta
 Write-Host 'Both decks, all 220 cards, all 12 languages will be unlocked in THIS BUILD ONLY.' -ForegroundColor Yellow
 Write-Host 'Do NOT promote this AAB to production. It contains all premium cards in a test-enabled app.' -ForegroundColor Yellow
 Write-Host "Package: $($config.appId) | VersionCode: $VersionCode"
@@ -142,7 +142,7 @@ try {
     if (Test-Path $target) { throw "File already exists: $target. Use a new versionCode." }
     & $jarsigner -keystore $KeystorePath '-storepass:env' HEART_SIGNING_PW '-keypass:env' HEART_SIGNING_PW -signedjar $target $unsigned $KeyAlias
     if ($LASTEXITCODE -ne 0) { throw 'AAB signing failed; check password, alias and keystore.' }
-    $verification = (& $jarsigner -verify $target 2>&1 | Out-String)
+    $verification = (& $jarsigner '-J-Duser.language=en' -verify $target 2>&1 | Out-String)
     if ($LASTEXITCODE -ne 0 -or $verification -notmatch 'jar verified') { throw "Signed AAB verification failed: $verification" }
 } finally {
     Remove-Item Env:HEART_SIGNING_PW -ErrorAction SilentlyContinue
