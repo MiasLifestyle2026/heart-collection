@@ -38,6 +38,8 @@ let lang='de',deck='deep',category='all',pos=0,order=[],flipped=true,started=fal
 const nativeBuild=location.hostname==='localhost'||location.hostname==='127.0.0.1'||location.protocol==='capacitor:';
 if(nativeBuild)document.body.classList.add('native-app');
 let roomId=null,roomRef=null,unsubscribe=null,db=null,firebaseApi=null,applyingRemote=false,busy=false;
+// Serialize shared-room changes: a delayed Firestore echo must not undo a deck switch.
+let pendingRoomUpdate=null,roomUpdatePromise=null,roomWriteToken=0;
 let favorites=new Set();
 try{const savedLang=localStorage.getItem('heart-design-lang')||localStorage.getItem('heart-lang');if(['de','en','es','fr','zh','ur','hi','ar','it','ko','pl','nl'].includes(savedLang))lang=savedLang;const saved=JSON.parse(localStorage.getItem('heart-design-favorites')||'[]');const older=JSON.parse(localStorage.getItem('heart-favorites')||'[]');if(Array.isArray(saved)&&Array.isArray(older))favorites=new Set([...older,...saved]);}catch(e){console.warn('Local preview storage unavailable',e);}
 const screens=['home','game','categories','favorites','couple','settings'];
@@ -48,7 +50,14 @@ function setLanguage(value){lang=value;try{localStorage.setItem('heart-design-la
 function showScreen(screen){if(!screens.includes(screen))return;screens.forEach(name=>{const el=$('screen-'+name);const isCurrent=name===screen;el.hidden=!isCurrent;el.classList.toggle('is-active',isCurrent);});document.querySelectorAll('.nav-item').forEach(btn=>{const yes=btn.dataset.screen===screen||screen==='game'&&btn.dataset.screen==='home';btn.classList.toggle('is-active',yes);if(yes)btn.setAttribute('aria-current','page');else btn.removeAttribute('aria-current');});if(screen==='categories')renderCategories();if(screen==='favorites')renderFavorites();if(screen==='game')renderGame();window.scrollTo({top:0,behavior:'instant'});}
 function updateTiles(){document.querySelectorAll('[data-deck]').forEach(btn=>{const active=btn.dataset.deck===deck;btn.classList.toggle('is-selected',active);btn.setAttribute('aria-pressed',String(active));});document.querySelectorAll('[data-select-deck]').forEach(btn=>btn.classList.toggle('is-active',btn.dataset.selectDeck===deck));}
 function buildOrder(){order=deckData[deck].map((card,index)=>({card,index})).filter(item=>category==='all'||Number(item.card.cat)===Number(category)).map(item=>item.index);pos=0;flipped=true;}
-function setDeck(value){if(!deckData[value]?.length){toast(locale().noData);return;}deck=value;category='all';random=false;buildOrder();updateTiles();renderCategories();renderGame();syncRoom();}
+function setDeck(value){
+ if(!deckData[value]?.length){toast(locale().noData);return;}
+ if(deck===value)return;
+ deck=value;category='all';random=false;buildOrder();
+ updateTiles();renderCategories();renderGame();
+ // A deck change is one complete, shared action: deck, card IDs and category travel together.
+ void syncRoom();
+}
 function current(){return deckData[deck][order[pos]];}
 function isFree(c){return !!c&&freeIds.has(Number(c.id));}
 function question(c){return c&&typeof c[lang]==='string'&&c[lang].trim()?c[lang]:c?.en||c?.de||'';}
@@ -92,7 +101,33 @@ function applyRoomState(data){
   updateTiles();renderCategories();renderGame();
  }finally{applyingRemote=false;}
 }
-async function syncRoom(){if(!roomId||!roomRef||!firebaseApi||applyingRemote||busy)return;const data=roomData();if(!data)return;try{await firebaseApi.updateDoc(roomRef,data);}catch(error){roomError(error);}}
+async function flushRoomUpdates(){
+ const ref=roomRef;
+ const id=roomId;
+ const token=roomWriteToken;
+ try{
+  while(pendingRoomUpdate&&roomRef===ref&&roomId===id&&roomWriteToken===token){
+   const state=pendingRoomUpdate;
+   pendingRoomUpdate=null;
+   await firebaseApi.updateDoc(ref,state);
+  }
+ }catch(error){
+  if(roomWriteToken===token){pendingRoomUpdate=null;roomError(error);}
+ }finally{
+  if(roomWriteToken===token){
+   roomUpdatePromise=null;
+   if(pendingRoomUpdate&&roomRef===ref&&roomId===id)roomUpdatePromise=flushRoomUpdates();
+  }
+ }
+}
+function syncRoom(){
+ if(!roomId||!roomRef||!firebaseApi||applyingRemote||busy)return;
+ const state=roomData();
+ if(!state)return;
+ pendingRoomUpdate=state;
+ if(!roomUpdatePromise)roomUpdatePromise=flushRoomUpdates();
+ return roomUpdatePromise;
+}
 async function enterRoom(id,create){
  if(busy)return;
  if(!validRoom(id)){$('roomError').textContent=locale().invalidRoom;$('roomError').hidden=false;toast(locale().invalidRoom);return;}
@@ -106,13 +141,22 @@ async function enterRoom(id,create){
   if(unsubscribe){unsubscribe();unsubscribe=null;}
   roomId=id;roomRef=ref;updateRoomUrl(id);showRoomUI();showScreen('couple');
   unsubscribe=firebaseApi.onSnapshot(ref,snapshot=>{
+    if(roomId!==id||roomRef!==ref)return;
     if(!snapshot.exists()){toast(locale().invalidRoom);leaveRoom();return;}
+    // While switching decks, preserve the latest local selection. Local Firestore
+    // echoes and older room snapshots otherwise make the screen jump back.
+    if(roomUpdatePromise||pendingRoomUpdate||snapshot.metadata?.hasPendingWrites)return;
     applyRoomState(snapshot.data());
   },error=>roomError(error));
  }catch(error){roomError(error);}
  finally{busy=false;$('createRoom').disabled=false;$('joinRoom').disabled=false;}
 }
-function leaveRoom(){if(unsubscribe){unsubscribe();unsubscribe=null;}roomId=null;roomRef=null;updateRoomUrl(null);showRoomUI();renderGame();showScreen('couple');}
+function leaveRoom(){
+ // Invalidate any outstanding writes; they must not update a future room.
+ roomWriteToken++;pendingRoomUpdate=null;roomUpdatePromise=null;
+ if(unsubscribe){unsubscribe();unsubscribe=null;}
+ roomId=null;roomRef=null;updateRoomUrl(null);showRoomUI();renderGame();showScreen('couple');
+}
 async function copyLink(){const link=$('roomLink').value;if(!link)return;try{await navigator.clipboard.writeText(link);toast(locale().copySuccess);}catch(error){$('roomLink').focus();$('roomLink').select();toast(link);}}
 async function shareLink(){const link=$('roomLink').value;if(!link)return;try{if(navigator.share)await navigator.share({title:'The Heart Collection',text:locale().together,url:link});else await copyLink();}catch(error){if(error?.name!=='AbortError')await copyLink();}}
 $('createRoom').addEventListener('click',()=>enterRoom(newRoomId(),true));
