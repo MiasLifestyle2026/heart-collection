@@ -27,7 +27,14 @@ $web = Join-Path $PSScriptRoot 'www'
 $index = Get-Content (Join-Path $web 'index.html') -Raw -Encoding UTF8
 $luxuryJs = Get-Content (Join-Path $web 'prototype.js') -Raw -Encoding UTF8
 $funJs = Get-Content (Join-Path $web 'love-laughs-cards.js') -Raw -Encoding UTF8
-if ($index -notmatch 'love-laughs-cards\.js' -or
+foreach ($pack in @('translations-it.js','translations-ko.js','translations-pl.js','translations-nl.js','translations-ui-extra.js')) {
+  if (!(Test-Path (Join-Path $web $pack))) {
+    throw "Missing language pack: $pack"
+  }
+}
+if ($index -notmatch 'translations-nl\.js' -or $index -notmatch 'value="ko"' -or
+    $index -notmatch 'value="it"' -or $index -notmatch 'value="pl"' -or
+    $index -notmatch 'love-laughs-cards\.js' -or
     $index -notmatch 'id="screen-home"' -or
     $index -notmatch 'id="screen-couple"' -or
     $index -notmatch 'id="createRoom"' -or
@@ -38,7 +45,7 @@ if ($index -notmatch 'love-laughs-cards\.js' -or
     !(Test-Path (Join-Path $web 'prototype.css'))) {
   throw 'The new luxury UI or its live couple mode is missing; refusing to build an outdated APK.'
 }
-Write-Host 'Verified: luxury home screen, both decks, 8-language interface and Firebase rooms.' -ForegroundColor Green
+Write-Host 'Verified: luxury home screen, both decks, 12 languages and Firebase rooms.' -ForegroundColor Green
 Push-Location 'android'
 try {
   & .\gradlew.bat --no-daemon assembleDebug
@@ -46,7 +53,7 @@ try {
 } finally { Pop-Location }
 $apk = Join-Path $PSScriptRoot 'android\app\build\outputs\apk\debug\app-debug.apk'
 $assets = Join-Path $PSScriptRoot 'android\app\src\main\assets\public'
-foreach ($needed in @('prototype.js','prototype.css','index.html','love-laughs-cards.js','firebase-config.js','interface.js')) {
+foreach ($needed in @('prototype.js','prototype.css','index.html','love-laughs-cards.js','firebase-config.js','interface.js','translations-it.js','translations-ko.js','translations-pl.js','translations-nl.js','translations-ui-extra.js')) {
   if (!(Test-Path (Join-Path $assets $needed))) {
     throw "Android package is missing $needed; refusing to publish an outdated APK."
   }
