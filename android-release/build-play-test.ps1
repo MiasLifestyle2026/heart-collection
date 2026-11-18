@@ -106,8 +106,16 @@ $gradle = Join-Path $PSScriptRoot 'android\app\build.gradle'
 if (!(Test-Path $gradle)) { throw 'Expected Android Gradle Groovy build file not found.' }
 $content = Get-Content $gradle -Raw -Encoding UTF8
 $pattern = '(?m)^(\s*versionCode\s*(?:=\s*)?)\d+'
-if (![regex]::IsMatch($content,$pattern)) { throw 'Cannot find versionCode in Android app/build.gradle' }
-# Use an unambiguous named-group replacement. '1' + $VersionCode was interpreted
+if (![regex]::IsMatch($content,$pattern)) {
+    # Earlier failed builds may already have removed versionCode from this local file.
+    # Restore it immediately before versionName inside defaultConfig.
+    $namePattern = '(?m)^(\s*)(versionName\s+["\x27])'
+    $nameMatches = [regex]::Matches($content,$namePattern)
+    if ($nameMatches.Count -ne 1) { throw 'Cannot locate a unique versionName to restore versionCode in Android app/build.gradle' }
+    $insert = '${1}versionCode ' + $VersionCode + "`r`n" + '${1}${2}'
+    $content = ([regex]::new($namePattern)).Replace($content,$insert,1)
+}
+# Use an unambiguous captured-group replacement. '1' + $VersionCode was interpreted
 # as a literal or a higher-numbered regex group and removed the entire line.
 $replacement = '${1}' + $VersionCode
 $content = ([regex]::new($pattern)).Replace($content,$replacement,1)
