@@ -107,7 +107,14 @@ if (!(Test-Path $gradle)) { throw 'Expected Android Gradle Groovy build file not
 $content = Get-Content $gradle -Raw -Encoding UTF8
 $pattern = '(?m)^(\s*versionCode\s*(?:=\s*)?)\d+'
 if (![regex]::IsMatch($content,$pattern)) { throw 'Cannot find versionCode in Android app/build.gradle' }
-$content = ([regex]::new($pattern)).Replace($content,'1' + $VersionCode,1)
+# Use an unambiguous named-group replacement. '1' + $VersionCode was interpreted
+# as a literal or a higher-numbered regex group and removed the entire line.
+$replacement = '${1}' + $VersionCode
+$content = ([regex]::new($pattern)).Replace($content,$replacement,1)
+$versionMatches = [regex]::Matches($content, '(?m)^\s*versionCode\s*(?:=\s*)?(\d+)')
+if ($versionMatches.Count -ne 1 -or [int]$versionMatches[0].Groups[1].Value -ne $VersionCode) {
+    throw "Could not verify versionCode $VersionCode in Android app/build.gradle after patching."
+}
 [System.IO.File]::WriteAllText($gradle,$content,(New-Object System.Text.UTF8Encoding($false)))
 
 # Gradle produces an unsigned release AAB by default; sign it using the user's
