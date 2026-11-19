@@ -42,7 +42,7 @@ if ($config.appId -ne 'com.miaslifestyle.heartcollection') {
 
 Write-Host ''
 Write-Host 'THE HEART COLLECTION - INTERNAL GOOGLE PLAY TEST' -ForegroundColor Magenta
-Write-Host 'Both decks, all 220 cards, all 12 languages will be unlocked in THIS BUILD ONLY.' -ForegroundColor Yellow
+Write-Host 'Both decks, all 220 cards, all 13 languages will be unlocked in THIS BUILD ONLY.' -ForegroundColor Yellow
 Write-Host 'Do NOT promote this AAB to production. It contains all premium cards in a test-enabled app.' -ForegroundColor Yellow
 Write-Host "Package: $($config.appId) | VersionCode: $VersionCode"
 
@@ -76,7 +76,7 @@ $js = $js.Replace($locked,$unlocked)
 [System.IO.File]::WriteAllText($jsPath,$js,(New-Object System.Text.UTF8Encoding($false)))
 
 $html = Get-Content $htmlPath -Raw -Encoding UTF8
-if (!$html.Contains('</header>') -or !$html.Contains('translations-nl.js')) {
+if (!$html.Contains('</header>') -or !$html.Contains('translations-tr.js')) {
     throw 'Outdated app HTML: stop before creating a Play upload.'
 }
 $banner = '<div id="internal-test-banner" style="margin:10px 18px;padding:9px 12px;border:1px solid #f6cd80;border-radius:12px;background:#6c153c;color:#ffe8bc;text-align:center;font:700 11px Arial,sans-serif;letter-spacing:.6px">🔓 INTERNER PLAY-TEST · ALLE 220 KARTEN FREIGESCHALTET</div>'
