@@ -10,17 +10,17 @@ await rm(out,{recursive:true,force:true});
 await mkdir(out,{recursive:true});
 for(const file of [
   'index.html','prototype.js','prototype.css','cards.js','love-laughs-cards.js',
-  'translations-it.js','translations-ko.js','translations-pl.js','translations-nl.js',
+  'translations-it.js','translations-ko.js','translations-pl.js','translations-nl.js','translations-tr.js',
   'translations-ui-extra.js','interface.js','firebase-config.js','manifest.webmanifest','icon.svg'
 ]){
   await copyFile(join(root,file),join(out,file));
 }
 // Fail the Android build if any advertised language or translated card is missing.
 const testContext=vm.createContext({window:{}});
-for(const file of ['cards.js','love-laughs-cards.js','translations-it.js','translations-ko.js','translations-pl.js','translations-nl.js','translations-ui-extra.js']){
+for(const file of ['cards.js','love-laughs-cards.js','translations-it.js','translations-ko.js','translations-pl.js','translations-nl.js','translations-tr.js','translations-ui-extra.js']){
   vm.runInContext(await readFile(join(out,file),'utf8'),testContext,{filename:file,timeout:10000});
 }
-const languages=['de','en','es','fr','zh','ur','hi','ar','it','ko','pl','nl'];
+const languages=['de','en','es','fr','zh','ur','hi','ar','it','ko','pl','nl','tr'];
 const decks=[testContext.window.HEART_CARDS,testContext.window.HEART_FUN_CARDS];
 for(const deck of decks){
   if(!Array.isArray(deck)||deck.length!==110)throw new Error('Expected 110 questions in each deck');
@@ -33,11 +33,11 @@ for(const deck of decks){
     }
   }
 }
-for(const language of ['it','ko','pl','nl']){
+for(const language of ['it','ko','pl','nl','tr']){
   const ui=testContext.window.HEART_EXTRA_UI?.[language];
   if(!ui||ui.deepCategories.length!==7||ui.funCategories.length!==7)throw new Error('Missing localized menu/category labels for '+language);
 }
-console.log('Verified: 220 questions x 12 languages; all four added UI translations and category sets.');
+console.log('Verified: 220 questions x 13 languages; all five added UI translations and category sets.');
 
 // Do not unlock premium client-side: installable APKs can be copied and modified.
 if(process.env.HEART_CLOSED_TEST==='1'){
